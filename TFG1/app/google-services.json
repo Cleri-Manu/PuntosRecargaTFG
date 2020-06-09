@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "885703820978",
+    "firebase_url": "https://precarga-b3351.firebaseio.com",
+    "project_id": "precarga-b3351",
+    "storage_bucket": "precarga-b3351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885703820978:android:8df384bcfe86f4fee36bab",
+        "android_client_info": {
+          "package_name": "es.usal.tfg1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885703820978-fqm47a2dn64mtdgj8phf8t9ibrvus7ft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv8YMnpLeX8tBHWNI1-0vl9-BgBBaTk2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885703820978-fqm47a2dn64mtdgj8phf8t9ibrvus7ft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
