@@ -1,11 +1,23 @@
 package es.usal.tfg1.model;
 
+import com.google.firebase.auth.FirebaseUser;
+
 public class Usuario {
     private String id;
     private String email;
     private boolean rol = false;    //True=admin, false=normal User
+    private FirebaseUser usuarioF;
 
     public Usuario() { }
+
+    public Usuario(FirebaseUser usuarioF) {
+        this.usuarioF = usuarioF;
+        /* TODO
+        * Sacar los datos del usuario correspondiente
+        * de la base de datos, e inicializar los valores
+        * del usuario según estos datos
+        */
+    }
 
     public Usuario(String id, String email) {
         this.id = id;
@@ -41,5 +53,18 @@ public class Usuario {
 
     public void setRol(boolean rol) {
         this.rol = rol;
+    }
+
+    public FirebaseUser getUsuarioF() {
+        return usuarioF;
+    }
+
+    public void setUsuarioF(FirebaseUser usuarioF) {
+        this.usuarioF = usuarioF;
+        /* TODO
+         * Sacar los datos del usuario correspondiente
+         * de la base de datos, e inicializar los valores
+         * del usuario según estos datos
+         */
     }
 }

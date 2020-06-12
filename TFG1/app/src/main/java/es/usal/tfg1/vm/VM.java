@@ -3,6 +3,9 @@ package es.usal.tfg1.vm;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import es.usal.tfg1.model.DAO;
 import es.usal.tfg1.model.Usuario;
 

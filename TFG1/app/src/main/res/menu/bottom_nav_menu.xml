@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_ruta"
+        android:icon="@drawable/travel"
+        android:title="@string/title_ruta" />
+
+    <item
+        android:id="@+id/navigation_mapa"
+        android:icon="@drawable/mapa"
+        android:title="@string/title_mapa" />
+
+    <item
+        android:id="@+id/navigation_p_cercanos"
+        android:icon="@drawable/charger"
+        android:title="@string/title_p_cercanos" />
+
+
+
+</menu>

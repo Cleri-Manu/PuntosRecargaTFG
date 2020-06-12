@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TFG1</string>
+    <string name="title_activity_main_m_a_p">Mapa</string>
+    <string name="title_mapa">Mapa</string>
+    <string name="title_p_cercanos">Puntos cercanos</string>
+    <string name="title_ruta">Ruta</string>
+    <string name="b_salir">Salir</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
