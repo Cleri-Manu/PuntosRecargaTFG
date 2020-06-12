@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewActivity.MAPA.p_cercanos.p_cercanos">
+    tools:context=".ViewC.MAPA.p_cercanos.p_cercanos">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

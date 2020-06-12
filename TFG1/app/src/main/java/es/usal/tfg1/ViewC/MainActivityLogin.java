@@ -1,10 +1,9 @@
-package es.usal.tfg1.ViewActivity;
+package es.usal.tfg1.ViewC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
@@ -16,9 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewActivity.MAPA.MainActivityMAPA;
-import es.usal.tfg1.vm.FactoriaVM;
-import es.usal.tfg1.vm.VM;
+import es.usal.tfg1.ViewC.MAPA.MainActivityMAPA;
 
 public class MainActivityLogin extends AppCompatActivity {
     private FirebaseAuth myAuth;

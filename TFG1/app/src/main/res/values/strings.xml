@@ -4,7 +4,13 @@
     <string name="title_mapa">Mapa</string>
     <string name="title_p_cercanos">Puntos cercanos</string>
     <string name="title_ruta">Ruta</string>
+    <string name="title_user">Usuario</string>
+    <string name="title_correo">Correo</string>
+    <string name="title_contraseña">Contraseña</string>
+    <string name="title_c">Correo</string>
+    <string name="title_op_usuario">Opciones de usuario</string>
     <string name="b_salir">Salir</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

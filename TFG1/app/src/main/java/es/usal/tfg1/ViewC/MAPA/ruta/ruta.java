@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewActivity.MAPA.ruta;
+package es.usal.tfg1.ViewC.MAPA.ruta;
 
 import android.os.Bundle;
 

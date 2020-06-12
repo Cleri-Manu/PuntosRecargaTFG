@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewActivity.MAPA.mapa.mapa">
+    tools:context=".ViewC.MAPA.mapa.mapa">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="200dp"
-        android:text="Hola Mundo!"
-        android:textAlignment="center"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="100dp"
-        android:onClick="logOutUser"
-        android:text="@string/b_salir" />
 
-</FrameLayout>
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="?attr/actionBarSize"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

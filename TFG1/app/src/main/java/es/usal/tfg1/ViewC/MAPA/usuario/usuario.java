@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewActivity.MAPA.p_cercanos;
+package es.usal.tfg1.ViewC.MAPA.usuario;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import es.usal.tfg1.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link p_cercanos#newInstance} factory method to
+ * Use the {@link usuario#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class p_cercanos extends Fragment {
+public class usuario extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -25,7 +25,7 @@ public class p_cercanos extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public p_cercanos() {
+    public usuario() {
         // Required empty public constructor
     }
 
@@ -35,11 +35,11 @@ public class p_cercanos extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment p_crecanos.
+     * @return A new instance of fragment usuario.
      */
     // TODO: Rename and change types and number of parameters
-    public static p_cercanos newInstance(String param1, String param2) {
-        p_cercanos fragment = new p_cercanos();
+    public static usuario newInstance(String param1, String param2) {
+        usuario fragment = new usuario();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -54,12 +54,14 @@ public class p_cercanos extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_p_crecanos, container, false);
+        return inflater.inflate(R.layout.fragment_usuario, container, false);
     }
+
 }
