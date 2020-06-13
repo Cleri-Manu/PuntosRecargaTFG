@@ -9,7 +9,7 @@
     <string name="title_contraseña">Contraseña</string>
     <string name="title_c">Correo</string>
     <string name="title_op_usuario">Opciones de usuario</string>
-    <string name="b_salir">Salir</string>
+    <string name="b_sesion">Cerrar sesión</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

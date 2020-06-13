@@ -6,12 +6,10 @@ public class Usuario {
     private String id;
     private String email;
     private boolean rol = false;    //True=admin, false=normal User
-    private FirebaseUser usuarioF;
 
-    public Usuario() { }
 
-    public Usuario(FirebaseUser usuarioF) {
-        this.usuarioF = usuarioF;
+    public Usuario(String uid) {
+        this.id = uid;
         /* TODO
         * Sacar los datos del usuario correspondiente
         * de la base de datos, e inicializar los valores
@@ -55,12 +53,7 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public FirebaseUser getUsuarioF() {
-        return usuarioF;
-    }
-
-    public void setUsuarioF(FirebaseUser usuarioF) {
-        this.usuarioF = usuarioF;
+    public void setUsuarioF() {
         /* TODO
          * Sacar los datos del usuario correspondiente
          * de la base de datos, e inicializar los valores

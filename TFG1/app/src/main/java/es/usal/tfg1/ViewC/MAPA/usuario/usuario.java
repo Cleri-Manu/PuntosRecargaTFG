@@ -1,14 +1,21 @@
 package es.usal.tfg1.ViewC.MAPA.usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import es.usal.tfg1.R;
+import es.usal.tfg1.ViewC.MainActivityLogin;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,7 @@ import es.usal.tfg1.R;
  * create an instance of this fragment.
  */
 public class usuario extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,6 +70,23 @@ public class usuario extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_usuario, container, false);
+
+    }
+    @Override
+    public void  onStart() {
+        super.onStart();
+
+    }
+
+    public void logOutUser(View view) {
+        final Intent myIntent = new Intent(getActivity(), MainActivityLogin.class);
+        AuthUI.getInstance()
+                .signOut(getActivity())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(myIntent);
+                    }
+                });
     }
 
 }

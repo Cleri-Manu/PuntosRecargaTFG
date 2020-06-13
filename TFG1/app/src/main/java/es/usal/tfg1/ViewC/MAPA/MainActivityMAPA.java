@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +31,8 @@ import es.usal.tfg1.ViewC.MainActivityLogin;
 
 public class MainActivityMAPA extends AppCompatActivity {
     private Toolbar myToolbar;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore firestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,28 +55,21 @@ public class MainActivityMAPA extends AppCompatActivity {
             }
         });
 
+        //Control de la interfaz en cambios de fragmentos
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 if(destination.getId() == R.id.navigation_usuario) {
                     navView.setVisibility(View.INVISIBLE);
-                    /*
-                    navView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED);
-                    navView.getMenu().getItem(0).setVisible(false);
-                    navView.getMenu().getItem(1).setVisible(false);
-                    navView.getMenu().getItem(2).setVisible(false);*/
                 } else {
                     navView.setVisibility(View.VISIBLE);
-                    /*
-                    navView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-                    navView.getMenu().getItem(0).setVisible(true);
-                    navView.getMenu().getItem(1).setVisible(true);
-                    navView.getMenu().getItem(2).setVisible(true);*/
-
                 }
             }
         });
+
+        //Gestion de datos del usuario, si no existe sera necesario crear uno nuevo
+
 
 
     }
