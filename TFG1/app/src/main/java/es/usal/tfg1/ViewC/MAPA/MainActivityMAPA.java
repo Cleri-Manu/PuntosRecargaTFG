@@ -2,9 +2,8 @@ package es.usal.tfg1.ViewC.MAPA;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,29 +16,42 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-import androidx.transition.Fade;
-import androidx.transition.Slide;
-import androidx.transition.Transition;
-import androidx.transition.TransitionManager;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.ViewC.MainActivityLogin;
+import es.usal.tfg1.databinding.ActivityMainMapaBinding;
+import es.usal.tfg1.vm.VM;
 
 public class MainActivityMAPA extends AppCompatActivity {
     private Toolbar myToolbar;
     private FirebaseUser currentUser;
     private FirebaseFirestore firestore;
+    public VM myVM;
+    private ActivityMainMapaBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_mapa);
+        // Inflate view and obtain an instance of the binding class.
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_mapa);
+        binding.setLifecycleOwner(this);
+        setContentView(binding.getRoot());
+
+
+
         final BottomNavigationView navView = findViewById(R.id.nav_view);
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
+
+        myVM = new ViewModelProvider(this).get(VM.class);
+        myVM.onDestinationChange(435, 354);
+        binding.setMyVM(myVM);
 
         //Indicar que la toolbar reemplaza la actionbar en esta actividad
         myToolbar = findViewById(R.id.main_toolbar); //Obtener referencia
@@ -60,11 +72,7 @@ public class MainActivityMAPA extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if(destination.getId() == R.id.navigation_usuario) {
-                    navView.setVisibility(View.INVISIBLE);
-                } else {
-                    navView.setVisibility(View.VISIBLE);
-                }
+                myVM.onDestinationChange(destination.getId(), R.id.navigation_usuario);
             }
         });
 

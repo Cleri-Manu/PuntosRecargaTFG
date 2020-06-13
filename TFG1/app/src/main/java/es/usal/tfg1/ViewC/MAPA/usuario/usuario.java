@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.ViewC.MainActivityLogin;
+import es.usal.tfg1.databinding.FragmentUsuarioBinding;
+import es.usal.tfg1.vm.VM;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +26,8 @@ import es.usal.tfg1.ViewC.MainActivityLogin;
  * create an instance of this fragment.
  */
 public class usuario extends Fragment {
-
+    private FragmentUsuarioBinding binding;
+    private VM myVM;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,8 +73,12 @@ public class usuario extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_usuario, container, false);
-
+        //return inflater.inflate(R.layout.fragment_usuario, container, false);
+        binding = FragmentUsuarioBinding.inflate(inflater, container, false);
+        myVM = new ViewModelProvider(requireActivity()).get(VM.class);
+        binding.setMyVM(myVM);
+        //myVM.set_usuario();
+        return binding.getRoot();
     }
     @Override
     public void  onStart() {

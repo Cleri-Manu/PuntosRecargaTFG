@@ -10,6 +10,7 @@ public class Usuario {
 
     public Usuario(String uid) {
         this.id = uid;
+        //Fireba
         /* TODO
         * Sacar los datos del usuario correspondiente
         * de la base de datos, e inicializar los valores
