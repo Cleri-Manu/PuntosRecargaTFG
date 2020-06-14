@@ -2,13 +2,18 @@ package es.usal.tfg1.ViewC.MAPA;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -50,8 +55,12 @@ public class MainActivityMAPA extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         myVM = new ViewModelProvider(this).get(VM.class);
-        myVM.onDestinationChange(435, 354);
+        myVM.initializeValues();
         binding.setMyVM(myVM);
+
+        //Gestion de datos del usuario, si no existe sera necesario crear uno nuevo en Firebase
+        myVM.checkNewUser(FirebaseAuth.getInstance().getCurrentUser());
+
 
         //Indicar que la toolbar reemplaza la actionbar en esta actividad
         myToolbar = findViewById(R.id.main_toolbar); //Obtener referencia
@@ -67,16 +76,24 @@ public class MainActivityMAPA extends AppCompatActivity {
             }
         });
 
+
+
         //Control de la interfaz en cambios de fragmentos
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                myVM.onDestinationChange(destination.getId(), R.id.navigation_usuario);
+                myVM.onDestinationChangeUsuario(destination.getId(), R.id.navigation_usuario);
             }
         });
 
-        //Gestion de datos del usuario, si no existe sera necesario crear uno nuevo
+        //Control de cambios de interfaz en userFragment
+        //(EditText)findViewById(R.id.textEmailUser).addText
+
+
+
+
+
 
 
 

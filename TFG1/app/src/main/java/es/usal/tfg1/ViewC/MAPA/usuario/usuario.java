@@ -7,9 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -72,18 +75,55 @@ public class usuario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_usuario, container, false);
         binding = FragmentUsuarioBinding.inflate(inflater, container, false);
         myVM = new ViewModelProvider(requireActivity()).get(VM.class);
         binding.setMyVM(myVM);
-        //myVM.set_usuario();
+        binding.setLifecycleOwner(this);
         return binding.getRoot();
     }
     @Override
     public void  onStart() {
         super.onStart();
+        getActivity().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                myVM.textFocusUser(v, hasFocus);
+            }
 
+        });
+       /* //COmprobar si se esta editando el texto de email o contraseña,en ese caso mostrar el boton para poder guardar los cambios
+        EditText textEmB = (EditText)getActivity().findViewById(R.id.textEmailUser);
+        textEmB.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                myVM.onTextChange(R.id.textEmailUser);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        EditText textPassB = (EditText)getActivity().findViewById(R.id.textPassUser);
+        textPassB.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                myVM.onTextChange(R.id.textPassUser);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });*/
     }
 
     public void logOutUser(View view) {

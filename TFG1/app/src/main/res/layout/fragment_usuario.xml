@@ -85,12 +85,26 @@
                 android:layout_marginLeft="3dp" />
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textEmailUser"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialTextView2"
                 android:text="@{myVM.usuario.email}"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonEmailUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/fui_transparent"
+                android:src="@drawable/edit_b"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="10dp"
+                android:visibility="@{myVM.userEmBVisibility}"
                 />
 
 
@@ -126,6 +140,7 @@
                 android:layout_marginLeft="3dp" />
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textPassUser"
                 android:inputType="textPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

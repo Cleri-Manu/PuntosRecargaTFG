@@ -7,15 +7,24 @@ public class Usuario {
     private String email;
     private boolean rol = false;    //True=admin, false=normal User
 
+    public Usuario() {
+
+    }
 
     public Usuario(String uid) {
         this.id = uid;
         //Fireba
         /* TODO
-        * Sacar los datos del usuario correspondiente
-        * de la base de datos, e inicializar los valores
-        * del usuario según estos datos
-        */
+         * Sacar los datos del usuario correspondiente
+         * de la base de datos, e inicializar los valores
+         * del usuario según estos datos
+         */
+    }
+
+    public Usuario(Usuario user) {
+        this.id = user.id;
+        this.email = user.email;
+        this.rol = user.rol;
     }
 
     public Usuario(String id, String email) {
