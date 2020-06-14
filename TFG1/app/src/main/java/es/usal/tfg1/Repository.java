@@ -3,6 +3,7 @@ package es.usal.tfg1;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,15 +19,17 @@ public class Repository {
     private FirebaseFirestore firestore;
     private FirebaseUser currentUser;
     private Usuario myUser;
+    private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
 
     public Repository() {
         firestore = FirebaseFirestore.getInstance();
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    public Usuario checkNewUser() {
-        DocumentReference usuarioAct = firestore.collection("Usuarios").document(currentUser.getUid());
+    public void checkNewUser(final FirebaseUser currentUser, MutableLiveData<Usuario> _usuario) {
+        this.currentUser = currentUser;
+        this._usuario = _usuario;
+        DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
 
         //Intentamos conseguir el documento del usuario especificado
         usuarioAct.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -36,22 +39,30 @@ public class Repository {
                 if (task.isSuccessful()) {      //Cuando se acaba la tarea se comrpueba su exito
                     DocumentSnapshot document = task.getResult();
                     if (!document.exists()) {   //Si el documento no existe crear al usuario
-                        myUser = new Usuario(currentUser.getUid(), currentUser.getEmail());
-                        addUser(myUser);
+                        Repository.this.myUser = new Usuario(Repository.this.currentUser.getUid(), Repository.this.currentUser.getEmail());
+                        Repository.this._usuario.setValue(new Usuario(Repository.this.myUser));
+                        addUser(Repository.this.myUser);
                     } else {                    //Si no, solo rellenar los datos de este en la clase local usuario
-                        myUser = document.toObject(Usuario.class);
+                        Repository.this.myUser = document.toObject(Usuario.class);
+                        Repository.this._usuario.setValue(new Usuario(Repository.this.myUser));
                     }
                 } else {                        //En caso de fallo indicarlo
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
-        return myUser;
     }
+
 
     public void addUser(Usuario usuario) {
         firestore.collection("Usuarios").document(usuario.getId()).set(usuario);
     }
+
+    public void modUser() {
+        DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
+        usuarioAct.update("email", _usuario.getValue().getEmail());
+    }
+
 
 
 }

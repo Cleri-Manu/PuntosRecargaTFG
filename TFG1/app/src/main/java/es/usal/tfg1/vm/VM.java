@@ -5,8 +5,11 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.firebase.ui.auth.data.model.User;
@@ -19,13 +22,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.usal.tfg1.R;
+import es.usal.tfg1.Repository;
 import es.usal.tfg1.model.Usuario;
 import io.opencensus.tags.Tag;
 
 public class VM extends ViewModel {
-    private FirebaseFirestore firestore;
-    private static final String TAG = "DocSnippets";
-
+    private Repository repository = new Repository();
     private MutableLiveData<Usuario> _usuario;
     public LiveData<Usuario> usuario;
 
@@ -95,40 +97,23 @@ public class VM extends ViewModel {
         }
     }
 
-    public void checkNewUser(final FirebaseUser currentUser) {
-        if(firestore == null)
-            firestore = FirebaseFirestore.getInstance();
-        DocumentReference usuarioAct = firestore.collection("Usuarios").document(currentUser.getUid());
-
-        //Intentamos conseguir el documento del usuario especificado
-        usuarioAct.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    public void checkNewUser(FirebaseUser currentUser, LifecycleOwner own) {
+        repository.checkNewUser(currentUser, _usuario);
+        final Observer<Usuario> userObs = new Observer<Usuario>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                //Cuando se acaba la tarea se comrpueba su exito
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    //Si el documento no existe crear al usuario
-                    if (!document.exists()) {
-                        myUser = new Usuario(currentUser.getUid(), currentUser.getEmail());
-                        addUser(myUser);
-
-                        _usuario.setValue(new Usuario(myUser));
-                    } else { //Si no, solo rellenar los datos de este en la clase local usuario
-                        myUser = document.toObject(Usuario.class);
-                        _usuario.setValue(new Usuario(myUser));
-                    }
-                } else {//EN caso de fallo indicarlo
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
+            public void onChanged(@Nullable final Usuario user) {
+                //Inicializar el usuario porprimera vez
+                addUser();
             }
-        });
+        };
+        this.getUsuario().observe(own, userObs);
+
     }
 
 
-    public void addUser(Usuario usuario) {
-        if(firestore == null)
-            firestore = FirebaseFirestore.getInstance();
-        firestore.collection("Usuarios").document(usuario.getId()).set(usuario);
+    public void addUser() {
+        if(myUser == null)
+            myUser = new Usuario(this._usuario.getValue());
     }
 
 
@@ -145,5 +130,17 @@ public class VM extends ViewModel {
         } else if (v.getId() == R.id.textPassUser && !hasFocus) {
 
         }
+    }
+
+    public void changeEmail(View view, EditText viewById) {
+        //TODO
+        /* Comprobar que es un email correcto
+        *  Volver a verificar autenticidad del usuario
+        *  Modificar el correo del usuario real con FirebaseAuthUser (o lo que sea, vamos, modificar también el valor del Usuario real fuera de firestore)
+        */
+        _usuario.getValue().setEmail(viewById.getText().toString());
+        _usuario.setValue(_usuario.getValue());
+        myUser.setEmail(_usuario.getValue().getEmail());
+        repository.modUser();
     }
 }

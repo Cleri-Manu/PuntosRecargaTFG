@@ -137,4 +137,8 @@ public class usuario extends Fragment {
                 });
     }
 
+    public void changeEmail(View view) {
+        myVM.changeEmail(view, (EditText) getActivity().findViewById(R.id.textEmailUser));
+    }
+
 }

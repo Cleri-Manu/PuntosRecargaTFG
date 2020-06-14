@@ -22,6 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -32,6 +34,7 @@ import androidx.navigation.ui.NavigationUI;
 import es.usal.tfg1.R;
 import es.usal.tfg1.ViewC.MainActivityLogin;
 import es.usal.tfg1.databinding.ActivityMainMapaBinding;
+import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
 public class MainActivityMAPA extends AppCompatActivity {
@@ -59,8 +62,15 @@ public class MainActivityMAPA extends AppCompatActivity {
         binding.setMyVM(myVM);
 
         //Gestion de datos del usuario, si no existe sera necesario crear uno nuevo en Firebase
-        myVM.checkNewUser(FirebaseAuth.getInstance().getCurrentUser());
-
+        myVM.checkNewUser(FirebaseAuth.getInstance().getCurrentUser(), this);
+        /*final Observer<Usuario> userObs = new Observer<Usuario>() {
+            @Override
+            public void onChanged(@Nullable final Usuario user) {
+                //Inicializar el usuario porprimera vez
+                myVM.addUser();
+            }
+        };
+        myVM.getUsuario().observe(this, userObs);*/
 
         //Indicar que la toolbar reemplaza la actionbar en esta actividad
         myToolbar = findViewById(R.id.main_toolbar); //Obtener referencia
@@ -108,6 +118,10 @@ public class MainActivityMAPA extends AppCompatActivity {
                         startActivity(myIntent);
                     }
                 });
+    }
+
+    public void changeEmail(View view) {
+        myVM.changeEmail(view, (EditText)findViewById(R.id.textEmailUser));
     }
 
 

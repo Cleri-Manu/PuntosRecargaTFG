@@ -98,14 +98,15 @@
                 android:id="@+id/buttonEmailUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/fui_transparent"
-                android:src="@drawable/edit_b"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginBottom="15dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/fui_transparent"
+                android:onClick="changeEmail"
+                android:src="@drawable/edit_b"
                 android:visibility="@{myVM.userEmBVisibility}"
-                />
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintRight_toRightOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
