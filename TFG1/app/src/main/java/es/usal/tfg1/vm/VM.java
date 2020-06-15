@@ -1,10 +1,8 @@
 package es.usal.tfg1.vm;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -12,22 +10,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
-import com.firebase.ui.auth.data.model.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.Repository;
+import es.usal.tfg1.ViewC.MAPA.dialog.CustomDialog;
 import es.usal.tfg1.model.Usuario;
-import io.opencensus.tags.Tag;
 
 public class VM extends ViewModel {
-    private Repository repository = new Repository();
+    private Repository repository = new Repository(this);
     private MutableLiveData<Usuario> _usuario;
     public LiveData<Usuario> usuario;
 
@@ -40,7 +31,14 @@ public class VM extends ViewModel {
     private MutableLiveData<Integer> _userPassBVisibility;
     public LiveData<Integer> userPassBVisibility;
 
+    private MutableLiveData<Boolean> _toastVisibility;
+    public  LiveData<Boolean> toastVisibility;
+
     private Usuario myUser;
+
+    public LiveData<Boolean> gettoastVisibility() {
+        return (LiveData<Boolean>) _toastVisibility;
+    }
 
     public LiveData<Usuario> getUsuario() {
         return (LiveData<Usuario>) _usuario;
@@ -57,6 +55,7 @@ public class VM extends ViewModel {
     public LiveData<Integer> getUserPassBVisibility() {
         return (LiveData<Integer>) _userPassBVisibility;
     }
+    private CustomDialog myDialog;
 
     public void initializeValues() {
         if(_visibility == null)
@@ -71,6 +70,8 @@ public class VM extends ViewModel {
             _userPassBVisibility = new MutableLiveData<Integer>();
             _userPassBVisibility.setValue(View.VISIBLE);
         }
+        if(_toastVisibility == null)
+            _toastVisibility = new MutableLiveData<Boolean>();
     }
 
     public void onDestinationChangeUsuario(int idDest, int idNavUsuario) {
@@ -132,15 +133,47 @@ public class VM extends ViewModel {
         }
     }
 
-    public void changeEmail(View view, EditText viewById) {
-        //TODO
+    public void changeEmail(String email) {
+        // TODO
         /* Comprobar que es un email correcto
-        *  Volver a verificar autenticidad del usuario
-        *  Modificar el correo del usuario real con FirebaseAuthUser (o lo que sea, vamos, modificar también el valor del Usuario real fuera de firestore)
+        *  Volver a verificar autenticidad del usuario -------- HECHO
+        *  Modificar el correo del usuario real con FirebaseAuthUser (o lo que sea, vamos, modificar también el valor del Usuario real fuera de firestore) ---- en proceso
+        *  Comprobar que no hay nadie con ese correo?
         */
-        _usuario.getValue().setEmail(viewById.getText().toString());
-        _usuario.setValue(_usuario.getValue());
-        myUser.setEmail(_usuario.getValue().getEmail());
-        repository.modUser();
+
+        repository.modUserEmailAuth(email);
     }
+
+    public  void reLogUser(String pass) {
+        repository.relLogUser(myUser, pass);
+    }
+
+    public void reLogError() {
+        this._toastVisibility.setValue(false);
+        //this._toastVisibility.setValue(_toastVisibility.getValue());
+    }
+
+    public void reLog() {
+        this._toastVisibility.setValue(true);
+        //this._toastVisibility.setValue(_toastVisibility.getValue());
+    }
+    public void changeError(){
+        this._toastVisibility.setValue(false);
+        //this._toastVisibility.setValue(_toastVisibility.getValue());
+    }
+    public void changeSucces(String email) {
+        if(myUser.getEmail().equals(email)) {
+            this._toastVisibility.setValue(false);
+        } else {
+            _usuario.getValue().setEmail(email);
+            _usuario.setValue(_usuario.getValue());
+            myUser.setEmail(_usuario.getValue().getEmail());
+            repository.modUserEmailFirestore();
+            this._toastVisibility.setValue(true);
+        }
+
+        //this._toastVisibility.setValue(_toastVisibility.getValue());
+    }
+
+
 }

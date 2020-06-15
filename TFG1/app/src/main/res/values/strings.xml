@@ -10,6 +10,14 @@
     <string name="title_c">Correo</string>
     <string name="title_op_usuario">Opciones de usuario</string>
     <string name="b_sesion">Cerrar sesión</string>
+    <string name="h_cont">Contraseña</string>
+    <string name="c_confirmar_Cont">Confirma tu contraseña para realizar esta acción</string>
+    <string name="b_confirmar">Confirmar</string>
+    <string name="b_cancelar">Cancelar</string>
+    <string name="toast_error_login">Datos erróneos introducidos</string>
+    <string name="toast_succes_login">Correnciales correctas, cambio realizado</string>
+    <string name="toast_no_pass">Introduzca su contraseña</string>
+    <string name="toast_empty">Especifique un nuevo email antes de continuar</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

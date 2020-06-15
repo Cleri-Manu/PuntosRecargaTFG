@@ -6,7 +6,6 @@ public class Usuario {
     private String id;
     private String email;
     private boolean rol = false;    //True=admin, false=normal User
-
     public Usuario() {
 
     }

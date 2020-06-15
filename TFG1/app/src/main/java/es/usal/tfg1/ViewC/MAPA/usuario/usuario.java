@@ -1,26 +1,30 @@
 package es.usal.tfg1.ViewC.MAPA.usuario;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import es.usal.tfg1.R;
+import es.usal.tfg1.ViewC.MAPA.dialog.CustomDialog;
 import es.usal.tfg1.ViewC.MainActivityLogin;
 import es.usal.tfg1.databinding.FragmentUsuarioBinding;
+import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
 /**
@@ -31,6 +35,9 @@ import es.usal.tfg1.vm.VM;
 public class usuario extends Fragment {
     private FragmentUsuarioBinding binding;
     private VM myVM;
+    private CustomDialog myDialog;
+    private int changeField = -1;
+    private String tempStringEmailPass;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,46 +91,63 @@ public class usuario extends Fragment {
     @Override
     public void  onStart() {
         super.onStart();
-        getActivity().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        getView().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 myVM.textFocusUser(v, hasFocus);
             }
 
         });
-       /* //COmprobar si se esta editando el texto de email o contraseña,en ese caso mostrar el boton para poder guardar los cambios
-        EditText textEmB = (EditText)getActivity().findViewById(R.id.textEmailUser);
-        textEmB.addTextChangedListener(new TextWatcher() {
+        getView().findViewById(R.id.buttonEmailUser).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onClick(View v) {
+                EditText temp = (EditText)getView().findViewById(R.id.textEmailUser);
+                tempStringEmailPass = temp.getText().toString();
+                if(tempStringEmailPass.equals("")){
+                    showEmptyToast();
+                    return;
+                }
 
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                myVM.onTextChange(R.id.textEmailUser);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                changeField = 1; //1 Se corresponde con cambiar Email , 2 con cambiar contraseña
+                myDialog = new CustomDialog();
+                myDialog.show(getActivity().getSupportFragmentManager(), "myDialog");
+                //myVM.openDialog(getActivity().getSupportFragmentManager());
             }
         });
-        EditText textPassB = (EditText)getActivity().findViewById(R.id.textPassUser);
-        textPassB.addTextChangedListener(new TextWatcher() {
+        final Observer<Boolean> toastBoolObs = new Observer<Boolean>() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onChanged(@Nullable final Boolean myToastBool) {
+                if(myDialog == null) return;                //Si el cuadro de dialogo no esta creado, o no se ha seleccionado un tipo de cambio correcto, no hacer nada
+                if(changeField == 1) {                      //Cambio de correo
+                    if(myToastBool) {                       //Si el login ha sucedido con exito
+                        changeField = 0;                    //Indicamos que el siguiente acceso al metodo es para comrpobar que se ha podido realizar el cambio en el usuario
+                        changeEmail();
+                    } else {                                //Si no
+                        changeField = -1;                   //devolvemos el valor por defecto a la variable
+                        showToast(false);
+                    }
+
+                } else if(changeField == 2) {               //Cambio de contraseña
+                    if(myToastBool) {                       //Si el login ha sucedido con exito
+                        changeField = 0;                    //Indicamos que el siguiente acceso al metodo es para comrpobar que se ha podido realizar el cambio en el usuario
+                    } else {                                //Si no
+                        showToast(false);
+                        changeField = -1;                   //devolvemos el valor por defecto a la variable
+                    }
+                } else if (changeField == 0) {              //toast indicando si se han realizadolos cambios correctamente
+                    if(myToastBool) {                       //Si el cambio se ha realizado
+                        showToast(true);
+                    } else {                                //Si no
+                        showToast(false);
+                    }
+                    tempStringEmailPass = "";
+                    changeField = -1;
+                }
+                myDialog.dismiss();
 
             }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                myVM.onTextChange(R.id.textPassUser);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });*/
+        };
+        myVM.gettoastVisibility().observe(this, toastBoolObs);
     }
 
     public void logOutUser(View view) {
@@ -137,8 +161,21 @@ public class usuario extends Fragment {
                 });
     }
 
-    public void changeEmail(View view) {
-        myVM.changeEmail(view, (EditText) getActivity().findViewById(R.id.textEmailUser));
+    public void changeEmail() {
+        myVM.changeEmail(tempStringEmailPass);
+    }
+
+    public void showToast(Boolean myToastBool) {
+        //Mostrar toast segun el valor del bool
+        if(myToastBool) { //Mostrar toast exito
+            Toast.makeText(getContext(), R.string.toast_succes_login, Toast.LENGTH_SHORT).show();
+        } else { //Mostrar toast fallo
+            Toast.makeText(getContext(), R.string.toast_error_login, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void showEmptyToast() {
+        Toast.makeText(getContext(), R.string.toast_empty, Toast.LENGTH_SHORT).show();
     }
 
 }

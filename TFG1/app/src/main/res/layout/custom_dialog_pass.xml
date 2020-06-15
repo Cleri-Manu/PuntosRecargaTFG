@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border"
+    android:padding="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrain_layout_text"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextViewDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/c_confirmar_Cont"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/appCompatImageViewDialog"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageViewDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fingerprint"
+            app:layout_constraintBottom_toBottomOf="@id/materialTextViewDialog"
+            app:layout_constraintTop_toTopOf="@id/materialTextViewDialog"
+            app:layout_constraintRight_toLeftOf="@id/materialTextViewDialog" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textPassDialog"
+            android:inputType="textPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/materialTextViewDialog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="@string/h_cont"
+            android:layout_marginHorizontal="15dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_dialog_Continue"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/button_background_min"
+        android:text="@string/b_confirmar"
+        android:textColor="@color/textColor"
+        android:textSize="12sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/constrain_layout_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="15dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_dialog_Cancel"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_background_min"
+        android:text="@string/b_cancelar"
+        android:textColor="@color/textColor"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constrain_layout_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

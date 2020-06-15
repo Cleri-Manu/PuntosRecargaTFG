@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -14,15 +16,20 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.usal.tfg1.model.Usuario;
+import es.usal.tfg1.vm.VM;
 
 public class Repository {
     private FirebaseFirestore firestore;
     private FirebaseUser currentUser;
+    private AuthCredential credential;
+
     private Usuario myUser;
+    private VM myVM;
     private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
 
-    public Repository() {
+    public Repository(VM myVM) {
+        this.myVM = myVM;
         firestore = FirebaseFirestore.getInstance();
     }
 
@@ -58,9 +65,39 @@ public class Repository {
         firestore.collection("Usuarios").document(usuario.getId()).set(usuario);
     }
 
-    public void modUser() {
+    public void modUserEmailFirestore() {
         DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
         usuarioAct.update("email", _usuario.getValue().getEmail());
+    }
+    public void modUserEmailAuth(final String email) {
+        currentUser.updateEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            myVM.changeSucces(currentUser.getEmail());
+                        } else {
+                            myVM.changeError();
+                        }
+                    }
+                });
+    }
+
+    public void relLogUser(Usuario user, String pass) {
+        credential = EmailAuthProvider.getCredential(user.getEmail(), pass);
+        currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    //Llama a myVM para indicarle el resultado
+                    myVM.reLog();
+                } else {
+                    //Llamar a myVM para que muestre un toast diciendo error o añadir texto de error invisile que cambia a visible con esta llamada
+                    myVM.reLogError();
+                }
+            }
+        });
+
     }
 
 
