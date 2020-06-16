@@ -22,7 +22,7 @@
             android:textSize="14sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/appCompatImageViewDialog"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="10dp"/>
 
         <androidx.appcompat.widget.AppCompatImageView

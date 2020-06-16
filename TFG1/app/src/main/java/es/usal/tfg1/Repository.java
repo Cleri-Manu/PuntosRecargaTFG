@@ -5,12 +5,14 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,16 +24,27 @@ public class Repository {
     private FirebaseFirestore firestore;
     private FirebaseUser currentUser;
     private AuthCredential credential;
+    private FirebaseAuth auth;
 
     private Usuario myUser;
     private VM myVM;
     private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
 
+    public Usuario getMyUser() {
+        return myUser;
+    }
+
+    public void setMyUser(Usuario myUser) {
+        this.myUser = myUser;
+    }
+
     public Repository(VM myVM) {
         this.myVM = myVM;
         firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
     }
+
 
     public void checkNewUser(final FirebaseUser currentUser, MutableLiveData<Usuario> _usuario) {
         this.currentUser = currentUser;
@@ -65,6 +78,50 @@ public class Repository {
         firestore.collection("Usuarios").document(usuario.getId()).set(usuario);
     }
 
+    public void delUserFirestore() {
+        firestore.collection("Usuarios").document(myUser.getId()).delete();
+    }
+
+
+    public void relLogUser(Usuario user, String pass) {
+        credential = EmailAuthProvider.getCredential(user.getEmail(), pass);
+        currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    //Llama a myVM para indicarle el resultado
+                    myVM.reLogSucces();
+                } else {
+                    //Llamar a myVM para que muestre un toast diciendo error o añadir texto de error invisile que cambia a visible con esta llamada
+                    myVM.reLogError();
+                }
+            }
+        });
+    }
+
+    public void relLogUserGoogle(GoogleSignInAccount acct) {
+        if (acct != null) {
+            AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+            currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        myVM.reLogSucces();
+                    } else {
+                        myVM.reLogError();
+                    }
+                }
+            });
+        } else {
+            myVM.changeError();
+        }
+    }
+
+    public void recovery() {
+        auth.setLanguageCode("es");
+        auth.sendPasswordResetEmail(myUser.getEmail());
+    }
+
     public void modUserEmailFirestore() {
         DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
         usuarioAct.update("email", _usuario.getValue().getEmail());
@@ -83,23 +140,32 @@ public class Repository {
                 });
     }
 
-    public void relLogUser(Usuario user, String pass) {
-        credential = EmailAuthProvider.getCredential(user.getEmail(), pass);
-        currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public void modUserpassAuth(String pass) {
+        currentUser.updatePassword(pass)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            myVM.changeSucces();
+                        } else {
+                            myVM.changeError();
+                        }
+                    }
+                });
+    }
+
+    public void delUser() {
+        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
-                    //Llama a myVM para indicarle el resultado
-                    myVM.reLog();
+                if (task.isSuccessful()) {
+                    delUserFirestore();
+                    myVM.changeSucces();
                 } else {
-                    //Llamar a myVM para que muestre un toast diciendo error o añadir texto de error invisile que cambia a visible con esta llamada
-                    myVM.reLogError();
+                    myVM.changeError();
                 }
             }
         });
 
     }
-
-
-
 }

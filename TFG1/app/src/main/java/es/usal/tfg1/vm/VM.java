@@ -4,12 +4,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseUser;
 
 import es.usal.tfg1.R;
@@ -34,6 +36,9 @@ public class VM extends ViewModel {
     private MutableLiveData<Boolean> _toastVisibility;
     public  LiveData<Boolean> toastVisibility;
 
+    private MutableLiveData<Boolean> _loadUserVisibility;
+    public  LiveData<Boolean> loadUserVisibility;
+
     private Usuario myUser;
 
     public LiveData<Boolean> gettoastVisibility() {
@@ -48,6 +53,10 @@ public class VM extends ViewModel {
         return (LiveData<Integer>) _visibility;
     }
 
+    public LiveData<Boolean> getLoadUserVisibility() {
+        return (LiveData<Boolean>) _loadUserVisibility;
+    }
+
     public LiveData<Integer> getUserEmBVisibility() {
         return (LiveData<Integer>) _userEmBVisibility;
     }
@@ -55,6 +64,7 @@ public class VM extends ViewModel {
     public LiveData<Integer> getUserPassBVisibility() {
         return (LiveData<Integer>) _userPassBVisibility;
     }
+
     private CustomDialog myDialog;
 
     public void initializeValues() {
@@ -72,6 +82,11 @@ public class VM extends ViewModel {
         }
         if(_toastVisibility == null)
             _toastVisibility = new MutableLiveData<Boolean>();
+        if(_loadUserVisibility == null){
+            _loadUserVisibility = new MutableLiveData<Boolean>();
+            _loadUserVisibility.setValue(false);
+        }
+
     }
 
     public void onDestinationChangeUsuario(int idDest, int idNavUsuario) {
@@ -114,7 +129,7 @@ public class VM extends ViewModel {
 
     public void addUser() {
         if(myUser == null)
-            myUser = new Usuario(this._usuario.getValue());
+            myUser = repository.getMyUser();
     }
 
 
@@ -124,7 +139,7 @@ public class VM extends ViewModel {
             _usuario.setValue(_usuario.getValue());
         }
         else  if (v.getId() == R.id.textEmailUser && !hasFocus) {
-            _usuario.getValue().setEmail(myUser.getEmail());
+            _usuario.getValue().setEmail(repository.getMyUser().getEmail());
             _usuario.setValue(_usuario.getValue());
         } else if(v.getId() == R.id.textPassUser && hasFocus) {
 
@@ -133,47 +148,66 @@ public class VM extends ViewModel {
         }
     }
 
-    public void changeEmail(String email) {
-        // TODO
-        /* Comprobar que es un email correcto
-        *  Volver a verificar autenticidad del usuario -------- HECHO
-        *  Modificar el correo del usuario real con FirebaseAuthUser (o lo que sea, vamos, modificar también el valor del Usuario real fuera de firestore) ---- en proceso
-        *  Comprobar que no hay nadie con ese correo?
-        */
-
-        repository.modUserEmailAuth(email);
+    public  void reLogUserEmail(String pass) {
+        userLoadVisibility(true);
+        repository.relLogUser(repository.getMyUser(), pass);
     }
 
-    public  void reLogUser(String pass) {
-        repository.relLogUser(myUser, pass);
+    public  void reLogUserGoogle(GoogleSignInAccount acct) {
+        userLoadVisibility(true);
+        repository.relLogUserGoogle(acct);
     }
 
     public void reLogError() {
         this._toastVisibility.setValue(false);
         //this._toastVisibility.setValue(_toastVisibility.getValue());
+        userLoadVisibility(false);
     }
 
-    public void reLog() {
+    public void reLogSucces() {
+        userLoadVisibility(false);
         this._toastVisibility.setValue(true);
         //this._toastVisibility.setValue(_toastVisibility.getValue());
     }
     public void changeError(){
+        userLoadVisibility(false);
         this._toastVisibility.setValue(false);
         //this._toastVisibility.setValue(_toastVisibility.getValue());
     }
     public void changeSucces(String email) {
-        if(myUser.getEmail().equals(email)) {
+        if(repository.getMyUser().getEmail().equals(email)) {
             this._toastVisibility.setValue(false);
         } else {
             _usuario.getValue().setEmail(email);
             _usuario.setValue(_usuario.getValue());
-            myUser.setEmail(_usuario.getValue().getEmail());
+            repository.getMyUser().setEmail(_usuario.getValue().getEmail());
             repository.modUserEmailFirestore();
+            userLoadVisibility(false);
             this._toastVisibility.setValue(true);
         }
-
-        //this._toastVisibility.setValue(_toastVisibility.getValue());
+    }
+    public  void changeSucces() {
+        this._toastVisibility.setValue(true);
     }
 
+    private void userLoadVisibility(boolean visible) {
+            _loadUserVisibility.setValue(visible);
+            _loadUserVisibility.setValue(_loadUserVisibility.getValue());
+    }
 
+    public void recovery() {
+        repository.recovery();
+    }
+
+    public void changePass(String pass) {
+        repository.modUserpassAuth(pass);
+    }
+
+    public void changeEmail(String email) {
+        repository.modUserEmailAuth(email);
+    }
+
+    public void DelUser() {
+        repository.delUser();
+    }
 }

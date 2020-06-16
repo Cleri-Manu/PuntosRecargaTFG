@@ -46,15 +46,12 @@ public class CustomDialog extends AppCompatDialogFragment {
                     Toast.makeText(getContext(), R.string.toast_no_pass, Toast.LENGTH_SHORT).show();
                 } else {
                     //Lamada a VM para hacer re-log del usuario en Repository con firebase
-                    myVM.reLogUser(pass.getText().toString());
+                    myVM.reLogUserEmail(pass.getText().toString());
                     //Despues de esa llamada se cierra cuadro de dialogo
                     dismiss();
                 }
             }
         });
-
-
-
         return myBuilder.create();
     }
 }
