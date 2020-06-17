@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -16,7 +17,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+
+import es.usal.tfg1.model.Parada;
+import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
@@ -25,8 +32,10 @@ public class Repository {
     private FirebaseUser currentUser;
     private AuthCredential credential;
     private FirebaseAuth auth;
-
+    private Parada currentLoc;
     private Usuario myUser;
+    private ArrayList<PuntoRecarga> PRCompleteList;
+    private ArrayList<PuntoRecarga> PRList;
     private VM myVM;
     private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
@@ -43,8 +52,10 @@ public class Repository {
         this.myVM = myVM;
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
+        PRList = new ArrayList<PuntoRecarga>();
+        PRCompleteList = new ArrayList<PuntoRecarga>();
+        currentLoc = new Parada();
     }
-
 
     public void checkNewUser(final FirebaseUser currentUser, MutableLiveData<Usuario> _usuario) {
         this.currentUser = currentUser;
@@ -92,7 +103,7 @@ public class Repository {
                     //Llama a myVM para indicarle el resultado
                     myVM.reLogSucces();
                 } else {
-                    //Llamar a myVM para que muestre un toast diciendo error o añadir texto de error invisile que cambia a visible con esta llamada
+                    //Llamar a myVM para indicarle el resultado
                     myVM.reLogError();
                 }
             }
@@ -167,5 +178,49 @@ public class Repository {
             }
         });
 
+    }
+
+    public void getPRList(Parada currentLoc) {
+        this.currentLoc = new Parada(currentLoc);
+        //TODO
+        /* Rellenar el arraylist con todas las paradas (puntos de recarga) cercanas al usuario
+        *  Recuperar todos los puntos de recarga (HECHO), poner todos con marcadores en el mapa y meter los que esten a menos de autonomia*0.65 de distancia para mostrar como puntos cercanos ordenando por distancia
+        */
+
+        firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        PRCompleteList.add(document.toObject(PuntoRecarga.class));
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+
+    public PuntoRecarga getPuntoRecargaFromFirestore() {
+        PuntoRecarga p = new PuntoRecarga();
+        return p;
+    }
+
+    public void addPuntoRecargaToFirestore(PuntoRecarga p) {
+        //Se añade el punto de recarga, se coge el ID unico que asigna Firebase, se modifica el punto de recarga poniendole ese ID
+        firestore.collection("PuntosRecarga").add(p).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                documentReference.update("id",documentReference.getId());
+            }
+        });
+    }
+
+    public Parada getParada(double longitud, double latitud) {
+        return new Parada(longitud, latitud);
+    }
+
+    public Parada getCurrentLoc() {
+        return currentLoc;
     }
 }

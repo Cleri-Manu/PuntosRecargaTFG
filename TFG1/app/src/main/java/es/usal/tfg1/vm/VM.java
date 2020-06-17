@@ -1,22 +1,24 @@
 package es.usal.tfg1.vm;
 
 import android.view.View;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.Repository;
 import es.usal.tfg1.ViewC.MAPA.dialog.CustomDialog;
+import es.usal.tfg1.model.Parada;
+import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Usuario;
 
 public class VM extends ViewModel {
@@ -39,7 +41,14 @@ public class VM extends ViewModel {
     private MutableLiveData<Boolean> _loadUserVisibility;
     public  LiveData<Boolean> loadUserVisibility;
 
+    private MutableLiveData<Boolean> _loadRecyclerVisibility;
+    public  LiveData<Boolean> loadRecyclerVisibility;
+
+    private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListData;
+    public  LiveData<ArrayList<PuntoRecarga>> recyclerListData;
+
     private Usuario myUser;
+    private ArrayList<PuntoRecarga> PRList;
 
     public LiveData<Boolean> gettoastVisibility() {
         return (LiveData<Boolean>) _toastVisibility;
@@ -55,6 +64,14 @@ public class VM extends ViewModel {
 
     public LiveData<Boolean> getLoadUserVisibility() {
         return (LiveData<Boolean>) _loadUserVisibility;
+    }
+
+    public LiveData<Boolean> getLoadRecyclerVisibility() {
+        return (LiveData<Boolean>) _loadRecyclerVisibility;
+    }
+
+    public LiveData<ArrayList<PuntoRecarga>> getRecyclerListData() {
+        return (LiveData<ArrayList<PuntoRecarga>>) _recyclerListData;
     }
 
     public LiveData<Integer> getUserEmBVisibility() {
@@ -86,7 +103,25 @@ public class VM extends ViewModel {
             _loadUserVisibility = new MutableLiveData<Boolean>();
             _loadUserVisibility.setValue(false);
         }
+        if(PRList == null) {
+            PRList = new ArrayList<PuntoRecarga>();
+        }
+        if(_loadRecyclerVisibility == null) {
+            _loadRecyclerVisibility = new MutableLiveData<Boolean>();
+            _loadRecyclerVisibility.setValue(true);
+        }
+        if(_recyclerListData == null) {
+            _recyclerListData = new MutableLiveData<ArrayList<PuntoRecarga>>();
+        }
+    }
 
+    public void getPR() {
+        //TODO
+        /* Trozo de codigo sin acabar, revisar
+        *  Quizas no hacen falta parametros, ya se vera
+        *
+        */
+        repository.getPRList(new Parada(1,1));
     }
 
     public void onDestinationChangeUsuario(int idDest, int idNavUsuario) {
@@ -133,17 +168,17 @@ public class VM extends ViewModel {
     }
 
 
-    public void textFocusUser(View v, boolean hasFocus) {
-        if(v.getId() == R.id.textEmailUser && hasFocus) {
+    public void textFocusUser(int id, boolean hasFocus) {
+        if(id == R.id.textEmailUser && hasFocus) {
             _usuario.getValue().setEmail("");
             _usuario.setValue(_usuario.getValue());
         }
-        else  if (v.getId() == R.id.textEmailUser && !hasFocus) {
+        else  if (id == R.id.textEmailUser && !hasFocus) {
             _usuario.getValue().setEmail(repository.getMyUser().getEmail());
             _usuario.setValue(_usuario.getValue());
-        } else if(v.getId() == R.id.textPassUser && hasFocus) {
+        } else if(id == R.id.textPassUser && hasFocus) {
 
-        } else if (v.getId() == R.id.textPassUser && !hasFocus) {
+        } else if (id == R.id.textPassUser && !hasFocus) {
 
         }
     }
@@ -153,10 +188,6 @@ public class VM extends ViewModel {
         repository.relLogUser(repository.getMyUser(), pass);
     }
 
-    public  void reLogUserGoogle(GoogleSignInAccount acct) {
-        userLoadVisibility(true);
-        repository.relLogUserGoogle(acct);
-    }
 
     public void reLogError() {
         this._toastVisibility.setValue(false);

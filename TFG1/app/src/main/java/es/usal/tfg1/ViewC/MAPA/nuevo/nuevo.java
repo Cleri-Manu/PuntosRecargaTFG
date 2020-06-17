@@ -1,31 +1,25 @@
-package es.usal.tfg1.ViewC.MAPA.p_cercanos;
+package es.usal.tfg1.ViewC.MAPA.nuevo;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import es.usal.tfg1.R;
-import es.usal.tfg1.databinding.FragmentPCrecanosBinding;
-import es.usal.tfg1.model.PuntoRecarga;
+import es.usal.tfg1.databinding.FragmentNuevoBinding;
 import es.usal.tfg1.vm.VM;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link p_cercanos#newInstance} factory method to
+ * Use the {@link nuevo#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class p_cercanos extends Fragment {
-    private FragmentPCrecanosBinding binding;
+public class nuevo extends Fragment {
+    private FragmentNuevoBinding binding;
     private VM myVM;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +30,7 @@ public class p_cercanos extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public p_cercanos() {
+    public nuevo() {
         // Required empty public constructor
     }
 
@@ -46,11 +40,11 @@ public class p_cercanos extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment p_crecanos.
+     * @return A new instance of fragment nuevo.
      */
     // TODO: Rename and change types and number of parameters
-    public static p_cercanos newInstance(String param1, String param2) {
-        p_cercanos fragment = new p_cercanos();
+    public static nuevo newInstance(String param1, String param2) {
+        nuevo fragment = new nuevo();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,26 +64,10 @@ public class p_cercanos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentPCrecanosBinding.inflate(inflater, container, false);
+        binding = FragmentNuevoBinding.inflate(inflater, container, false);
         myVM = new ViewModelProvider(requireActivity()).get(VM.class);
-        binding.setMyVM(myVM);
+        //binding.setMyVM(myVM);
         binding.setLifecycleOwner(this);
         return binding.getRoot();
-    }
-
-    @Override
-    public void  onStart() {
-        super.onStart();
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler_p_cercanos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        final PCercanoAdapter adapter = new PCercanoAdapter();
-        recyclerView.setAdapter(adapter);
-        myVM.getRecyclerListData().observe(this, new Observer<ArrayList<PuntoRecarga>>() {
-            @Override
-            public void onChanged(ArrayList<PuntoRecarga> puntosRecarga) {
-                adapter.setPRList(puntosRecarga);
-            }
-        });
     }
 }

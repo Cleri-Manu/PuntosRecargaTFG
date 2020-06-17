@@ -15,13 +15,22 @@
     <string name="c_confirmar_Cont">Confirma tu contraseña para realizar esta acción</string>
     <string name="b_confirmar">Confirmar</string>
     <string name="b_cancelar">Cancelar</string>
-    <string name="toast_error_login">Datos erróneos introducidos</string>
+    <string name="toast_error_login">Datos inválidos</string>
     <string name="toast_succes_login">Correnciales correctas, cambio realizado</string>
     <string name="toast_no_pass">Introduzca su contraseña</string>
-    <string name="toast_empty">Especifique un nuevo email antes de continuar</string>
+    <string name="toast_empty_email">Especifique un nuevo email antes de continuar</string>
+    <string name="toast_empty_pass">Especifique una nueva contraseña antes de continuar</string>
     <string name="toast_recovery">Revise su correo para recuperar su contraseña</string>
     <string name="title_recovery">Recuperar contraseña</string>
     <string name="d_del_acct">Realizando esta acción borrarás tu cuenta, ¿deseas continuar?</string>
+    <string name="title_tipo">Escoge un tipo</string>
+    <string name="h_nombre">Escribe un nombre</string>
+    <string name="title_nombre">Nombre</string>
+    <string name="title_loc">Localización</string>
+    <string name="h_lat">Latitud</string>
+    <string name="h_lon">Longitud</string>
+    <string name="h_desc">Introduce una descripción (opcional)</string>
+    <string name="b_publicar">Publicar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -7,4 +7,5 @@
     <color name="colorSecondaryDark">#FF8000</color>
     <color name="colorAccent">#FF8000</color>
     <color name="textColor">#F5F5F5</color>
+    <color name="colorLightGrey">#E3E3E3</color>
 </resources>

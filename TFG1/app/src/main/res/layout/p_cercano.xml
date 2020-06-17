@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinePR1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinePR2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/PR_icon_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/green"
+            app:layout_constraintLeft_toRightOf="@id/guidelinePR1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/PR_icon_n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/charger_n"
+            app:layout_constraintLeft_toRightOf="@id/guidelinePR1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/separator_PR"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey"
+            app:layout_constraintLeft_toRightOf="@id/guidelinePR1"
+            app:layout_constraintRight_toLeftOf="@id/guidelinePR2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="5dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/PR_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/PR_icon_n"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/PR_icon_n"
+        android:layout_marginBottom="15dp"
+        android:text="Nombre Punto Recarga"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="15dp"
+        android:textSize="18sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/PR_ver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="@+id/PR_dist"
+            app:layout_constraintBottom_toBottomOf="@id/PR_name"
+            android:text="Verificado"
+            android:textColor="@android:color/holo_green_dark"
+            android:layout_marginBottom="8dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/PR_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/PR_name"
+            app:layout_constraintLeft_toRightOf="@id/PR_icon_n"
+            android:numStars="5"
+            android:isIndicator="true"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/PR_dist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/r_border"
+            android:text="300km"
+            app:layout_constraintRight_toRightOf="@id/guidelinePR2"
+            app:layout_constraintLeft_toRightOf="@id/PR_rating_bar"
+            app:layout_constraintBottom_toBottomOf="@id/PR_rating_bar"
+            app:layout_constraintTop_toTopOf="@id/PR_name"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

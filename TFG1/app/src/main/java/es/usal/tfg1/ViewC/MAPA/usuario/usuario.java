@@ -98,7 +98,7 @@ public class usuario extends Fragment {
         getView().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                myVM.textFocusUser(v, hasFocus);
+                myVM.textFocusUser(v.getId(), hasFocus);
             }
 
         });
@@ -120,8 +120,8 @@ public class usuario extends Fragment {
             public void onClick(View v) {
                 EditText temp = (EditText)getView().findViewById(R.id.textEmailUser);
                 tempStringEmailPass = temp.getText().toString();
-                if(tempStringEmailPass.equals("")){
-                    showEmptyToast();
+                if(tempStringEmailPass.equals("") || tempStringEmailPass.equals(myVM.getUsuario().getValue().getEmail())){
+                    showEmptyToast("email");
                     return;
                 }
 
@@ -138,7 +138,7 @@ public class usuario extends Fragment {
                 EditText temp = (EditText)getView().findViewById(R.id.textPassUser);
                 tempStringEmailPass = temp.getText().toString();
                 if(tempStringEmailPass.equals("")){
-                    showEmptyToast();
+                    showEmptyToast("pass");
                     return;
                 }
 
@@ -261,8 +261,13 @@ public class usuario extends Fragment {
         }
     }
 
-    public void showEmptyToast() {
-        Toast.makeText(getContext(), R.string.toast_empty, Toast.LENGTH_SHORT).show();
+    public void showEmptyToast(String tipo) {
+        if(tipo.equals("email")){
+            Toast.makeText(getContext(), R.string.toast_empty_email, Toast.LENGTH_SHORT).show();
+        }else if(tipo.equals("pass")) {
+            Toast.makeText(getContext(), R.string.toast_empty_pass, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void showRecoveryToast() {
