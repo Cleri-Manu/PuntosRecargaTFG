@@ -19,12 +19,16 @@ import es.usal.tfg1.model.PuntoRecarga;
 
 public class PCercanoAdapter extends RecyclerView.Adapter<PCercanoAdapter.PCercanoHolder> {
     private ArrayList<PuntoRecarga> PRList = new ArrayList<PuntoRecarga>();
+    private  OnPRListener onPRListener;
 
+    public PCercanoAdapter(OnPRListener onPRListener) {
+        this.onPRListener = onPRListener;
+    }
     @NonNull
     @Override
     public PCercanoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.p_cercano, parent, false);
-        return new PCercanoHolder(itemView);
+        return new PCercanoHolder(itemView, onPRListener);
     }
 
     @Override
@@ -58,7 +62,7 @@ public class PCercanoAdapter extends RecyclerView.Adapter<PCercanoAdapter.PCerca
         notifyDataSetChanged();
     }
 
-    class PCercanoHolder extends RecyclerView.ViewHolder {
+    class PCercanoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ShapeableImageView PR_icon_green;
         private ShapeableImageView PR_icon_n;
         private LinearLayoutCompat separator_PR;
@@ -66,8 +70,9 @@ public class PCercanoAdapter extends RecyclerView.Adapter<PCercanoAdapter.PCerca
         private RatingBar PR_rating_bar;
         private TextView PR_dist;
         private TextView PR_ver;
+        OnPRListener onPRListener;
 
-        public PCercanoHolder(@NonNull View itemView) {
+        public PCercanoHolder(@NonNull View itemView, OnPRListener onPRListener) {
             super(itemView);
             PR_icon_green = itemView.findViewById(R.id.PR_icon_green);
             PR_icon_n = itemView.findViewById(R.id.PR_icon_n);
@@ -76,6 +81,16 @@ public class PCercanoAdapter extends RecyclerView.Adapter<PCercanoAdapter.PCerca
             PR_rating_bar = itemView.findViewById(R.id.PR_rating_bar);
             PR_dist = itemView.findViewById(R.id.PR_dist);
             PR_ver = itemView.findViewById(R.id.PR_ver);
+            this.onPRListener = onPRListener;
+            itemView.setOnClickListener(this);
         }
+        @Override
+        public void onClick(View v) {
+            onPRListener.onPRClick(getAdapterPosition());
+        }
+    }
+    public interface OnPRListener {
+        void onPRClick(int pos);
+
     }
 }

@@ -7,6 +7,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_p_cercano"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
@@ -91,7 +92,6 @@
             android:scaleY="0.75"
             android:transformPivotX="0dp"
             android:transformPivotY="0dp"
-
             android:layout_marginStart="12dp"
             app:layout_constraintBottom_toBottomOf="parent" />
 

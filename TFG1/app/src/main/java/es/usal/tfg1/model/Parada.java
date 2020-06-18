@@ -31,4 +31,12 @@ public class Parada {
         this.latitud = parada.latitud;
         this.longitud = parada.longitud;
     }
+
+    public boolean checkIfLonEqual(Parada p1, Parada p2) {
+        if (p1.getLongitud() >= p2.getLongitud()*0.905 && p1.getLongitud() <= p2.getLongitud()*1.005) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

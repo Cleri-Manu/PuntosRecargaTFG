@@ -39,6 +39,7 @@ public class Repository {
     private VM myVM;
     private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
+    private PuntoRecarga tempPR;
 
     public Usuario getMyUser() {
         return myUser;
@@ -185,14 +186,17 @@ public class Repository {
         //TODO
         /* Rellenar el arraylist con todas las paradas (puntos de recarga) cercanas al usuario
         *  Recuperar todos los puntos de recarga (HECHO), poner todos con marcadores en el mapa y meter los que esten a menos de autonomia*0.65 de distancia para mostrar como puntos cercanos ordenando por distancia
+        *  De momento se pasan todos los puntos de recarga al recycler
         */
 
         firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    PRCompleteList = new ArrayList<PuntoRecarga>();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         PRCompleteList.add(document.toObject(PuntoRecarga.class));
+                        myVM.changePRList(PRCompleteList);
                     }
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
@@ -206,12 +210,37 @@ public class Repository {
         return p;
     }
 
-    public void addPuntoRecargaToFirestore(PuntoRecarga p) {
-        //Se añade el punto de recarga, se coge el ID unico que asigna Firebase, se modifica el punto de recarga poniendole ese ID
-        firestore.collection("PuntosRecarga").add(p).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+    public void addPuntoRecargaToFirestore(final PuntoRecarga p) {
+        //firestore.collection("PuntosRecarga").whereEqualTo( "parada.latitud", p.getParada().getLatitud()).whereEqualTo( "parada.longitud", p.getParada().getLongitud()).get()
+        //Primero comprobamos si ya existe o no
+        firestore.collection("PuntosRecarga").whereLessThan( "parada.latitud", p.getParada().getLatitud()*1.005).whereGreaterThan( "parada.latitud", p.getParada().getLatitud()*0.995).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(DocumentReference documentReference) {
-                documentReference.update("id",documentReference.getId());
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    if(task.getResult().size() != 0){
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(p.getParada().checkIfLonEqual(p.getParada(), document.toObject(PuntoRecarga.class).getParada())){ //Si la latitud y longitud son muy similares se considera repetido
+                                    myVM.PRAlreadyExists(true);
+                                    return;
+                                }
+                        }
+                    } else {
+                        //Se añade el punto de recarga, se coge el ID unico que asigna Firebase, se modifica el punto de recarga poniendole ese ID
+                        firestore.collection("PuntosRecarga").add(p).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                documentReference.update("id",documentReference.getId());
+                                PuntoRecarga nuevo = new PuntoRecarga(p);
+                                nuevo.setId(documentReference.getId());
+                                PRCompleteList.add(nuevo);
+                                myVM.changePRCompelteList(PRCompleteList);
+                                myVM.PRAlreadyExists(false);
+                            }
+                        });
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
             }
         });
     }
@@ -222,5 +251,10 @@ public class Repository {
 
     public Parada getCurrentLoc() {
         return currentLoc;
+    }
+
+    public void newPR(String nombre, String lat, String lon, String descripcion, boolean eco) {
+        tempPR = new PuntoRecarga(new Parada(Double.parseDouble(lon), Double.parseDouble(lat)), "temp", nombre, myUser.getId(), false, descripcion, eco);
+        addPuntoRecargaToFirestore(new PuntoRecarga(tempPR));
     }
 }

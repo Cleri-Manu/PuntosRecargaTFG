@@ -8,11 +8,12 @@ public class PuntoRecarga {
     private String nombre;
     private String creadorID;
     private boolean verificado;
-    private String descripción;
+    private String descripcion;
     private String distancia;
     private boolean eco;
     private ArrayList<Puntuacion> puntuaciones;
     private double puntuacion;
+
 
     public Parada getParada() {
         return parada;
@@ -58,13 +59,13 @@ public class PuntoRecarga {
         this.verificado = verificado;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public boolean setDescripción(String descripción) {
         if(descripción.length() <= 300) {
-            this.descripción = descripción;
+            this.descripcion = descripción;
             return  true;
         } else {
             return false;
@@ -118,36 +119,54 @@ public class PuntoRecarga {
     }
 
     public PuntoRecarga() { }
-    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripción, ArrayList<Puntuacion> puntuaciones) {
+    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripcion, ArrayList<Puntuacion> puntuaciones) {
         this.parada = parada;
         this.id = id;
         this.nombre = nombre;
         this.creadorID = creadorID;
         this.verificado = verificado;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.puntuaciones = puntuaciones;
     }
 
-    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripción, String distancia, boolean eco, ArrayList<Puntuacion> puntuaciones) {
+    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripcion, String distancia, boolean eco, ArrayList<Puntuacion> puntuaciones) {
         this.parada = parada;
         this.id = id;
         this.nombre = nombre;
         this.creadorID = creadorID;
         this.verificado = verificado;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.distancia = distancia;
         this.eco = eco;
         this.puntuaciones = puntuaciones;
     }
 
-    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripción, String distancia, boolean eco) {
+    public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripcion, boolean eco) {
         this.parada = parada;
         this.id = id;
         this.nombre = nombre;
         this.creadorID = creadorID;
         this.verificado = verificado;
-        this.descripción = descripción;
-        this.distancia = distancia;
+        this.descripcion = descripcion;
+        this.distancia = "";
         this.eco = eco;
+        puntuacion = 0;
+        puntuaciones = new ArrayList<Puntuacion>();
+    }
+
+    public PuntoRecarga(PuntoRecarga p) {
+        this.parada = p.parada;
+        this.id = p.id;
+        this.nombre = p.nombre;
+        this.creadorID = p.creadorID;
+        this.verificado = p.verificado;
+        this.descripcion = p.descripcion;
+        this.distancia = p.distancia;
+        this.eco = p.eco;
+        puntuacion = p.puntuacion;
+        puntuaciones = new ArrayList<Puntuacion>();
+        for (Puntuacion puntos: p.puntuaciones) {
+            puntuaciones.add(new Puntuacion(puntos));
+        }
     }
 }

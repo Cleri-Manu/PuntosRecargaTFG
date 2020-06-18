@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.MAPA.p_cercanos;
+package es.usal.tfg1.ViewC.MAPA.info;
 
 import android.os.Bundle;
 
@@ -11,25 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.databinding.FragmentPCrecanosBinding;
+import es.usal.tfg1.databinding.FragmentInfoBinding;
 import es.usal.tfg1.model.PuntoRecarga;
+import es.usal.tfg1.model.Puntuacion;
 import es.usal.tfg1.vm.VM;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link p_cercanos#newInstance} factory method to
+ * Use the {@link info#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener {
-    private FragmentPCrecanosBinding binding;
+public class info extends Fragment {
+    FragmentInfoBinding binding;
     private VM myVM;
-    OnPRSelectedListener callback;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +38,7 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
     private String mParam1;
     private String mParam2;
 
-    public p_cercanos() {
+    public info() {
         // Required empty public constructor
     }
 
@@ -49,11 +48,11 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment p_crecanos.
+     * @return A new instance of fragment info.
      */
     // TODO: Rename and change types and number of parameters
-    public static p_cercanos newInstance(String param1, String param2) {
-        p_cercanos fragment = new p_cercanos();
+    public static info newInstance(String param1, String param2) {
+        info fragment = new info();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,7 +72,7 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentPCrecanosBinding.inflate(inflater, container, false);
+        binding = FragmentInfoBinding.inflate(inflater, container, false);
         myVM = new ViewModelProvider(requireActivity()).get(VM.class);
         binding.setMyVM(myVM);
         binding.setLifecycleOwner(this);
@@ -83,36 +82,17 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
     @Override
     public void  onStart() {
         super.onStart();
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler_p_cercanos);
+        RecyclerView recyclerView = getView().findViewById(R.id.recycler_p_info);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        final PCercanoAdapter adapter = new PCercanoAdapter(this);
+        final InfoAdapter adapter = new InfoAdapter();
         recyclerView.setAdapter(adapter);
-        myVM.getRecyclerListData().observe(this, new Observer<ArrayList<PuntoRecarga>>() {
+        myVM.getInfoRecyclerListData().observe(this, new Observer<ArrayList<Puntuacion>>() {
             @Override
-            public void onChanged(ArrayList<PuntoRecarga> puntosRecarga) {
-                adapter.setPRList(puntosRecarga);
+            public void onChanged(ArrayList<Puntuacion> puntuaciones) {
+                adapter.setPuntuciones(puntuaciones);
             }
         });
         myVM.loadRecyclerList();
     }
-
-    @Override
-    public void onPRClick(int pos) {
-        //Navegar al nuevo fragmento, pero primero dar valores a los campos en el VM
-        //Toast de prueba
-        Toast.makeText(getContext(), myVM.getRecyclerListData().getValue().get(pos).getId(), Toast.LENGTH_SHORT).show();
-        callback.onPRSelected(pos);
-    }
-
-    public void setOnHeadlineSelectedListener(OnPRSelectedListener callback) {
-        this.callback = callback;
-    }
-
-    public interface OnPRSelectedListener {
-        public void onPRSelected(int position);
-    }
-
 }
-
-

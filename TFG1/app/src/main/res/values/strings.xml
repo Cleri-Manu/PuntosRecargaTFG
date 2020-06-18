@@ -29,8 +29,16 @@
     <string name="title_loc">Localización</string>
     <string name="h_lat">Latitud</string>
     <string name="h_lon">Longitud</string>
-    <string name="h_desc">Introduce una descripción (opcional)</string>
+    <string name="h_desc">Descripción (opcional)</string>
     <string name="b_publicar">Publicar</string>
+    <string name="title_nuevo">Nuevo</string>
+    <string name="title_info">Info</string>
+    <string name="toast_nuevo_fill_fields">Rellena todo los campos necesarios antes de continuar</string>
+    <string name="toast_nuevo_already_exists">Ya existe un punto de recarga en esa localización</string>
+    <string name="toast_nuevo_added">Punto de recarga añadido</string>
+    <string name="b_info_go">Ir allí</string>
+    <string name="b_info_punt">Puntuar</string>
+    <string name="title_punt">Puntuaciones</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

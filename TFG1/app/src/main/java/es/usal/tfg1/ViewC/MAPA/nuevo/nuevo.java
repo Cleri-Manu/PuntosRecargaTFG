@@ -3,11 +3,14 @@ package es.usal.tfg1.ViewC.MAPA.nuevo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.databinding.FragmentNuevoBinding;
@@ -66,8 +69,55 @@ public class nuevo extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentNuevoBinding.inflate(inflater, container, false);
         myVM = new ViewModelProvider(requireActivity()).get(VM.class);
-        //binding.setMyVM(myVM);
+        binding.setMyVM(myVM);
         binding.setLifecycleOwner(this);
         return binding.getRoot();
+    }
+
+    @Override
+    public void  onStart() {
+        super.onStart();
+        getView().findViewById(R.id.nuevo_frameLayout_n).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myVM.nuevoChargerNClick();
+            }
+        });
+        getView().findViewById(R.id.nuevo_frameLayout_g).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myVM.nuevoChargerGClick();
+            }
+        });
+        //Añadir nuevo punto de recarga
+        getView().findViewById(R.id.nuevo_b_crear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText nombre = (EditText) getView().findViewById(R.id.nuevo_nombe_editText);
+                EditText lat = (EditText) getView().findViewById(R.id.nuevo_lat_editText);
+                EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);
+                EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
+                myVM.addNewPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
+            }
+        });
+
+        myVM.getNuevoToastFillFields().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) { //Si ha fallado porque los campos estan vacios mostrar toast avisando de esto
+                    Toast.makeText(getContext(), R.string.toast_nuevo_fill_fields, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        myVM.getNuevoToastPRAlreadyExists().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) { //Si ha fallado porque los campos estan vacios mostrar toast avisando de esto
+                    Toast.makeText(getContext(), R.string.toast_nuevo_already_exists, Toast.LENGTH_SHORT).show();
+                } else if(!aBoolean) { //Si funciona mostrar toast avisando
+                    Toast.makeText(getContext(), R.string.toast_nuevo_added, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
