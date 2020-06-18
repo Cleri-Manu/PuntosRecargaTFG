@@ -244,6 +244,27 @@ public class Repository {
             }
         });
     }
+/*
+    public void getPRFromFirestore(String id) {
+        DocumentReference currentPR = firestore.collection("PuntosRecarga").document(id);
+
+        //Intentamos conseguir el documento del usuario especificado
+        currentPR.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                if (task.isSuccessful()) {      //Cuando se acaba la tarea se comrpueba su exito
+                    DocumentSnapshot document = task.getResult();
+                    if (!document.exists()) {   //Si el documento no existe crear al usuario
+                        myVM.setSelectedPR(document.toObject(PuntoRecarga.class));
+                    } else {                    //Si no, solo rellenar los datos de este en la clase local usuario
+                    }
+                } else {                        //En caso de fallo indicarlo
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+    }*/
 
     public Parada getParada(double longitud, double latitud) {
         return new Parada(longitud, latitud);

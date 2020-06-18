@@ -106,8 +106,6 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
     public void newPR(View view) {
 
     }
-
-
     @Override
     public void onPRSelected(int position) {
         if(navController.getCurrentDestination().getId() == R.id.navigation_info) {
@@ -117,14 +115,5 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
             navController.navigate(R.id.navigation_info);
         }
     }
-
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        if (fragment instanceof p_cercanos) {
-            p_cercanos p_cercanosFragment = (p_cercanos) fragment;
-            p_cercanosFragment.setOnHeadlineSelectedListener(this);
-        }
-    }
-
 }
 

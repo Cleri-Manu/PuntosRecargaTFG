@@ -452,11 +452,21 @@ public class VM extends ViewModel {
     }
 
     public void setSelectedPR(int position) {
-        _recyclerListData.getValue().get(position);
-        _infoTitle.setValue(_recyclerListData.getValue().get(position).getNombre());
-        _infoRating.setValue((float)_recyclerListData.getValue().get(position).getPuntuacion());
-        _infoDist.setValue(_recyclerListData.getValue().get(position).getDistancia());
-        _infoDesc.setValue(_recyclerListData.getValue().get(position).getDescripcion());
-        _infoRecyclerListData.setValue(_recyclerListData.getValue().get(position).getPuntuaciones());
+        //repository.getPRFromFirestore(_recyclerListData.getValue().get(position).getId());
+        setSelectedPR(_recyclerListData.getValue().get(position));
+    }
+    public void setSelectedPR(PuntoRecarga p) {
+        _infoEco.setValue(p.isEco());
+        _infoEco.setValue(_infoEco.getValue());
+        _infoTitle.setValue(p.getNombre());
+        _infoTitle.setValue(_infoTitle.getValue());
+        _infoRating.setValue((float)p.getPuntuacion());
+        _infoRating.setValue(_infoRating.getValue());
+        _infoDist.setValue(p.getDistancia());
+        _infoDist.setValue(_infoDist.getValue());
+        _infoDesc.setValue(p.getDescripcion());
+        _infoDesc.setValue(_infoDesc.getValue());
+        _infoRecyclerListData.setValue(p.getPuntuaciones());
+        _infoRecyclerListData.setValue(_infoRecyclerListData.getValue());
     }
 }

@@ -1,7 +1,9 @@
 package es.usal.tfg1.ViewC.MAPA.p_cercanos;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,7 +30,7 @@ import es.usal.tfg1.vm.VM;
 public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener {
     private FragmentPCrecanosBinding binding;
     private VM myVM;
-    OnPRSelectedListener callback;
+    private OnPRSelectedListener prSelectedListener;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,12 +103,24 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
     public void onPRClick(int pos) {
         //Navegar al nuevo fragmento, pero primero dar valores a los campos en el VM
         //Toast de prueba
-        Toast.makeText(getContext(), myVM.getRecyclerListData().getValue().get(pos).getId(), Toast.LENGTH_SHORT).show();
-        callback.onPRSelected(pos);
+        //Toast.makeText(getContext(), myVM.getRecyclerListData().getValue().get(pos).getNombre(), Toast.LENGTH_SHORT).show();
+        prSelectedListener.onPRSelected(pos);
     }
 
-    public void setOnHeadlineSelectedListener(OnPRSelectedListener callback) {
-        this.callback = callback;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnPRSelectedListener){
+            prSelectedListener = (OnPRSelectedListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement listener for p_cercanos");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        prSelectedListener = null;
     }
 
     public interface OnPRSelectedListener {

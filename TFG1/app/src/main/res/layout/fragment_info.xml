@@ -58,7 +58,7 @@
                     android:id="@+id/PR_info_icon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@{myVM.infoEco ? @drawable/charger_n : @drawable/green}"
+                    android:src="@{myVM.infoEco ?  @drawable/green : @drawable/charger_n}"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_rating_bar"
                     android:layout_margin="5dp"
@@ -85,8 +85,8 @@
                     app:layout_constraintLeft_toRightOf="@id/PR_info_icon"
                     android:numStars="5"
                     android:isIndicator="true"
-                    android:scaleX="0.95"
-                    android:scaleY="0.95"
+                    android:scaleX="0.85"
+                    android:scaleY="0.85"
                     android:transformPivotX="0dp"
                     android:transformPivotY="0dp"
                     android:layout_marginStart="12dp"
@@ -106,15 +106,25 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/info_desc"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/info_desc_layoutConst"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/PR_info_rating_bar"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
-                    android:text="@{myVM.infoDesc}"
-                    android:textSize="16sp">
-                </com.google.android.material.textview.MaterialTextView>
+                    app:layout_constraintRight_toLeftOf="@id/guideline_info_2">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/info_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{myVM.infoDesc}"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent">
+                    </com.google.android.material.textview.MaterialTextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_info_go"
@@ -126,7 +136,7 @@
                     android:textSize="18sp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
-                    app:layout_constraintTop_toBottomOf="@id/info_desc"
+                    app:layout_constraintTop_toBottomOf="@id/info_desc_layoutConst"
                     android:layout_margin="15dp"
                     />
 
@@ -140,7 +150,7 @@
                     android:textSize="18sp"
                     android:layout_marginTop="15dp"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
-                    app:layout_constraintTop_toBottomOf="@id/info_desc"
+                    app:layout_constraintTop_toBottomOf="@id/info_desc_layoutConst"
                     android:layout_margin="15dp"
                     />
 
