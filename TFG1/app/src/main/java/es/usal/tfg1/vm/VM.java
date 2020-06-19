@@ -1,5 +1,6 @@
 package es.usal.tfg1.vm;
 
+import android.text.Editable;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.BufferedOutputStream;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
@@ -72,20 +74,17 @@ public class VM extends ViewModel {
     private MutableLiveData<ArrayList<Puntuacion>> _infoRecyclerListData;
     public  LiveData<ArrayList<Puntuacion>> infoRecyclerListData;
 
-    private MutableLiveData<Boolean> _infoEco;
-    public  LiveData<Boolean> infoEco;
+    private MutableLiveData<PuntoRecarga> _infoPR;
+    public  LiveData<PuntoRecarga> infoPR;
 
-    private MutableLiveData<String> _infoTitle;
-    public  LiveData<String> infoTitle;
+    private MutableLiveData<Boolean> _puntuacionLoadingVisibility;
+    public  LiveData<Boolean> puntuacionLoadingVisibility;
 
-    private MutableLiveData<Float> _infoRating;
-    public  LiveData<Float> infoRating;
+    private MutableLiveData<Float> _puntuacionUserPunt;
+    public  LiveData<Float> puntuacionUserPunt;
 
-    private MutableLiveData<String> _infoDist;
-    public  LiveData<String> infoDist;
-
-    private MutableLiveData<String> _infoDesc;
-    public  LiveData<String> infoDesc;
+    private MutableLiveData<Boolean> _puntuacionToast;
+    public  LiveData<Boolean> puntuacionToast;
 
     private Usuario myUser;
     private ArrayList<PuntoRecarga> PRList;
@@ -150,28 +149,24 @@ public class VM extends ViewModel {
         return (LiveData<Boolean>)  _infoLoadingVisibility;
     }
 
-    public LiveData<Boolean> getInfoEco() {
-        return (LiveData<Boolean>)  _infoEco;
-    }
-
     public LiveData<ArrayList<Puntuacion>> getInfoRecyclerListData() {
         return (LiveData<ArrayList<Puntuacion>>) _infoRecyclerListData;
     }
 
-    public LiveData<String> getInfoTitle() {
-        return (LiveData<String>) _infoTitle;
+    public LiveData<Boolean> getPuntuacionLoadingVisibility() {
+        return (LiveData<Boolean>)  _puntuacionLoadingVisibility;
     }
 
-    public LiveData<Float> getInfoRating() {
-        return (LiveData<Float>) _infoRating;
+    public LiveData<PuntoRecarga> getInfoPR() {
+        return (LiveData<PuntoRecarga>) _infoPR;
     }
 
-    public LiveData<String> getInfoDist() {
-        return (LiveData<String>) _infoDist;
+    public LiveData<Float> getPuntuacionUserPunt() {
+        return (LiveData<Float>) _puntuacionUserPunt;
     }
 
-    public LiveData<String> getInfoDesc() {
-        return (LiveData<String>) _infoDesc;
+    public LiveData<Boolean> getPuntuacionToast() {
+        return (LiveData<Boolean>)  _puntuacionToast;
     }
 
     private CustomDialog myDialog;
@@ -227,19 +222,19 @@ public class VM extends ViewModel {
             _infoLoadingVisibility = new MutableLiveData<Boolean>();
             _infoLoadingVisibility.setValue(false);
         }
-        if(_infoEco == null) {
-            _infoEco = new MutableLiveData<Boolean>();
+        if(_infoPR == null) {
+            _infoPR = new MutableLiveData<PuntoRecarga>();
         }
-        if(_infoRecyclerListData == null)
+        if(_infoRecyclerListData == null) {
             _infoRecyclerListData = new MutableLiveData<ArrayList<Puntuacion>>();
-        if(_infoTitle == null)
-            _infoTitle = new MutableLiveData<String>();
-        if(_infoRating == null)
-            _infoRating = new MutableLiveData<Float>();
-        if(_infoDist == null)
-            _infoDist = new MutableLiveData<String>();
-        if(_infoDesc == null)
-            _infoDesc = new MutableLiveData<String>();
+        }
+        if(_puntuacionLoadingVisibility == null) {
+            _puntuacionLoadingVisibility = new MutableLiveData<Boolean>();
+            _puntuacionLoadingVisibility.setValue(false);
+        }
+        if(_puntuacionToast == null) {
+            _puntuacionToast = new MutableLiveData<Boolean>();
+        }
     }
 
     public void getPR() {
@@ -456,6 +451,10 @@ public class VM extends ViewModel {
         setSelectedPR(_recyclerListData.getValue().get(position));
     }
     public void setSelectedPR(PuntoRecarga p) {
+        _infoPR = new MutableLiveData<PuntoRecarga>();
+        _infoPR.setValue(p);
+        _infoPR.setValue(_infoPR.getValue());
+        /*
         _infoEco.setValue(p.isEco());
         _infoEco.setValue(_infoEco.getValue());
         _infoTitle.setValue(p.getNombre());
@@ -465,8 +464,59 @@ public class VM extends ViewModel {
         _infoDist.setValue(p.getDistancia());
         _infoDist.setValue(_infoDist.getValue());
         _infoDesc.setValue(p.getDescripcion());
-        _infoDesc.setValue(_infoDesc.getValue());
+        _infoDesc.setValue(_infoDesc.getValue());*/
+
         _infoRecyclerListData.setValue(p.getPuntuaciones());
         _infoRecyclerListData.setValue(_infoRecyclerListData.getValue());
+    }
+
+    public Puntuacion checkUserPunt(){
+        if(_infoPR.getValue().getPuntuaciones() != null) {
+            for (Puntuacion p: _infoPR.getValue().getPuntuaciones()) {
+                if(p.getId().equals(_usuario.getValue().getId())) {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void newPuntuacion(String op, float rating) {
+        changePuntuacionLoadingVisibility(true);
+        repository.NewPuntuacion(op, rating, _infoPR.getValue());
+    }
+
+    public void changePuntuacionLoadingVisibility(boolean visibility){
+        _puntuacionLoadingVisibility.setValue(visibility);
+        _puntuacionLoadingVisibility.setValue(_puntuacionLoadingVisibility.getValue());
+    }
+
+    public void changePuntuacion() {
+        for (PuntoRecarga puntoRecarga: _recyclerListData.getValue()) {
+            if(puntoRecarga.getId().equals(_infoPR.getValue().getId())) {
+                setSelectedPR(puntoRecarga);
+                changePuntuacionLoadingVisibility(false);
+                //Cambiar el valor del toast para mostrar operacion exitosa
+                changePuntuacionToast(true);
+                return;
+            }
+        }
+    }
+
+    public void changePuntuacioError(){
+        changePuntuacionToast(false);
+    }
+
+    public void changePuntuacionToast(boolean bool) {
+        _puntuacionToast.setValue(bool);
+        //_puntuacionToast.setValue(_puntuacionToast.getValue());
+    }
+
+    public void onDestinationChangeResetPuntuar(int id, int navigation_puntuar) {
+        if(id != navigation_puntuar){
+            _puntuacionToast = new MutableLiveData<Boolean>();
+            _puntuacionLoadingVisibility = new MutableLiveData<Boolean>();
+            _puntuacionLoadingVisibility.setValue(false);
+        }
     }
 }

@@ -1,7 +1,10 @@
 package es.usal.tfg1.ViewC.MAPA.info;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,6 +32,7 @@ import es.usal.tfg1.vm.VM;
 public class info extends Fragment {
     FragmentInfoBinding binding;
     private VM myVM;
+    private OnPuntuarSelectedListener puntuarSelectedListener;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,19 +84,45 @@ public class info extends Fragment {
     }
 
     @Override
-    public void  onStart() {
-        super.onStart();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         RecyclerView recyclerView = getView().findViewById(R.id.recycler_p_info);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         final InfoAdapter adapter = new InfoAdapter();
         recyclerView.setAdapter(adapter);
-        myVM.getInfoRecyclerListData().observe(this, new Observer<ArrayList<Puntuacion>>() {
+        myVM.getInfoRecyclerListData().observe(getViewLifecycleOwner(), new Observer<ArrayList<Puntuacion>>() {
             @Override
             public void onChanged(ArrayList<Puntuacion> puntuaciones) {
                 adapter.setPuntuciones(puntuaciones);
             }
         });
         myVM.loadRecyclerList();
+        getView().findViewById(R.id.button_info_punt).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                puntuarSelectedListener.onPuntuarSelected();
+            }
+        });
     }
+
+    public interface OnPuntuarSelectedListener {
+        public void onPuntuarSelected();
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnPuntuarSelectedListener){
+            puntuarSelectedListener = (OnPuntuarSelectedListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement listener for info");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        puntuarSelectedListener = null;
+    }
+
 }

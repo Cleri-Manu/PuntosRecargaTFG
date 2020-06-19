@@ -1,5 +1,6 @@
 package es.usal.tfg1;
 
+import android.text.Editable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 
 import es.usal.tfg1.model.Parada;
 import es.usal.tfg1.model.PuntoRecarga;
+import es.usal.tfg1.model.Puntuacion;
 import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
@@ -205,6 +207,31 @@ public class Repository {
         });
     }
 
+    public void getPRListAndUpdatePRInfo() {
+        //TODO
+        /* Rellenar el arraylist con todas las paradas (puntos de recarga) cercanas al usuario
+         *  Recuperar todos los puntos de recarga (HECHO), poner todos con marcadores en el mapa y meter los que esten a menos de autonomia*0.65 de distancia para mostrar como puntos cercanos ordenando por distancia
+         *  De momento se pasan todos los puntos de recarga al recycler
+         */
+
+        firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    PRCompleteList = new ArrayList<PuntoRecarga>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        PRCompleteList.add(document.toObject(PuntoRecarga.class));
+                    }
+                    myVM.changePRList(PRCompleteList);
+                    myVM.changePuntuacion();
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    myVM.changePuntuacioError();
+                }
+            }
+        });
+    }
+
     public PuntoRecarga getPuntoRecargaFromFirestore() {
         PuntoRecarga p = new PuntoRecarga();
         return p;
@@ -217,33 +244,34 @@ public class Repository {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    if(task.getResult().size() != 0){
+                    if(task.getResult().size() != 0){ //Se busca si hay un punto muy cercano al que se queire cear, si lo hay avisar, y acabar, si no continuar y añadir el nuevo punto de recarga
                         for (QueryDocumentSnapshot document : task.getResult()) {
                                 if(p.getParada().checkIfLonEqual(p.getParada(), document.toObject(PuntoRecarga.class).getParada())){ //Si la latitud y longitud son muy similares se considera repetido
                                     myVM.PRAlreadyExists(true);
                                     return;
                                 }
                         }
-                    } else {
-                        //Se añade el punto de recarga, se coge el ID unico que asigna Firebase, se modifica el punto de recarga poniendole ese ID
-                        firestore.collection("PuntosRecarga").add(p).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                documentReference.update("id",documentReference.getId());
-                                PuntoRecarga nuevo = new PuntoRecarga(p);
-                                nuevo.setId(documentReference.getId());
-                                PRCompleteList.add(nuevo);
-                                myVM.changePRCompelteList(PRCompleteList);
-                                myVM.PRAlreadyExists(false);
-                            }
-                        });
                     }
+                    //Se añade el punto de recarga, se coge el ID unico que asigna Firebase, se modifica el punto de recarga poniendole ese ID
+                    firestore.collection("PuntosRecarga").add(p).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            documentReference.update("id",documentReference.getId());
+                            PuntoRecarga nuevo = new PuntoRecarga(p);
+                            nuevo.setId(documentReference.getId());
+                            PRCompleteList.add(nuevo);
+                            myVM.changePRCompelteList(PRCompleteList);
+                            myVM.PRAlreadyExists(false);
+                        }
+                    });
+
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
             }
         });
     }
+
 /*
     public void getPRFromFirestore(String id) {
         DocumentReference currentPR = firestore.collection("PuntosRecarga").document(id);
@@ -277,5 +305,57 @@ public class Repository {
     public void newPR(String nombre, String lat, String lon, String descripcion, boolean eco) {
         tempPR = new PuntoRecarga(new Parada(Double.parseDouble(lon), Double.parseDouble(lat)), "temp", nombre, myUser.getId(), false, descripcion, eco);
         addPuntoRecargaToFirestore(new PuntoRecarga(tempPR));
+    }
+
+    public void NewPuntuacion(String op, float rating, PuntoRecarga PR) {
+        //Cuando se edita un valor hacer que myVM recargue todos los puntos de recarga
+        Puntuacion p = new Puntuacion(currentUser.getUid(), op,  rating);
+        if(PR.getPuntuaciones() != null) {
+            for (Puntuacion puntuacion: PR.getPuntuaciones()) { //Si el usuario ya tiene una puntuacion, modificarla
+                if(puntuacion.getId().equals(this.currentUser.getUid())) {
+                    puntuacion.setComentario(p.getComentario());
+                    puntuacion.setId(p.getId());
+                    puntuacion.setPuntuacion(p.getPuntuacion());
+                    PR.updatePuntuacion();
+                    //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
+                    modPR("puntuaciones", PR);
+                    return;
+                }
+            }
+            //Si no se ha encontrado una puntuacion de este usuario añadirla
+            PR.getPuntuaciones().add(p);
+            PR.updatePuntuacion();
+            //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
+            modPR("puntuaciones", PR);
+        } else {
+            ArrayList<Puntuacion> newP = new ArrayList<Puntuacion>();
+            newP.add(p);
+            PR.setPuntuaciones(newP);
+            //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
+            modPR("puntuaciones", PR);
+        }
+    }
+
+    public void modPR(String campo, PuntoRecarga PR) {
+        DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
+        if(campo.equals("puntuaciones")){
+            puntoRecarga.update(campo, PR.getPuntuaciones()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()) {
+                        //Si se modifica avisar de esto al vm y actualizar las listas de PR
+                        getPRListAndUpdatePRInfo();
+                        //Luego avisar a vm para que modifique el boolean del toast de exito
+
+                    } else {
+                        //TODO
+                        /* Si falla avisar a myVM para que modifique el observer correspondiente a la toast de fallo
+                        *
+                        */
+
+                    }
+                }
+            });
+        }
     }
 }

@@ -12,7 +12,7 @@ public class PuntoRecarga {
     private String distancia;
     private boolean eco;
     private ArrayList<Puntuacion> puntuaciones;
-    private double puntuacion;
+    private float puntuacion;
 
 
     public Parada getParada() {
@@ -94,14 +94,21 @@ public class PuntoRecarga {
 
     public void setPuntuaciones(ArrayList<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
-        double count = 0;
-        double total = 0;
-        for (Puntuacion p:puntuaciones) {
-            count++;
-            puntuacion += p.getPuntuacion();
+        updatePuntuacion();
+    }
+
+    public void updatePuntuacion() {
+        float count = 0;
+        float total = 0;
+        if(puntuaciones != null) {
+            for (Puntuacion p:puntuaciones) {
+                count++;
+                total += p.getPuntuacion();
+            }
+            if(count != 0){
+                puntuacion = total/count;
+            }
         }
-        if(count != 0)
-            this.puntuacion = total/count;
     }
 
     public void setPuntuacionesNew(ArrayList<Puntuacion> puntuaciones) {
@@ -110,11 +117,11 @@ public class PuntoRecarga {
         }
     }
 
-    public double getPuntuacion() {
+    public float getPuntuacion() {
         return puntuacion;
     }
 
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(float puntuacion) {
         this.puntuacion = puntuacion;
     }
 

@@ -3,7 +3,7 @@ package es.usal.tfg1.model;
 public class Puntuacion {
     private String id;
     private String comentario;
-    private double puntuacion;
+    private float puntuacion;
 
     public String getId() {
         return id;
@@ -26,22 +26,22 @@ public class Puntuacion {
         }
     }
 
-    public double getPuntuacion() {
-        return puntuacion;
+    public float getPuntuacion() {
+        return (float)puntuacion;
     }
 
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(float puntuacion) {
         this.puntuacion = puntuacion;
     }
 
     public Puntuacion() { }
 
-    public Puntuacion(String id, String comentario, double puntuacion) {
+    public Puntuacion(String id, String comentario, float puntuacion) {
         this.id = id;
         this.comentario = comentario;
         this.puntuacion = puntuacion;
     }
-    public Puntuacion(String id, double puntuacion) {
+    public Puntuacion(String id, float puntuacion) {
         this.id = id;
         this.puntuacion = puntuacion;
         this.comentario = "";
@@ -52,4 +52,5 @@ public class Puntuacion {
         this.puntuacion = p.puntuacion;
         this.comentario = p.comentario;
     }
+
 }

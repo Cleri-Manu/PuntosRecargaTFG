@@ -92,9 +92,10 @@ public class usuario extends Fragment {
         binding.setLifecycleOwner(this);
         return binding.getRoot();
     }
+
     @Override
-    public void  onStart() {
-        super.onStart();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         getView().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -229,7 +230,7 @@ public class usuario extends Fragment {
                 myDialog.dismiss();
             }
         };
-        myVM.gettoastVisibility().observe(this, toastBoolObs);
+        myVM.gettoastVisibility().observe(getViewLifecycleOwner(), toastBoolObs);
 
         //Boton recuperar contraseña
         getView().findViewById(R.id.text_recovery).setOnClickListener(new View.OnClickListener() {
@@ -239,6 +240,11 @@ public class usuario extends Fragment {
                 myVM.recovery();
             }
         });
+    }
+
+    @Override
+    public void  onStart() {
+        super.onStart();
     }
 
     private void delUser() {

@@ -21,8 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ViewC.MAPA.info.info"
-            android:layout_marginBottom="?attr/actionBarSize">
+            tools:context=".ViewC.MAPA.info.info">
 
             <ProgressBar
                 android:id="@+id/progressBar_p_info"
@@ -58,7 +57,7 @@
                     android:id="@+id/PR_info_icon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@{myVM.infoEco ?  @drawable/green : @drawable/charger_n}"
+                    android:src="@{myVM.infoPR.eco ?  @drawable/green : @drawable/charger_n}"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_rating_bar"
                     android:layout_margin="5dp"
@@ -72,7 +71,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_icon"
                     android:layout_marginBottom="15dp"
-                    android:text="@{myVM.infoTitle}"
+                    android:text="@{myVM.infoPR.nombre}"
                     android:textColor="@android:color/black"
                     android:layout_marginStart="15dp"
                     android:textSize="22sp" />
@@ -90,14 +89,14 @@
                     android:transformPivotX="0dp"
                     android:transformPivotY="0dp"
                     android:layout_marginStart="12dp"
-                    android:rating="@{myVM.infoRating}"/>
+                    android:rating="@{myVM.infoPR.puntuacion}"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/PR_info_dist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/r_border"
-                    android:text="@{myVM.infoDist}"
+                    android:text="@{myVM.infoPR.distancia}"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
                     app:layout_constraintLeft_toRightOf="@id/PR_info_rating_bar"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_rating_bar"
@@ -117,7 +116,7 @@
                         android:id="@+id/info_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{myVM.infoDesc}"
+                        android:text="@{myVM.infoPR.descripcion}"
                         android:textSize="16sp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"

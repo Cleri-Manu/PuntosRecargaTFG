@@ -41,4 +41,10 @@
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
 
+    <fragment
+        android:id="@+id/navigation_puntuar"
+        android:name="es.usal.tfg1.ViewC.MAPA.info.puntuar.puntuar"
+        android:label="@string/title_puntuar"
+        tools:layout="@layout/fragment_puntuar" />
+
 </navigation>

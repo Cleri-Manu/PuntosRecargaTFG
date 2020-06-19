@@ -3,6 +3,7 @@ package es.usal.tfg1.ViewC.MAPA;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,12 +26,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import es.usal.tfg1.R;
+import es.usal.tfg1.ViewC.MAPA.info.info;
 import es.usal.tfg1.ViewC.MAPA.p_cercanos.p_cercanos;
 import es.usal.tfg1.ViewC.MainActivityLogin;
 import es.usal.tfg1.databinding.ActivityMainMapaBinding;
 import es.usal.tfg1.vm.VM;
 
-public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.OnPRSelectedListener {
+public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.OnPRSelectedListener, info.OnPuntuarSelectedListener {
     private Toolbar myToolbar;
     private FirebaseUser currentUser;
     private FirebaseFirestore firestore;
@@ -87,6 +89,7 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 myVM.onDestinationChangeUsuario(destination.getId(), R.id.navigation_usuario);
                 myVM.onDestinationChangeResetNuevo(destination.getId(), R.id.navigation_nuevo);
+                myVM.onDestinationChangeResetPuntuar(destination.getId(), R.id.navigation_puntuar);
             }
         });
 
@@ -113,6 +116,22 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
         } else {
             myVM.setSelectedPR(position);
             navController.navigate(R.id.navigation_info);
+        }
+    }
+
+    @Override
+    public void onPuntuarSelected() {
+        //TODO
+        /* Llevar a la ventana de puntuacion para ese punto de recarga
+        *  Actualizar valores del punto de recarga en la vista una vez se haya puntuado (al pulsar el botón puntuar)
+        *  Si el usuario ya ha puntuado el punnto de recarga mostrar la puntuación
+        */
+        //Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show();
+
+        if(navController.getCurrentDestination().getId() == R.id.navigation_puntuar) {
+            return;
+        } else {
+            navController.navigate(R.id.navigation_puntuar);
         }
     }
 }

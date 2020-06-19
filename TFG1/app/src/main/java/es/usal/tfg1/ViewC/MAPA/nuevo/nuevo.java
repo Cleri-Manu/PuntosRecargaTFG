@@ -2,6 +2,7 @@ package es.usal.tfg1.ViewC.MAPA.nuevo;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -77,6 +78,11 @@ public class nuevo extends Fragment {
     @Override
     public void  onStart() {
         super.onStart();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         getView().findViewById(R.id.nuevo_frameLayout_n).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +107,7 @@ public class nuevo extends Fragment {
             }
         });
 
-        myVM.getNuevoToastFillFields().observe(this, new Observer<Boolean>() {
+        myVM.getNuevoToastFillFields().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) { //Si ha fallado porque los campos estan vacios mostrar toast avisando de esto
@@ -109,7 +115,7 @@ public class nuevo extends Fragment {
                 }
             }
         });
-        myVM.getNuevoToastPRAlreadyExists().observe(this, new Observer<Boolean>() {
+        myVM.getNuevoToastPRAlreadyExists().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) { //Si ha fallado porque los campos estan vacios mostrar toast avisando de esto

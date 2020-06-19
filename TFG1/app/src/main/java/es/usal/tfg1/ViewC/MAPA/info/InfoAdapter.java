@@ -31,6 +31,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
         Puntuacion p = puntuaciones.get(position);
         holder.punt_text.setText(p.getComentario());
         holder.punt_rating_bar.setRating((float)p.getPuntuacion());
+
     }
 
     @Override
@@ -50,7 +51,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
         public InfoHolder(@NonNull View itemView) {
             super(itemView);
             punt_text = itemView.findViewById(R.id.punt_text);
-            punt_text = itemView.findViewById(R.id.punt_rating_bar);
+            punt_rating_bar = itemView.findViewById(R.id.punt_rating_bar);
         }
     }
 }
