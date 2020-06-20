@@ -104,12 +104,23 @@
                     android:layout_marginEnd="5dp"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/info_mod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_modificar"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/PR_info_rating_bar"
+                    app:layout_constraintLeft_toLeftOf="@id/PR_info_name"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="@{myVM.infoUserCanDel ? View.VISIBLE : View.INVISIBLE}"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/info_desc_layoutConst"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/PR_info_rating_bar"
+                    app:layout_constraintTop_toBottomOf="@id/info_mod"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2">
                     <com.google.android.material.textview.MaterialTextView
@@ -120,8 +131,10 @@
                         android:textSize="16sp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent">
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginHorizontal="25dp">
                     </com.google.android.material.textview.MaterialTextView>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -137,6 +150,7 @@
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintTop_toBottomOf="@id/info_desc_layoutConst"
                     android:layout_margin="15dp"
+                    app:layout_constraintRight_toLeftOf="@id/button_info_punt"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -150,8 +164,20 @@
                     android:layout_marginTop="15dp"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
                     app:layout_constraintTop_toBottomOf="@id/info_desc_layoutConst"
+                    app:layout_constraintLeft_toRightOf="@id/button_info_go"
                     android:layout_margin="15dp"
                     />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/button_Del_PR"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
+                    app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
+                    app:layout_constraintTop_toBottomOf="@+id/button_info_punt"
+                    android:layout_marginBottom="8dp"
+                    android:layout_margin="15dp"
+                    android:src="@{myVM.infoUserCanDel ?  @drawable/ic_delete : @drawable/ic_error_outline}"/>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/separator_PR_info"
@@ -160,8 +186,9 @@
                     android:background="@color/colorLightGrey"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
-                    app:layout_constraintTop_toBottomOf="@id/button_info_punt"
+                    app:layout_constraintTop_toBottomOf="@id/button_Del_PR"
                     android:layout_margin="15dp" />
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/PR_info_punt_text"

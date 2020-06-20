@@ -125,6 +125,10 @@ public class PuntoRecarga {
         this.puntuacion = puntuacion;
     }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public PuntoRecarga() { }
     public PuntoRecarga(Parada parada, String id, String nombre, String creadorID, boolean verificado, String descripcion, ArrayList<Puntuacion> puntuaciones) {
         this.parada = parada;

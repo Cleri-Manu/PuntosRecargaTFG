@@ -1,5 +1,7 @@
 package es.usal.tfg1.ViewC.MAPA.info.puntuar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -92,6 +94,9 @@ public class puntuar extends Fragment {
             ratingBar.setRating(puntuacion.getPuntuacion());
             EditText editText = (EditText)getView().findViewById(R.id.puntuacion_opinion_editText);
             editText.setText(puntuacion.getComentario());
+            myVM.changePuntuarDelVisibility();
+        } else {
+            myVM.changePuntuarDelVisibilityFalse();
         }
         getView().findViewById(R.id.puntuacion_b_crear).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +114,33 @@ public class puntuar extends Fragment {
                 } else { //fallo
                     Toast.makeText(getContext(), R.string.toast_punt_error, Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        getView().findViewById(R.id.buttonDelPuntuacion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                builder1.setMessage(R.string.d_del_punt);
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                myVM.delPuntuacionButton();
+                                dialog.dismiss();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
     }

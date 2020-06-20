@@ -23,6 +23,9 @@
     <string name="toast_recovery">Revise su correo para recuperar su contraseña</string>
     <string name="title_recovery">Recuperar contraseña</string>
     <string name="d_del_acct">Realizando esta acción borrarás tu cuenta, ¿deseas continuar?</string>
+    <string name="d_del_punt">Realizando esta acción borrarás esta puntuación, ¿deseas continuar?</string>
+    <string name="d_del_PR">Realizando esta acción borrarás este punto de recarga, ¿deseas continuar?</string>
+    <string name="d_del_PR_Report">Realizando esta acción reportarás este punto de recarga, ¿deseas continuar?</string>
     <string name="title_tipo">Escoge un tipo</string>
     <string name="h_nombre">Escribe un nombre</string>
     <string name="title_nombre">Nombre</string>
@@ -35,15 +38,20 @@
     <string name="title_info">Info</string>
     <string name="toast_nuevo_fill_fields">Rellena todo los campos necesarios antes de continuar</string>
     <string name="toast_nuevo_already_exists">Ya existe un punto de recarga en esa localización</string>
-    <string name="toast_nuevo_added">Punto de recarga añadido</string>
+    <string name="toast_nuevo_added">Punto de recarga publicado</string>
     <string name="b_info_go">Ir allí</string>
     <string name="b_info_punt">Puntuar</string>
     <string name="title_punt">Puntuaciones</string>
     <string name="title_give_punt">Selecciona una puntuación</string>
     <string name="h_op">Opinión (opcional)</string>
     <string name="title_puntuar">Puntuar</string>
-    <string name="toast_punt_publicada">Puntuación publicada</string>
+    <string name="title_modificar">Modificar</string>
+    <string name="toast_punt_publicada">Puntuación actualizada</string>
     <string name="toast_punt_error">Error al publicar la puntuación</string>
+    <string name="toast_PR_eliminado">Punto de recarga eliminado</string>
+    <string name="toast_PR_report">Punto de recarga reportado</string>
+    <string name="toast_PR_report_error">No se ha podido reportar el punto de recarga</string>
+    <string name="toast_error_gen">Error, es posible que haya problemas con tu conectividad</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

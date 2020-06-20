@@ -26,6 +26,8 @@ import es.usal.tfg1.model.Usuario;
 
 public class VM extends ViewModel {
     private Repository repository = new Repository(this);
+    private boolean _modSelected = false;
+    public boolean modSelected;
     private MutableLiveData<Usuario> _usuario;
     public LiveData<Usuario> usuario;
 
@@ -85,6 +87,18 @@ public class VM extends ViewModel {
 
     private MutableLiveData<Boolean> _puntuacionToast;
     public  LiveData<Boolean> puntuacionToast;
+
+    private MutableLiveData<Boolean> _puntuacionDelVisibility;
+    public  LiveData<Boolean> puntuacionDelVisibility;
+
+    private MutableLiveData<Boolean> _infoUserCanDel;
+    public  LiveData<Boolean> infoUserCanDel;
+
+    private MutableLiveData<Boolean> _infoReportToast;
+    public  LiveData<Boolean> infoReportToast;
+
+    private MutableLiveData<Boolean> _errorToast;
+    public  LiveData<Boolean> errorToast;
 
     private Usuario myUser;
     private ArrayList<PuntoRecarga> PRList;
@@ -169,6 +183,28 @@ public class VM extends ViewModel {
         return (LiveData<Boolean>)  _puntuacionToast;
     }
 
+    public LiveData<Boolean> getPuntuacionDelVisibility() {
+        return (LiveData<Boolean>)  _puntuacionDelVisibility;
+    }
+
+    public LiveData<Boolean> getInfoUserCanDel() {
+        return (LiveData<Boolean>)  _infoUserCanDel;
+    }
+
+    public LiveData<Boolean> getInfoReportToast () {
+        return (LiveData<Boolean>) _infoReportToast;
+    }
+
+    public boolean getModSelected() {
+        boolean temp = _modSelected;
+        _modSelected = false;
+        return temp;
+    }
+
+    public LiveData<Boolean> getErrorToast () {
+        return (LiveData<Boolean>) _errorToast;
+    }
+
     private CustomDialog myDialog;
 
     public void initializeValues() {
@@ -234,6 +270,21 @@ public class VM extends ViewModel {
         }
         if(_puntuacionToast == null) {
             _puntuacionToast = new MutableLiveData<Boolean>();
+        }
+        if(_puntuacionDelVisibility == null) {
+            _puntuacionDelVisibility = new MutableLiveData<Boolean>();
+            _puntuacionDelVisibility.setValue(false);
+        }
+        if(_infoUserCanDel == null) {
+            _infoUserCanDel = new MutableLiveData<Boolean>();
+            _infoUserCanDel.setValue(false);
+        }
+        if(_infoReportToast == null) {
+            _infoReportToast = new MutableLiveData<Boolean>();
+        }
+        if(_errorToast == null){
+            _errorToast = new MutableLiveData<Boolean>();
+            _errorToast.setValue(false);
         }
     }
 
@@ -518,5 +569,123 @@ public class VM extends ViewModel {
             _puntuacionLoadingVisibility = new MutableLiveData<Boolean>();
             _puntuacionLoadingVisibility.setValue(false);
         }
+    }
+
+    public void changeUserCanDel(boolean can) {
+        _infoUserCanDel.setValue(can);
+        _infoUserCanDel.setValue(_infoUserCanDel.getValue());
+    }
+
+    public void checkUserCanDel() {
+        if(_usuario.getValue().getId().equals(_infoPR.getValue().getCreadorID())) {
+            changeUserCanDel(true);
+        } else {
+            changeUserCanDel(false);
+        }
+    }
+
+    public boolean userCanDel() {
+        return  _puntuacionDelVisibility.getValue();
+    }
+
+    public void changePuntuarDelVisibility() {
+        _puntuacionDelVisibility.setValue(true);
+    }
+
+    public void changePuntuarDelVisibilityFalse() {
+        _puntuacionDelVisibility.setValue(false);
+    }
+
+    public void delPuntuacionButton() {
+        repository.delPuntuacion(_infoPR.getValue());
+    }
+
+    public void delPR() {
+        repository.delPR(_infoPR.getValue());
+    }
+
+    public void delPRSucces() {
+    }
+
+    public void reportPR() {
+        repository.addReport(_infoPR.getValue());
+    }
+
+    public void reportarSucces() {
+        changeReportarToastVisibility(true);
+    }
+
+    public void changeReportarToastVisibility(boolean visible) {
+        _infoReportToast.setValue(true);
+        _infoReportToast = new MutableLiveData<Boolean>();
+    }
+
+    public void modSelectedTrue() {
+        changeModSelected(true);
+    }
+    public void modSelectedFalse() {
+        changeModSelected(false);
+    }
+
+    public void changeModSelected(boolean bool) {
+        this._modSelected = bool;
+    }
+
+    public void changeModOutline() {
+        if(_infoPR.getValue().isEco()) {
+            _nuevoBOutline2.setValue(true);
+            _nuevoBOutline1.setValue(false);
+        } else {
+            _nuevoBOutline2.setValue(false);
+            _nuevoBOutline1.setValue(true);
+        }
+    }
+
+    public void modPR(String nombre, String lat, String lon, String descripcion) {
+        nuevoNewLoadVisibility(true);
+        if(nombre.equals("") || lat.equals("") || lon.equals("")) {
+            _nuevoToastFillFields.setValue(true);
+            nuevoNewLoadVisibility(false);
+            return;
+        }
+        if(_nuevoBOutline1.getValue()) {
+            repository.modAllPRFields(nombre, lat, lon, descripcion, false, _infoPR.getValue());
+        } else if(_nuevoBOutline2.getValue()) {
+            repository.modAllPRFields(nombre, lat, lon, descripcion, true, _infoPR.getValue());
+        } else {
+            _nuevoToastFillFields.setValue(true);
+            nuevoNewLoadVisibility(false);
+        }
+    }
+    public void nuevoModSuccess() {
+        PRAlreadyExists(false);
+    }
+
+    public void getPRListForRecyclerError() {
+        changeErrorToastValue(true);
+    }
+
+    public void checkNewUserError() {
+        changeErrorToastValue(true);
+    }
+
+    public void addNewPRError() {
+        changeErrorToastValue(true);
+    }
+
+    public void modPRPuntuacionesError() {
+        changeErrorToastValue(true);
+    }
+
+    public void addReportError() {
+        changeErrorToastValue(true);
+    }
+
+    public void modAllPRFieldsError() {
+        changeErrorToastValue(true);
+    }
+
+    public void changeErrorToastValue(boolean error) {
+        _errorToast.setValue(error);
     }
 }

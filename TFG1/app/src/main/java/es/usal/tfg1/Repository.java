@@ -1,12 +1,10 @@
 package es.usal.tfg1;
 
-import android.text.Editable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -14,7 +12,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,6 +23,7 @@ import java.util.ArrayList;
 import es.usal.tfg1.model.Parada;
 import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Puntuacion;
+import es.usal.tfg1.model.Reporte;
 import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
@@ -81,6 +79,7 @@ public class Repository {
                         Repository.this._usuario.setValue(new Usuario(Repository.this.myUser));
                     }
                 } else {                        //En caso de fallo indicarlo
+                    myVM.checkNewUserError();
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
@@ -111,24 +110,6 @@ public class Repository {
                 }
             }
         });
-    }
-
-    public void relLogUserGoogle(GoogleSignInAccount acct) {
-        if (acct != null) {
-            AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-            currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        myVM.reLogSucces();
-                    } else {
-                        myVM.reLogError();
-                    }
-                }
-            });
-        } else {
-            myVM.changeError();
-        }
     }
 
     public void recovery() {
@@ -201,6 +182,7 @@ public class Repository {
                         myVM.changePRList(PRCompleteList);
                     }
                 } else {
+                    myVM.getPRListForRecyclerError();
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
             }
@@ -266,6 +248,7 @@ public class Repository {
                     });
 
                 } else {
+                    myVM.addNewPRError();
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
             }
@@ -318,7 +301,7 @@ public class Repository {
                     puntuacion.setPuntuacion(p.getPuntuacion());
                     PR.updatePuntuacion();
                     //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
-                    modPR("puntuaciones", PR);
+                    modPRPuntuaciones(PR);
                     return;
                 }
             }
@@ -326,36 +309,86 @@ public class Repository {
             PR.getPuntuaciones().add(p);
             PR.updatePuntuacion();
             //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
-            modPR("puntuaciones", PR);
+            modPRPuntuaciones(PR);
         } else {
             ArrayList<Puntuacion> newP = new ArrayList<Puntuacion>();
             newP.add(p);
             PR.setPuntuaciones(newP);
             //Una vez añadida la puntuacion actualizar el PR correspondiente en firebase
-            modPR("puntuaciones", PR);
+            modPRPuntuaciones(PR);
         }
     }
 
-    public void modPR(String campo, PuntoRecarga PR) {
+    public void modPRPuntuaciones(PuntoRecarga PR) {
         DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
-        if(campo.equals("puntuaciones")){
-            puntoRecarga.update(campo, PR.getPuntuaciones()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()) {
-                        //Si se modifica avisar de esto al vm y actualizar las listas de PR
-                        getPRListAndUpdatePRInfo();
-                        //Luego avisar a vm para que modifique el boolean del toast de exito
+        puntoRecarga.update("puntuaciones", PR.getPuntuaciones()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    //Si se modifica avisar de esto al vm y actualizar las listas de PR
+                    getPRListAndUpdatePRInfo();
+                    //Luego avisar a vm para que modifique el boolean del toast de exito
 
-                    } else {
-                        //TODO
-                        /* Si falla avisar a myVM para que modifique el observer correspondiente a la toast de fallo
-                        *
-                        */
-
-                    }
+                } else {
+                    myVM.modPRPuntuacionesError();
                 }
-            });
+            }
+        });
+    }
+
+    public void delPuntuacion(PuntoRecarga PR) {
+        int i = 0;
+        boolean del = false;
+        for (Puntuacion p: PR.getPuntuaciones()) {
+            if(p.getId().equals(currentUser.getUid())) {
+                del = true;
+                break;
+            }
+            i++;
         }
+        if(del) {
+            PR.getPuntuaciones().remove(i);
+            modPRPuntuaciones(PR);
+        }
+    }
+
+    public void delPR(PuntoRecarga PR) {
+        firestore.collection("PuntosRecarga").document(PR.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(!task.isSuccessful()) {
+                    myVM.modPRPuntuacionesError();
+                }
+            }
+        });
+    }
+
+    public void addReport(PuntoRecarga PR) {
+        firestore.collection("reportes").add(new Reporte(PR.getId(), currentUser.getUid())).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if(task.isSuccessful()) {
+                    myVM.reportarSucces();
+                } else {
+                    myVM.addReportError();
+                }
+            }
+        });
+    }
+
+    public void modAllPRFields(String nombre, String lat, String lon, String descripcion, boolean eco, PuntoRecarga PR) {
+        DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
+        Parada p = new Parada(Double.parseDouble(lon), Double.parseDouble(lat));
+        puntoRecarga.update("nombre", nombre, "parada", p, "descripcion", descripcion, "eco", eco).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    getPRListAndUpdatePRInfo();
+                    myVM.nuevoModSuccess();
+                } else {
+                    myVM.modAllPRFieldsError();
+                }
+            }
+        });
     }
 }

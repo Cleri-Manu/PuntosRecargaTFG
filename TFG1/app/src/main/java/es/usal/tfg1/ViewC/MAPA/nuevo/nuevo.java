@@ -25,6 +25,7 @@ import es.usal.tfg1.vm.VM;
 public class nuevo extends Fragment {
     private FragmentNuevoBinding binding;
     private VM myVM;
+    private boolean isMod = false;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -83,6 +84,19 @@ public class nuevo extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        isMod = myVM.getModSelected();
+        if(isMod) { //Si se está modificando cargar los datos del PR
+            myVM.changeModOutline();
+            EditText nombre = (EditText)getView().findViewById(R.id.nuevo_nombe_editText);
+            EditText lat = (EditText)getView().findViewById(R.id.nuevo_lat_editText);
+            EditText lon = (EditText)getView().findViewById(R.id.nuevo_lon_editText);
+            EditText desc = (EditText)getView().findViewById(R.id.nuevo_descripcion_editText);
+            nombre.setText(myVM.getInfoPR().getValue().getNombre());
+            lat.setText(Float.toString((float) myVM.getInfoPR().getValue().getParada().getLatitud()));
+            lon.setText(Float.toString((float) myVM.getInfoPR().getValue().getParada().getLongitud()));
+            desc.setText(myVM.getInfoPR().getValue().getDescripcion());
+        }
+
         getView().findViewById(R.id.nuevo_frameLayout_n).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,11 +113,20 @@ public class nuevo extends Fragment {
         getView().findViewById(R.id.nuevo_b_crear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nombre = (EditText) getView().findViewById(R.id.nuevo_nombe_editText);
-                EditText lat = (EditText) getView().findViewById(R.id.nuevo_lat_editText);
-                EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);
-                EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
-                myVM.addNewPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
+                if(!isMod) {
+                    EditText nombre = (EditText) getView().findViewById(R.id.nuevo_nombe_editText);
+                    EditText lat = (EditText) getView().findViewById(R.id.nuevo_lat_editText);
+                    EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);
+                    EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
+                    myVM.addNewPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
+                } else {
+                    EditText nombre = (EditText) getView().findViewById(R.id.nuevo_nombe_editText);
+                    EditText lat = (EditText) getView().findViewById(R.id.nuevo_lat_editText);
+                    EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);
+                    EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
+                    myVM.modPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
+                }
+
             }
         });
 

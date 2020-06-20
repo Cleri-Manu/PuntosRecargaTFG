@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -32,7 +33,7 @@ import es.usal.tfg1.ViewC.MainActivityLogin;
 import es.usal.tfg1.databinding.ActivityMainMapaBinding;
 import es.usal.tfg1.vm.VM;
 
-public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.OnPRSelectedListener, info.OnPuntuarSelectedListener {
+public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.OnPRSelectedListener, info.OnPuntuarSelectedListener, info.OnPRDelListener, info.OnPRModListener {
     private Toolbar myToolbar;
     private FirebaseUser currentUser;
     private FirebaseFirestore firestore;
@@ -93,6 +94,14 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
             }
         });
 
+        myVM.getErrorToast().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    Toast.makeText(MainActivityMAPA.this, R.string.toast_error_gen, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void logOutUser(View view) {
@@ -132,6 +141,26 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
             return;
         } else {
             navController.navigate(R.id.navigation_puntuar);
+        }
+    }
+
+    @Override
+    public void onPRDelSelected() {
+        if(navController.getCurrentDestination().getId() == R.id.navigation_p_cercanos) {
+            return;
+        } else {
+            navController.navigate(R.id.navigation_p_cercanos);
+            Toast.makeText(this, R.string.toast_PR_eliminado, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onPRModSelected() {
+        if(navController.getCurrentDestination().getId() == R.id.navigation_nuevo) {
+            return;
+        } else {
+            myVM.modSelectedTrue();
+            navController.navigate(R.id.navigation_nuevo);
         }
     }
 }
