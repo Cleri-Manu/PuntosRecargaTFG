@@ -1,6 +1,5 @@
 package es.usal.tfg1.ViewC;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,10 +8,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,9 +18,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.MAPA.MainActivityMAPA;
+import es.usal.tfg1.ViewC.fragmentos.PRActivity;
 
-public class MainActivityLogin extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
     private FirebaseAuth myAuth;
     private FirebaseUser currentUser;
     private int RC_SIGN_IN = 1;
@@ -49,7 +46,7 @@ public class MainActivityLogin extends AppCompatActivity {
 
     public void continueStart() {
         if(currentUser != null) { //Ya hay usuario logeado, pasar a menu principal
-            myIntent = new Intent(this, MainActivityMAPA.class);
+            myIntent = new Intent(this, PRActivity.class);
             startActivity(myIntent);
             //this.finish();
         } else if (currentUser == null) { //Si el usuario no ha iniciado sesion, llevar a la pantalla LOGIN
@@ -69,7 +66,7 @@ public class MainActivityLogin extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) { //Login correcto, avanzar a pantalla principal
-                myIntent = new Intent(this, MainActivityMAPA.class);
+                myIntent = new Intent(this, PRActivity.class);
                 startActivity(myIntent);
                 //this.finish();
             }

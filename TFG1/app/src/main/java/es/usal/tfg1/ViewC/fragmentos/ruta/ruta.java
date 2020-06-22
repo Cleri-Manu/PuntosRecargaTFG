@@ -1,28 +1,21 @@
-package es.usal.tfg1.ViewC.MAPA.mapa;
+package es.usal.tfg1.ViewC.fragmentos.ruta;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.MainActivityLogin;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link mapa#newInstance} factory method to
+ * Use the {@link ruta#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class mapa extends Fragment {
+public class ruta extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +25,7 @@ public class mapa extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public mapa() {
+    public ruta() {
         // Required empty public constructor
     }
 
@@ -42,11 +35,11 @@ public class mapa extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment mapa.
+     * @return A new instance of fragment ruta.
      */
     // TODO: Rename and change types and number of parameters
-    public static mapa newInstance(String param1, String param2) {
-        mapa fragment = new mapa();
+    public static ruta newInstance(String param1, String param2) {
+        ruta fragment = new ruta();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,17 +60,6 @@ public class mapa extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mapa, container, false);
-    }
-
-    public void logOutUser(View view) {
-        final Intent myIntent = new Intent(getActivity(), MainActivityLogin.class);
-        AuthUI.getInstance()
-                .signOut(getActivity())
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        startActivity(myIntent);
-                    }
-                });
+        return inflater.inflate(R.layout.fragment_ruta, container, false);
     }
 }

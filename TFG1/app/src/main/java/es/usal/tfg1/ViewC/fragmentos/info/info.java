@@ -1,8 +1,9 @@
-package es.usal.tfg1.ViewC.MAPA.info;
+package es.usal.tfg1.ViewC.fragmentos.info;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,11 +20,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.gson.internal.$Gson$Preconditions;
+
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.databinding.FragmentInfoBinding;
-import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Puntuacion;
 import es.usal.tfg1.vm.VM;
 
@@ -38,28 +44,14 @@ public class info extends Fragment {
     private OnPuntuarSelectedListener puntuarSelectedListener;
     private OnPRDelListener onPRDelListener;
     private  OnPRModListener onPRModListener;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private  OnPRGoListener onPRGoListener;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public info() {
-        // Required empty public constructor
-    }
+    public info() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment info.
-     */
-    // TODO: Rename and change types and number of parameters
     public static info newInstance(String param1, String param2) {
         info fragment = new info();
         Bundle args = new Bundle();
@@ -102,7 +94,15 @@ public class info extends Fragment {
                 adapter.setPuntuciones(puntuaciones);
             }
         });
-        myVM.loadRecyclerList();
+
+        FusedLocationProviderClient myClient = LocationServices.getFusedLocationProviderClient(getContext());
+        myClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                myVM.loadRecyclerList(task.getResult());
+            }
+        });
+
         getView().findViewById(R.id.button_info_punt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +116,6 @@ public class info extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
                 if(myVM.getInfoUserCanDel().getValue()) {
-                    //Toast.makeText(getContext(), "BOrrando", Toast.LENGTH_SHORT).show();
                     builder1.setMessage(R.string.d_del_PR);
                     builder1.setCancelable(true);
                     builder1.setPositiveButton(
@@ -137,7 +136,6 @@ public class info extends Fragment {
                                 }
                             });
                 } else {
-                    //Toast.makeText(getContext(), "REportando", Toast.LENGTH_SHORT).show();
                     builder1.setMessage(R.string.d_del_PR_Report);
                     builder1.setCancelable(true);
                     builder1.setPositiveButton(
@@ -180,6 +178,13 @@ public class info extends Fragment {
                 onPRModListener.onPRModSelected();
             }
         });
+
+        getView().findViewById(R.id.button_info_go).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPRGoListener.onPRGoSelected();
+            }
+        });
     }
 
     public interface OnPuntuarSelectedListener {
@@ -192,6 +197,10 @@ public class info extends Fragment {
 
     public interface OnPRModListener {
         public void onPRModSelected();
+    }
+
+    public interface OnPRGoListener {
+        public void onPRGoSelected();
     }
 
     @Override
@@ -211,6 +220,11 @@ public class info extends Fragment {
             onPRModListener = (OnPRModListener) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement listener of del for info");
+        }
+        if(context instanceof OnPRGoListener){
+            onPRGoListener = (OnPRGoListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement listener of go for info");
         }
     }
 

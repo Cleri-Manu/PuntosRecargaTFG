@@ -8,6 +8,7 @@
     <string name="title_correo">Correo</string>
     <string name="title_contraseña">Contraseña</string>
     <string name="title_c">Correo</string>
+    <string name="title_aut">Autonomía - km</string>
     <string name="title_op_usuario">Opciones de usuario</string>
     <string name="b_sesion">Cerrar sesión</string>
     <string name="h_cont">Contraseña</string>
@@ -20,6 +21,7 @@
     <string name="toast_no_pass">Introduzca su contraseña</string>
     <string name="toast_empty_email">Especifique un nuevo email antes de continuar</string>
     <string name="toast_empty_pass">Especifique una nueva contraseña antes de continuar</string>
+    <string name="toast_empty_aut">Especifique una nueva autonomía antes de continuar</string>
     <string name="toast_recovery">Revise su correo para recuperar su contraseña</string>
     <string name="title_recovery">Recuperar contraseña</string>
     <string name="d_del_acct">Realizando esta acción borrarás tu cuenta, ¿deseas continuar?</string>
@@ -52,7 +54,9 @@
     <string name="toast_PR_report">Punto de recarga reportado</string>
     <string name="toast_PR_report_error">No se ha podido reportar el punto de recarga</string>
     <string name="toast_error_gen">Error, es posible que haya problemas con tu conectividad</string>
+    <string name="toast_lat_lon">Latitud o longitud inválidas</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.MAPA.dialog;
+package es.usal.tfg1.ViewC.fragmentos.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;

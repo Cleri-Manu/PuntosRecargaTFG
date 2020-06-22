@@ -1,6 +1,7 @@
-package es.usal.tfg1.ViewC.MAPA.p_cercanos;
+package es.usal.tfg1.ViewC.fragmentos.p_cercanos;
 
 import android.content.Context;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 
@@ -96,13 +101,19 @@ public class p_cercanos extends Fragment implements PCercanoAdapter.OnPRListener
         recyclerView.setHasFixedSize(true);
         final PCercanoAdapter adapter = new PCercanoAdapter(this);
         recyclerView.setAdapter(adapter);
+        FusedLocationProviderClient myClient = LocationServices.getFusedLocationProviderClient(getContext());
+        myClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                myVM.loadRecyclerList(task.getResult());
+            }
+        });
         myVM.getRecyclerListData().observe(getViewLifecycleOwner(), new Observer<ArrayList<PuntoRecarga>>() {
             @Override
             public void onChanged(ArrayList<PuntoRecarga> puntosRecarga) {
                 adapter.setPRList(puntosRecarga);
             }
         });
-        myVM.loadRecyclerList();
     }
 
     @Override

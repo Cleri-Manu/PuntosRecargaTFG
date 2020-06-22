@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.MAPA;
+package es.usal.tfg1.ViewC.fragmentos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -27,24 +26,23 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.MAPA.info.info;
-import es.usal.tfg1.ViewC.MAPA.p_cercanos.p_cercanos;
-import es.usal.tfg1.ViewC.MainActivityLogin;
-import es.usal.tfg1.databinding.ActivityMainMapaBinding;
+import es.usal.tfg1.ViewC.fragmentos.info.info;
+import es.usal.tfg1.ViewC.fragmentos.p_cercanos.p_cercanos;
+import es.usal.tfg1.ViewC.StartActivity;
+import es.usal.tfg1.databinding.ActivityPrBinding;
 import es.usal.tfg1.vm.VM;
 
-public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.OnPRSelectedListener, info.OnPuntuarSelectedListener, info.OnPRDelListener, info.OnPRModListener {
+public class PRActivity extends AppCompatActivity implements p_cercanos.OnPRSelectedListener, info.OnPuntuarSelectedListener, info.OnPRDelListener, info.OnPRModListener, info.OnPRGoListener {
     private Toolbar myToolbar;
     private FirebaseUser currentUser;
     private FirebaseFirestore firestore;
     public VM myVM;
-    private ActivityMainMapaBinding binding;
+    private ActivityPrBinding binding;
     private NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Inflate view and obtain an instance of the binding class.
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_mapa);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_pr);
         binding.setLifecycleOwner(this);
         setContentView(binding.getRoot());
 
@@ -83,7 +81,6 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
         });
 
 
-        //Control de la interfaz en cambios de fragmentos
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
@@ -98,14 +95,14 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
             @Override
             public void onChanged(Boolean aBoolean) {
                 if(aBoolean) {
-                    Toast.makeText(MainActivityMAPA.this, R.string.toast_error_gen, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PRActivity.this, R.string.toast_error_gen, Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     public void logOutUser(View view) {
-        final Intent myIntent = new Intent(this, MainActivityLogin.class);
+        final Intent myIntent = new Intent(this, StartActivity.class);
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -130,13 +127,6 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
 
     @Override
     public void onPuntuarSelected() {
-        //TODO
-        /* Llevar a la ventana de puntuacion para ese punto de recarga
-        *  Actualizar valores del punto de recarga en la vista una vez se haya puntuado (al pulsar el botón puntuar)
-        *  Si el usuario ya ha puntuado el punnto de recarga mostrar la puntuación
-        */
-        //Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show();
-
         if(navController.getCurrentDestination().getId() == R.id.navigation_puntuar) {
             return;
         } else {
@@ -161,6 +151,16 @@ public class MainActivityMAPA extends AppCompatActivity implements p_cercanos.On
         } else {
             myVM.modSelectedTrue();
             navController.navigate(R.id.navigation_nuevo);
+        }
+    }
+
+    @Override
+    public void onPRGoSelected() {
+        if(navController.getCurrentDestination().getId() == R.id.navigation_mapa) {
+            return;
+        } else {
+            myVM.modSelectedTrue();
+            navController.navigate(R.id.navigation_mapa);
         }
     }
 }

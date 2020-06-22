@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="?attr/actionBarSize"
-            tools:context=".ViewC.MAPA.nuevo.nuevo">
+            tools:context=".ViewC.fragmentos.nuevo.nuevo">
 
             <ProgressBar
                 android:id="@+id/progressBar_p_cercanos"
@@ -207,7 +207,7 @@
                         android:hint="@string/h_lat"
                         android:layout_marginHorizontal="15dp"
                         android:gravity="center"
-                        android:inputType="numberDecimal"/>
+                        android:inputType="numberDecimal|numberSigned"/>
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/nuevo_lon_editText"
@@ -219,7 +219,7 @@
                         android:hint="@string/h_lon"
                         android:layout_marginHorizontal="15dp"
                         android:gravity="center"
-                        android:inputType="numberDecimal"/>
+                        android:inputType="numberDecimal|numberSigned"/>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/nuevo_separador3"

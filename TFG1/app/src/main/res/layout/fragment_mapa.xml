@@ -12,7 +12,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewC.MAPA.mapa.mapa">
+        tools:context=".ViewC.fragmentos.mapa.mapa"
+        android:layout_marginVertical="?attr/actionBarSize">
+
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </com.google.android.gms.maps.MapView>
 
         <!-- TODO: Update blank fragment layout -->
 

@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.MAPA.nuevo;
+package es.usal.tfg1.ViewC.fragmentos.nuevo;
 
 import android.os.Bundle;
 
@@ -26,28 +26,13 @@ public class nuevo extends Fragment {
     private FragmentNuevoBinding binding;
     private VM myVM;
     private boolean isMod = false;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public nuevo() {
-        // Required empty public constructor
-    }
+    public nuevo() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment nuevo.
-     */
-    // TODO: Rename and change types and number of parameters
     public static nuevo newInstance(String param1, String param2) {
         nuevo fragment = new nuevo();
         Bundle args = new Bundle();
@@ -126,7 +111,6 @@ public class nuevo extends Fragment {
                     EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
                     myVM.modPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
                 }
-
             }
         });
 
@@ -145,6 +129,14 @@ public class nuevo extends Fragment {
                     Toast.makeText(getContext(), R.string.toast_nuevo_already_exists, Toast.LENGTH_SHORT).show();
                 } else if(!aBoolean) { //Si funciona mostrar toast avisando
                     Toast.makeText(getContext(), R.string.toast_nuevo_added, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        myVM.getCoordError().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    Toast.makeText(getContext(), R.string.toast_lat_lon, Toast.LENGTH_SHORT).show();
                 }
             }
         });

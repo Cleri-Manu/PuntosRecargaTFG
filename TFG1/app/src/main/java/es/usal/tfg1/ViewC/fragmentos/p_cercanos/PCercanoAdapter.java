@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.MAPA.p_cercanos;
+package es.usal.tfg1.ViewC.fragmentos.p_cercanos;
 
 import android.view.LayoutInflater;
 import android.view.View;

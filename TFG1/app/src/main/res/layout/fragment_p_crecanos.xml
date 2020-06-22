@@ -13,7 +13,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewC.MAPA.p_cercanos.p_cercanos"
+        tools:context=".ViewC.fragmentos.p_cercanos.p_cercanos"
         android:layout_marginTop="?attr/actionBarSize">
 
         <androidx.recyclerview.widget.RecyclerView

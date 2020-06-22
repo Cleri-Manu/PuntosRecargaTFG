@@ -1,6 +1,6 @@
 package es.usal.tfg1.vm;
 
-import android.text.Editable;
+import android.location.Location;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -13,12 +13,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.BufferedOutputStream;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.Repository;
-import es.usal.tfg1.ViewC.MAPA.dialog.CustomDialog;
+import es.usal.tfg1.ViewC.fragmentos.dialog.CustomDialog;
 import es.usal.tfg1.model.Parada;
 import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Puntuacion;
@@ -51,6 +50,9 @@ public class VM extends ViewModel {
 
     private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListData;
     public  LiveData<ArrayList<PuntoRecarga>> recyclerListData;
+
+    private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListCompleteData;
+    public  LiveData<ArrayList<PuntoRecarga>> recyclerListCompleteData;
 
     private MutableLiveData<ArrayList<PuntoRecarga>> _PRCompleteList;
     public  LiveData<ArrayList<PuntoRecarga>> PRCompleteList;
@@ -100,6 +102,9 @@ public class VM extends ViewModel {
     private MutableLiveData<Boolean> _errorToast;
     public  LiveData<Boolean> errorToast;
 
+    private MutableLiveData<Boolean> _coordError;
+    public  LiveData<Boolean> coordError;
+
     private Usuario myUser;
     private ArrayList<PuntoRecarga> PRList;
 
@@ -126,6 +131,11 @@ public class VM extends ViewModel {
     public LiveData<ArrayList<PuntoRecarga>> getRecyclerListData() {
         return (LiveData<ArrayList<PuntoRecarga>>) _recyclerListData;
     }
+
+    public LiveData<ArrayList<PuntoRecarga>> getRecyclerListCompleteData() {
+        return (LiveData<ArrayList<PuntoRecarga>>) _recyclerListCompleteData;
+    }
+
 
     public LiveData<Integer> getUserEmBVisibility() {
         return (LiveData<Integer>) _userEmBVisibility;
@@ -203,6 +213,10 @@ public class VM extends ViewModel {
 
     public LiveData<Boolean> getErrorToast () {
         return (LiveData<Boolean>) _errorToast;
+    }
+
+    public LiveData<Boolean> getCoordError () {
+        return (LiveData<Boolean>) _coordError;
     }
 
     private CustomDialog myDialog;
@@ -286,6 +300,13 @@ public class VM extends ViewModel {
             _errorToast = new MutableLiveData<Boolean>();
             _errorToast.setValue(false);
         }
+        if(_coordError == null) {
+            _coordError = new MutableLiveData<Boolean>();
+            _coordError.setValue(false);
+        }
+        if(_recyclerListCompleteData == null) {
+            _recyclerListCompleteData = new MutableLiveData<ArrayList<PuntoRecarga>>();
+        }
     }
 
     public void getPR() {
@@ -364,19 +385,16 @@ public class VM extends ViewModel {
 
     public void reLogError() {
         this._toastVisibility.setValue(false);
-        //this._toastVisibility.setValue(_toastVisibility.getValue());
         userLoadVisibility(false);
     }
 
     public void reLogSucces() {
         userLoadVisibility(false);
         this._toastVisibility.setValue(true);
-        //this._toastVisibility.setValue(_toastVisibility.getValue());
     }
     public void changeError(){
         userLoadVisibility(false);
         this._toastVisibility.setValue(false);
-        //this._toastVisibility.setValue(_toastVisibility.getValue());
     }
     public void changeSucces(String email) {
         if(repository.getMyUser().getEmail().equals(email)) {
@@ -390,6 +408,7 @@ public class VM extends ViewModel {
             this._toastVisibility.setValue(true);
         }
     }
+
     public  void changeSucces() {
         this._toastVisibility.setValue(true);
     }
@@ -405,6 +424,11 @@ public class VM extends ViewModel {
 
     public void changePass(String pass) {
         repository.modUserpassAuth(pass);
+    }
+
+    public void changeAut(String aut) {
+        _usuario.getValue().setAutonomia(aut);
+        repository.moduserAut();
     }
 
     public void changeEmail(String email) {
@@ -449,10 +473,15 @@ public class VM extends ViewModel {
             _nuevoBOutline2.setValue(false);
             _nuevoToastPRAlreadyExists = new MutableLiveData<Boolean>();
             _nuevoToastFillFields = new MutableLiveData<Boolean>();
+            _coordError = new MutableLiveData<Boolean>();
         }
     }
 
     public void addNewPR(String nombre, String lat, String lon, String descripcion) {
+        if(checkInvCoords(Float.parseFloat(lon), Float.parseFloat(lat))) {
+            return;
+        }
+
         nuevoNewLoadVisibility(true);
         if(nombre.equals("") || lat.equals("") || lon.equals("")) {
             _nuevoToastFillFields.setValue(true);
@@ -483,13 +512,24 @@ public class VM extends ViewModel {
         _recyclerListData.setValue(prList);
         _loadRecyclerVisibility.setValue(false);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
-        //_recyclerListData.setValue(_recyclerListData.getValue());
     }
 
-    public void loadRecyclerList() {
+    public void changePRListComplete(ArrayList<PuntoRecarga> prCompleteList) {
+        _recyclerListCompleteData.setValue(prCompleteList);
+        _loadRecyclerVisibility.setValue(false);
+        _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
+    }
+
+    public void loadRecyclerList(Location result) {
         _loadRecyclerVisibility.setValue(true);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
-        repository.getPRList(new Parada(1,1));
+        repository.getPRList(new Parada(result.getLongitude(),result.getLatitude()));
+    }
+
+    public void loadRecyclerListComplete(Location result) {
+        _loadRecyclerVisibility.setValue(true);
+        _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
+        repository.getPRListComplete(new Parada(result.getLongitude(),result.getLatitude()));
     }
 
     public void nuevoNewLoadVisibility(boolean value) {
@@ -579,7 +619,10 @@ public class VM extends ViewModel {
     public void checkUserCanDel() {
         if(_usuario.getValue().getId().equals(_infoPR.getValue().getCreadorID())) {
             changeUserCanDel(true);
-        } else {
+        } else if (_usuario.getValue().getRol()) {
+            changeUserCanDel(true);
+        }
+        else {
             changeUserCanDel(false);
         }
     }
@@ -642,6 +685,10 @@ public class VM extends ViewModel {
     }
 
     public void modPR(String nombre, String lat, String lon, String descripcion) {
+        if(checkInvCoords(Float.parseFloat(lon), Float.parseFloat(lat))) {
+            return;
+        }
+
         nuevoNewLoadVisibility(true);
         if(nombre.equals("") || lat.equals("") || lon.equals("")) {
             _nuevoToastFillFields.setValue(true);
@@ -687,5 +734,21 @@ public class VM extends ViewModel {
 
     public void changeErrorToastValue(boolean error) {
         _errorToast.setValue(error);
+    }
+
+    public boolean checkInvCoords (float longitud, float latitud){
+        if(repository.checkInvCoords(longitud,latitud)) { //Si las coordenadas son invalidas
+            _coordError.setValue(true);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkAut(String tempStringEmailPass) {
+        if(_usuario.getValue().getAutonomia().equals(tempStringEmailPass)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

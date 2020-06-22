@@ -1,11 +1,10 @@
-package es.usal.tfg1.ViewC.MAPA.usuario;
+package es.usal.tfg1.ViewC.fragmentos.usuario;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,16 +18,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.MAPA.dialog.CustomDialog;
-import es.usal.tfg1.ViewC.MainActivityLogin;
+import es.usal.tfg1.ViewC.fragmentos.dialog.CustomDialog;
+import es.usal.tfg1.ViewC.StartActivity;
 import es.usal.tfg1.databinding.FragmentUsuarioBinding;
-import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
 /**
@@ -150,6 +146,22 @@ public class usuario extends Fragment {
             }
         });
 
+        getView().findViewById(R.id.buttonAutUser).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText temp = (EditText)getView().findViewById(R.id.textAutUser);
+                tempStringEmailPass = temp.getText().toString();
+                if(tempStringEmailPass.equals("") || myVM.checkAut(tempStringEmailPass)){
+                    showEmptyToast("aut");
+                    return;
+                }
+
+                changeField = 6; //6 se corresponde con cambiar autonomia
+                myDialog = new CustomDialog();
+                myDialog.show(getActivity().getSupportFragmentManager(), "myDialog");
+            }
+        });
+
         getView().findViewById(R.id.buttonDelUser).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,6 +229,14 @@ public class usuario extends Fragment {
                         Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                         changeField = -1;                   //devolvemos el valor por defecto a la variable
                     }
+                } else if(changeField == 6) {
+                    if(myToastBool) {                       //Si el login ha sucedido con exito
+                        changeField = 0;                    //Indicamos que el siguiente acceso al metodo es para comrpobar que se ha podido realizar el cambio en el usuario
+                        changeAut();
+                    } else {                                //Si no
+                        showToast(false);
+                        changeField = -1;                   //devolvemos el valor por defecto a la variable
+                    }
                 }
                 else if (changeField == 0) {              //toast indicando si se han realizadolos cambios correctamente
                     if (myToastBool) {                       //Si el cambio se ha realizado
@@ -257,6 +277,9 @@ public class usuario extends Fragment {
     public void changePass() {
         myVM.changePass(tempStringEmailPass);
     }
+    public void changeAut() {
+        myVM.changeAut(tempStringEmailPass);
+    }
 
     public void showToast(Boolean myToastBool) {
         //Mostrar toast segun el valor del bool
@@ -272,6 +295,8 @@ public class usuario extends Fragment {
             Toast.makeText(getContext(), R.string.toast_empty_email, Toast.LENGTH_SHORT).show();
         }else if(tipo.equals("pass")) {
             Toast.makeText(getContext(), R.string.toast_empty_pass, Toast.LENGTH_SHORT).show();
+        } else if(tipo.equals("aut")) {
+            Toast.makeText(getContext(), R.string.toast_empty_aut, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -281,7 +306,7 @@ public class usuario extends Fragment {
     }
 
     public void logOutUser() {
-        final Intent myIntent = new Intent(getActivity(), MainActivityLogin.class);
+        final Intent myIntent = new Intent(getActivity(), StartActivity.class);
         AuthUI.getInstance()
                 .signOut(getActivity())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

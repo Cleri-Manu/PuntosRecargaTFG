@@ -1,10 +1,13 @@
 package es.usal.tfg1;
 
+import android.location.Location;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -18,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import es.usal.tfg1.model.Parada;
@@ -149,6 +154,20 @@ public class Repository {
                 });
     }
 
+    public void moduserAut() {
+        DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
+        usuarioAct.update("autonomia", _usuario.getValue().getAutonomia(), "autonomiaF", _usuario.getValue().getAutonomiaF()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    myVM.changeSucces();
+                } else {
+                    myVM.changeError();
+                }
+            }
+        });
+    }
+
     public void delUser() {
         currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -164,23 +183,45 @@ public class Repository {
 
     }
 
-    public void getPRList(Parada currentLoc) {
+    public void getPRList(final Parada currentLoc) {
         this.currentLoc = new Parada(currentLoc);
-        //TODO
-        /* Rellenar el arraylist con todas las paradas (puntos de recarga) cercanas al usuario
-        *  Recuperar todos los puntos de recarga (HECHO), poner todos con marcadores en el mapa y meter los que esten a menos de autonomia*0.65 de distancia para mostrar como puntos cercanos ordenando por distancia
-        *  De momento se pasan todos los puntos de recarga al recycler
-        */
+        firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    PRList = new ArrayList<PuntoRecarga>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        float res[] = new float[2];
+                        Location.distanceBetween(currentLoc.getLatitud(),currentLoc.getLongitud(), document.toObject(PuntoRecarga.class).getParada().getLatitud(), document.toObject(PuntoRecarga.class).getParada().getLongitud(), res);
+                        PuntoRecarga newPR = new PuntoRecarga(document.toObject(PuntoRecarga.class));
+                        newPR.setDistanciaF(res[0]);
+                        if(newPR.getDistaciaF() <= _usuario.getValue().getAutonomiaF()) {
+                            PRList.add(new PuntoRecarga(newPR));
+                        }
+                    }
+                    myVM.changePRList(PRList);
+                } else {
+                    myVM.getPRListForRecyclerError();
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
 
+    public void getPRListComplete(Parada parada) {
         firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     PRCompleteList = new ArrayList<PuntoRecarga>();
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        PRCompleteList.add(document.toObject(PuntoRecarga.class));
-                        myVM.changePRList(PRCompleteList);
+                        float res[] = new float[2];
+                        Location.distanceBetween(currentLoc.getLatitud(),currentLoc.getLongitud(), document.toObject(PuntoRecarga.class).getParada().getLatitud(), document.toObject(PuntoRecarga.class).getParada().getLongitud(), res);
+                        PuntoRecarga newPR = new PuntoRecarga(document.toObject(PuntoRecarga.class));
+                        newPR.setDistanciaF(res[0]);
+                        PRCompleteList.add(new PuntoRecarga(newPR));
                     }
+                    myVM.changePRListComplete(PRCompleteList);
                 } else {
                     myVM.getPRListForRecyclerError();
                     Log.d(TAG, "Error getting documents: ", task.getException());
@@ -390,5 +431,10 @@ public class Repository {
                 }
             }
         });
+    }
+
+    public boolean checkInvCoords(float longitud, float latitud) {
+        Parada temp = new Parada(1,1);
+        return temp.checkInvCoords(longitud, latitud);
     }
 }

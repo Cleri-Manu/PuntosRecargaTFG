@@ -20,6 +20,16 @@ public class Parada {
         this.longitud = longitud;
     }
 
+    public boolean checkInvCoords(float longitud, float latitud) {
+        if(latitud < -85 ||latitud > 85) {
+            return true;
+        }
+        if(longitud < -180 ||longitud > 180) {
+            return true;
+        }
+        return false;
+    }
+
     public Parada() { }
 
     public Parada(double longitud, double latitud) {

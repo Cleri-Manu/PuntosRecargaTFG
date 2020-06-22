@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ViewC.MAPA.info.info">
+            tools:context=".ViewC.fragmentos.info.info">
 
             <ProgressBar
                 android:id="@+id/progressBar_p_info"

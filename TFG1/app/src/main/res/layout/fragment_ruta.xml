@@ -9,7 +9,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewC.MAPA.ruta.ruta">
+        tools:context=".ViewC.fragmentos.ruta.ruta">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

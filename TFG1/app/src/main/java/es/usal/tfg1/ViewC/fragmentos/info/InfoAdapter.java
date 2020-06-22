@@ -1,9 +1,8 @@
-package es.usal.tfg1.ViewC.MAPA.info;
+package es.usal.tfg1.ViewC.fragmentos.info;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Puntuacion;
 
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {

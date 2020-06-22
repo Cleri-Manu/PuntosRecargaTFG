@@ -1,5 +1,7 @@
 package es.usal.tfg1.model;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PuntoRecarga {
@@ -10,6 +12,7 @@ public class PuntoRecarga {
     private boolean verificado;
     private String descripcion;
     private String distancia;
+    private float distaciaF;
     private boolean eco;
     private ArrayList<Puntuacion> puntuaciones;
     private float puntuacion;
@@ -74,6 +77,17 @@ public class PuntoRecarga {
 
     public String getDistancia() {
         return distancia;
+    }
+
+    public void setDistanciaF(float distancia) {
+        DecimalFormat df1 = new DecimalFormat("#");
+        df1.setRoundingMode(RoundingMode.CEILING);
+        this.distancia = df1.format(distancia/1000) + " km";
+        distaciaF = distancia/1000;
+    }
+
+    public float getDistaciaF() {
+        return distaciaF;
     }
 
     public void setDistancia(String distancia) {
