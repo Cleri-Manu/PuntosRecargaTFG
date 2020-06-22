@@ -1,0 +1,3179 @@
+{"document": { "date": "2020-06-21 (19:12:21)",
+"list": [
+{"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335039174" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga de uso privado tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "BODEGA MATARROMERA, S.L."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Carretera San Bernardo"}
+, { "name": "CodigoPostal"
+,"string": "47359"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469309156"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valbuena de Duero"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6311258#-4.2638541#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335039174/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195513722" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga exclusivos para clientes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "El Corte Inglés"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Calle Fray Luis de León, 29"}
+, { "name": "CodigoPostal"
+,"string": "24005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297861059"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.5893868#-5.5685765#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195513722/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284332135386" }
+, { "name": "NombreOrganismo"
+,"string": "3 Puntos de recarga de uso público 2 Schuko y 1 Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Hospital de Salamanca"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de San Vicente, 58"}
+, { "name": "CodigoPostal"
+,"string": "37007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298323820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Salamanca"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.9641127#-5.6730016#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284332135386/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284332152982" }
+, { "name": "NombreOrganismo"
+,"string": "5 Puntos de recarga de uso privado tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "AUTO SALAMANCA S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Carretera Valladolid, 93-111"}
+, { "name": "CodigoPostal"
+,"string": "37184"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298378820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Polígono Industrial los Villares"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.993718#-5.6381488#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284332152982/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284187799641" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga públicos operativos tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Agencia de Innovación y Desarrollo Económico de Valladolid"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Vega Sicilia, 2"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469311668"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.618941#-4.748048#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284187799641/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204157686" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Emerix"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Pza. de Pío XII"}
+, { "name": "CodigoPostal"
+,"string": "34006"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.005771#-4.531008#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204157686/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284362560753" }
+, { "name": "NombreOrganismo"
+,"string": "3 puntos de recarga en el exterior. 2 Schuko 400V/16A y otro a 32A"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parador de León"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plaza de San Marcos, 1-3"}
+, { "name": "CodigoPostal"
+,"string": "24008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297861059"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.602451#-5.581137#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140902" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284362560753/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284362845143" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga 400V/32A"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parador de Salamanca"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Teso de la Feria, 27"}
+, { "name": "CodigoPostal"
+,"string": "37008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298323820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Salamanca"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.952922#-5.672778#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140903" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284362845143/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284324611717" }
+, { "name": "NombreOrganismo"
+,"string": "1 Punto de recarga Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Fábrica de Cervezas La Cazurra"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Santa Olaja de la Ribera"}
+, { "name": "CodigoPostal"
+,"string": "24199"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297860755"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.5611754#-5.552256#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284324611717/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284275371176" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto tipo Mennekes de Red de Recarga de Vehículo Eléctrico USAL (de uso exclusivo para la comunidad universitaria)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking Campus Viriato"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. Cardenal Cisneros 34"}
+, { "name": "CodigoPostal"
+,"string": "49022"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469329741"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Zamora"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.513496146740735#-5.733959376811981#112"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20130626" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284275371176/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195514613" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de la Dársena del Canal"}
+, { "name": "CodigoPostal"
+,"string": "34005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.007306#-4.540290#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140523" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195514613/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284275367080" }
+, { "name": "NombreOrganismo"
+,"string": "Un punto tipo Mennekes de Red de Recarga de Vehículo Eléctrico USAL (de uso exclusivo para la comunidad universitaria)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Campus Claretianos"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Facultad de Psicología - Bellas Artes"}
+, { "name": "CodigoPostal"
+,"string": "37008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID" }
+, { "name": "Localidad_NombreLocalidad" }
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.982846#-5.662165#106"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140618" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284275367080/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195466276" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga públicos operativos tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Pza. Colón"}
+, { "name": "CodigoPostal"
+,"string": "47004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.644318#-4.726862#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195466276/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284334253104" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de Red de Recarga de Vehículo de uso público"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Eroski Zamora. Centro Comercial Valderaduey"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avd. Cardenal Cisneros."}
+, { "name": "CodigoPostal"
+,"string": "49025"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469492024"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Zamora"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.515431#-5.747545#112"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140618" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284334253104/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335014078" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga público operativo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Museo de la Ciencia. Parking Exterior"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Salamanca, 59"}
+, { "name": "CodigoPostal"
+,"string": "47014"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.638155#-4.746100#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335014078/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284362869681" }
+, { "name": "NombreOrganismo"
+,"string": "4 Puntos de recarga de uso público 2 Schuko y 2 Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro Comercial Eroski Luz de Castilla"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Guadarrama"}
+, { "name": "CodigoPostal"
+,"string": "40006"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298564796"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Segovia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.921526#-4.112386#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140903" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284362869681/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284236264331" }
+, { "name": "NombreOrganismo"
+,"string": "1 Punto de recarga"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking interior privado. Carrefour"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avenida Alcalde Miguel Castaño, 95"}
+, { "name": "CodigoPostal"
+,"string": "24005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297861059"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.5857375#-5.55900446#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284236264331/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335034843" }
+, { "name": "NombreOrganismo"
+,"string": "3 puntos de recarga de uso privado tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "VALLADOLID AUTOMOVIL, S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Carretera de Madrid, 186"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6095813#-4.7257161#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335034843/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195514431" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plazuela de la Sal"}
+, { "name": "CodigoPostal"
+,"string": "34002"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.01061551525235#-4.532037377357483#118"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195514431/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195482586" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Archivo Municipal"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/San Agustín"}
+, { "name": "CodigoPostal"
+,"string": "47003"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469311668"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.655857#-4.731101#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195482586/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335018221" }
+, { "name": "NombreOrganismo"
+,"string": "2 Puntos de recarga privados, 1 Schuko y 1 Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Gerencia Regional de Salud. Parking exterior privado"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de Zorrilla, 1"}
+, { "name": "CodigoPostal"
+,"string": "47007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.644332#-4.734421#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335018221/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195460226" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público instalado tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro Deportivo Covaresa (CDO)"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Felipe Sánchez Román, s/n"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.612927#-4.749379#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195460226/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284236307225" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Carrefour Planet"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. del Real Valladolid, 5"}
+, { "name": "CodigoPostal"
+,"string": "47014"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID" }
+, { "name": "Localidad_NombreLocalidad" }
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.64293273605218#-4.760599136352539#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20120927" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284236307225/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335025115" }
+, { "name": "NombreOrganismo"
+,"string": "3 Puntos de recarga tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Plaza del Milenio (Marquesina)"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Francesco Scrimieri"}
+, { "name": "CodigoPostal"
+,"string": "47003"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313769"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.648677#-4.735903#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140911" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335025115/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284365153337" }
+, { "name": "NombreOrganismo"
+,"string": "1 Punto de recarga privado Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Capuletti, 80"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.607665#-4.750180#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140911" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284365153337/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284187837893" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga públicos operativos tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Feria de Valladolid"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. Ramón Pradera, s/n"}
+, { "name": "CodigoPostal"
+,"string": "47003"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.655288#-4.737762#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284187837893/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284334260736" }
+, { "name": "NombreOrganismo"
+,"string": "4 puntos de Red de Recarga de Vehículo de uso público, 2 Schuko y 2 Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centros Benaventano de transportes S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avd. de las Américas,"}
+, { "name": "CodigoPostal"
+,"string": "49025"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469338450"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Benavente"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.0015613#-5.6612152#112"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140618" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284334260736/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204216719" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ de la Tierra (La Victoria)"}
+, { "name": "CodigoPostal"
+,"string": "47009"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.66476914968983#-4.7334980964660644#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204216719/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323278988" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga, 1 Schuko y 1 Mennekes (No simultaneas)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking exterior privado. Residencia Sanitaria Nuestra Señora de Sonsoles"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avenida Juan Carlos I, s/n"}
+, { "name": "CodigoPostal"
+,"string": "05004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297192941"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Ávila"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.6657628#-4.6669014#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140520" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323278988/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284187838164" }
+, { "name": "NombreOrganismo"
+,"string": "3 puntos de recarga para motos de uso privado instalados tipo Schuko (exclusivos de la policía)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Jefatura de Polìcía Municipal"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Burgos, 3"}
+, { "name": "CodigoPostal"
+,"string": "47009"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.661522#-4.733238#76"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284187838164/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195471469" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga públicos operativos Mennekes y Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Museo de la Ciencia. Parking Interior"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Salamanca, 59"}
+, { "name": "CodigoPostal"
+,"string": "47014"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.637593#-4.746121#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195471469/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284361927933" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga en parking interior privado tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Restaurante el Refugio de Don Miguel"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Boticas, 21"}
+, { "name": "CodigoPostal"
+,"string": "09410"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297580282"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Peñaranda de Duero"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.688079#-3.481594#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140901" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284361927933/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284365091937" }
+, { "name": "NombreOrganismo"
+,"string": "1 Punto de recarga en parking público soterrado"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Hospedería Convento de San Esteban antiguo Convento de San Francisco"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Convento"}
+, { "name": "CodigoPostal"
+,"string": "42330"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469192210"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "San Esteban de Gormaz"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.573224#-3.203236#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140911" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284365091937/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323328601" }
+, { "name": "NombreOrganismo"
+,"string": "5 Puntos de recarga Mennekes marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "AUTOVICAN S.L."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Alcalde Martín Cobos, 26"}
+, { "name": "CodigoPostal"
+,"string": "09007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297447397"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Burgos"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.3557531999932#-3.64261150360107#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323328601/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195514881" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo tipo Schuko marca Emerix"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro Comercial Las Huertas"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Madrid"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.994115#-4.520471#106"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140528" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195514881/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195515606" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Lola de la Fuente"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.012918#-4.516041#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140602" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195515606/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204211772" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público instalado Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro de Soluciones Empresariales de Castilla y León"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Jacinto Benavente, 2"}
+, { "name": "CodigoPostal"
+,"string": "47195"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469235248"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Arroyo de la Encomienda"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6147895#-4.7963969#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204211772/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284274602418" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga tipo Mennekes de uso exclusivo para la comunidad universitaria"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Edificio de Filosofía, Economía y  Empresa y Ciencias Sociales."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Campus Miguel de Unamuno"}
+, { "name": "CodigoPostal"
+,"string": "37071"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298323820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Salamanca"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.969011#-5.678228#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284274602418/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284275356413" }
+, { "name": "NombreOrganismo"
+,"string": "Un punto tipo Mennekes de Red de Recarga de Vehículo Eléctrico USAL (de uso exclusivo para la comunidad universitaria)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Campus de Ciencias."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Facultad de Ciencias y Ciencias Químicas."}
+, { "name": "CodigoPostal"
+,"string": "37008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298323820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Salamanca"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.961056#-5.671137#112"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284275356413/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284332256000" }
+, { "name": "NombreOrganismo"
+,"string": "5 Puntos de recarga de uso privado tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "AUTO GONSE S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Polígono Industrial Las Casas C/F 200A"}
+, { "name": "CodigoPostal"
+,"string": "42005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469197921"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Casas (Las)"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.7774095#-2.4839094#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140618" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284332256000/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195446782" }
+, { "name": "NombreOrganismo"
+,"string": "2 Puntos de recargas exclusivos para clientes, operativo 10:00 a 22:00"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "El Corte Inglés"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de Zorrilla, 130"}
+, { "name": "CodigoPostal"
+,"string": "47007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6371663#-4.7395772#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195446782/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195457678" }
+, { "name": "NombreOrganismo"
+,"string": "2 Puntos de recarga públicos operativos, 1 Schuko y 1 Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Exterior Centro Comercial Vallsur"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de Zorrilla, s/n"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6233538#-4.749994#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195457678/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284332133708" }
+, { "name": "NombreOrganismo"
+,"string": "5 Puntos de recarga de uso privado tipo Mennekes marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "VICAUTO S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Calle Extremadura, 13"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.0054752#-4.519117#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284332133708/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204216475" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Campus Miguel Delibes"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de Belén"}
+, { "name": "CodigoPostal"
+,"string": "47011"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.661311#-4.707555#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204216475/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204202776" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga privado operativo"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Eylo Motor - Nissan"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Gijón, 92"}
+, { "name": "CodigoPostal"
+,"string": "47009"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.66085#-4.754148#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204202776/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204204547" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público instalado tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Junta de Castilla y León. Presidencia"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ de Santiago Alba, 62"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.608782#-4.7485613#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204204547/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204216233" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "PRAE"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Cañada Real, 306"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.603847#-4.762638#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204216233/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195510850" }
+, { "name": "NombreOrganismo"
+,"string": "4 puntos de recarga tipo Schuko y Scame marca Scheneider Electric en parking público soterrado"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Museo de la Evolución Humana"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo Sierra de Atapuerca, s/n"}
+, { "name": "CodigoPostal"
+,"string": "09002"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297447397"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Burgos"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.3400917#-3.6965922#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140827" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195510850/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284365154737" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de Recarga 400V/32A"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parador de Benavente"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Pº de la Mota, s/n"}
+, { "name": "CodigoPostal"
+,"string": "49600"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469338450"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Benavente"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.998499#-5.681021#112"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140911" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284365154737/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323285654" }
+, { "name": "NombreOrganismo"
+,"string": "1 toma tipo Mennekes con cable de adaptación para Yazaki"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking exterior privado. Naturávila"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Antigua carretera Cebreros km 3"}
+, { "name": "CodigoPostal"
+,"string": "05200"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297192941"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Ávila"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.627566#-4.647871#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140515" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323285654/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284206379337" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga privados pero permitidos a los clientes de la empresa operativos"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro de Experimentación y Seguridad Vial de Mapfre (Cesvimap)"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Jorge Ruiz de Santayana, 20 (P.I. las Hervencias)"}
+, { "name": "CodigoPostal"
+,"string": "05004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID" }
+, { "name": "Localidad_NombreLocalidad" }
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.665197#-4.683255#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140509" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284206379337/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195514791" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/República Dominicana"}
+, { "name": "CodigoPostal"
+,"string": "34002"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.028402#-4.533417#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140523" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195514791/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204146696" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Ingeteam"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parque Comercial Arambol"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de Brasilia"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.011161#-4.519173#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140609" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204146696/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284324625701" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga privado tipo Chademo"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Estación de Servicio REPSOL"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avenida de Asturias, 38"}
+, { "name": "CodigoPostal"
+,"string": "34005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.025748#-4.548834#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284324625701/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284361924162" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga en parking interior privado tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Hotel Raíz Guzmán"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Carretera de Circunvalación R30, s/n"}
+, { "name": "CodigoPostal"
+,"string": "09300"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297611381"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Roa"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.701539#-3.923784#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140901" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284361924162/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284360128493" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parador de Ávila. Parking exterior privado. Domicilio particular."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Marqués Canales y Chozas, 2"}
+, { "name": "CodigoPostal"
+,"string": "05001"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297192941"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Ávila"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.657972#-4.702047#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140827" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284360128493/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284360906066" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga en parking público soterrado tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Plaza Mayor"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plaza de la Libertad, 1"}
+, { "name": "CodigoPostal"
+,"string": "09003"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297447397"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Burgos"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.341313#-3.700102#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140829" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284360906066/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284236303400" }
+, { "name": "NombreOrganismo"
+,"string": "2 Puntos de recarga públicos operativos Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Interior Centro Comercial Valsur"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo de Zorrilla, s/n"}
+, { "name": "CodigoPostal"
+,"string": "47008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.623538#-4.749994#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284236303400/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335030706" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga público operativos tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Universidad de Valladolid. Aulario"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo del Cauce"}
+, { "name": "CodigoPostal"
+,"string": "47014"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.657981#-4.710118#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335030706/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323287282" }
+, { "name": "NombreOrganismo"
+,"string": "1 toma tipo Mennekes con cable de adaptación para Yazaki, marca Mobility"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Público"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plaza del Real"}
+, { "name": "CodigoPostal"
+,"string": "05200"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297191824"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Arévalo"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.064507#-4.720646#82"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140520" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323287282/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204162266" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Ente Regional de la Energía (EREN)"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. Reyes Leoneses, 11"}
+, { "name": "CodigoPostal"
+,"string": "24008"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297861059"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.6094863#-5.5862191#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140521" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204162266/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204140108" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko marca Emerix"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Pza. Abilio Calderón"}
+, { "name": "CodigoPostal"
+,"string": "34001"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.01123132986402#-4.5307230949401855#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140609" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204140108/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195478659" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga privado operativo tipo Schuko (exclusivo Auvasa)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "AUVASA"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Del Bronce"}
+, { "name": "CodigoPostal"
+,"string": "47012"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469311668"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.615945#-4.736927#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195478659/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204135838" }
+, { "name": "NombreOrganismo"
+,"string": "3 Puntos de recarga privados operativos: 1 tipo Schuko  (proyecto piloto) y otros dos tipo Schuko y Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Policía Municipal"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Ortega y Gasset"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.003478#-4.520037#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20141117" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204135838/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323321284" }
+, { "name": "NombreOrganismo"
+,"string": "2 Puntos de recarga 1 Schuko y 1 Mennekes (No simultáneas)"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking privado exterior. Delegación Territorial de Burgos"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plaza de Bilbao, 3"}
+, { "name": "CodigoPostal"
+,"string": "09006"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297447397"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Burgos"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.346924#-3.6870589#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140520" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323321284/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195456372" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Asociación Industrial Polígono San Cristóbal"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Galena, 41"}
+, { "name": "CodigoPostal"
+,"string": "47012"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469311668"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.618142#-4.707288#94"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140619" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195456372/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195514702" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Mennekes marca Emerix"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. de la Comunidad Europea"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.005460#-4.509472#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140523" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195514702/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195511457" }
+, { "name": "NombreOrganismo"
+,"string": "2 puntos de recarga exclusivos para clientes operativos de 10:00 a 22.00"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "El Corte Inglés"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/María Auxiliadora, 71"}
+, { "name": "CodigoPostal"
+,"string": "37005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298323820"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Salamanca"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.973640#-5.657021#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140611" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195511457/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284335019997" }
+, { "name": "NombreOrganismo"
+,"string": "1 Punto de recarga en parking exterior público tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parque Tecnológico de Boecillo"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Plaza del Parque. Las Arroyadas"}
+, { "name": "CodigoPostal"
+,"string": "47007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469238603"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Boecillo"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.5184033#-4.7175181#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284335019997/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284187835985" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Casa de la India"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Puente Colgante, 13"}
+, { "name": "CodigoPostal"
+,"string": "47007"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.640968#-4.732922#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284187835985/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284323283088" }
+, { "name": "NombreOrganismo"
+,"string": "1 punto de recarga Mennekes, con cable de adaptación para Yazaki"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Parking exterior privado. Agencia de Energía de Ávila"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Canteros, s/n Fundación Cultural Santa Teresa UNED (Colegio de Huérfanos)"}
+, { "name": "CodigoPostal"
+,"string": "05005"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297192941"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Ávila"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "40.664245#-4.699084#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140515" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284323283088/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284195506206" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público operativo"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Apex Ingeniería Industrial, S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/Merindad de Valdeporres, 7. P.I. Polígono de Villalonquejar"}
+, { "name": "CodigoPostal"
+,"string": "09001"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297447397"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Burgos"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.370895#-3.714108#47"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140520" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284195506206/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284332129419" }
+, { "name": "NombreOrganismo"
+,"string": "5 Puntos de recarga de uso privado tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "VICAUTO S.A."}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Calle Extremadura, 13"}
+, { "name": "CodigoPostal"
+,"string": "34004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179298104011"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Palencia"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.0054752#-4.519117#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140618" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284332129419/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284204187299" }
+, { "name": "NombreOrganismo"
+,"string": "Punto de recarga público instalado tipo Mennekes"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Consejería de Educación"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Avda. del Real Valladolid"}
+, { "name": "CodigoPostal"
+,"string": "47014"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.6419267#-4.7472999#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284204187299/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284236307558" }
+, { "name": "NombreOrganismo"
+,"string": "4 puntos de recarga públicos operativos tipo Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales" }
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "C/ Doctrinos"}
+, { "name": "CodigoPostal"
+,"string": "47001"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179469313463"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "Valladolid"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "41.649226#-4.730062#100"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140620" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284236307558/DirectorioPadre" }
+]
+} }
+, {"element": {
+"attribute": [ { "name": "Identificador", "valor": "1284362562764" }
+, { "name": "NombreOrganismo"
+,"string": "3 puntos de recarga Schuko"}
+, { "name": "Descripcion_es" }
+, { "name": "DatosPersonales"
+,"string": "Centro Desmostrador de Energías Renovables"}
+, { "name": "Direccion",
+"valor": [
+] }
+, { "name": "Calle"
+,"string": "Paseo Papalaguinda, 2"}
+, { "name": "CodigoPostal"
+,"string": "24004"}
+, { "name": "Telefono",
+"valor": [
+] }
+, { "name": "FaxOficial",
+"valor": [
+] }
+, { "name": "Fax",
+"valor": [
+] }
+, { "name": "Email",
+"valor": [
+] }
+, { "name": "PaginaWeb",
+"valor": [
+] }
+, { "name": "Localidad_ID",
+"LocalidadPadre": "1179297861059"}
+, { "name": "Localidad_NombreLocalidad",
+"LocalidadPadre": "León"}
+, { "name": "SoloClasificar" }
+, { "name": "Posicion"
+,"string": "42.595488#-5.578734#88"}
+, { "name": "Identificador Directorio Superior", "valor": "" }
+, { "name": "Directorio Superior", "valor": "" }
+, { "name": "ultimaActualizacion", "valor": "20140911" }
+, { "name": "Enlace al contenido", "valor": "https://vehiculoelectrico.jcyl.es/web/jcyl/VehiculoElectrico/es/Plantilla100Detalle/1284183822782/Directorio/1284362562764/DirectorioPadre" }
+]
+} }
+] 
+} }

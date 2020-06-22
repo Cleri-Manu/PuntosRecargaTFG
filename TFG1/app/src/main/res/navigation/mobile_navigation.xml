@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_mapa" />
 
     <fragment
-        android:id="@+id/navigation_p_cercanos"
-        android:name="es.usal.tfg1.ViewC.fragmentos.p_cercanos.p_cercanos"
+        android:id="@+id/navigation_pr_list"
+        android:name="es.usal.tfg1.ViewC.fragmentos.listaPR.prLista"
         android:label="@string/title_p_cercanos"
-        tools:layout="@layout/fragment_p_crecanos" />
+        tools:layout="@layout/fragment_pr_list" />
 
     <fragment
-        android:id="@+id/navigation_ruta"
-        android:name="es.usal.tfg1.ViewC.fragmentos.ruta.ruta"
-        android:label="@string/title_ruta"
-        tools:layout="@layout/fragment_ruta" />
+        android:id="@+id/navigation_pr_list_search"
+        android:name="es.usal.tfg1.ViewC.fragmentos.listaPR.prLista"
+        android:label="@string/title_p_cercanos"
+        tools:layout="@layout/fragment_pr_list" />
 
     <fragment
         android:id="@+id/navigation_usuario"

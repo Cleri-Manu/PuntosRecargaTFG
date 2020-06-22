@@ -109,6 +109,7 @@ public class mapa extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
         myMap = googleMap;
+        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.416775, -3.103790), 5.35f));
         if(myMarkers == null) {
             myMarkers = new ArrayList<Marker>();
         }
@@ -137,10 +138,8 @@ public class mapa extends Fragment implements OnMapReadyCallback {
                     }
                 }
                 isMod = myVM.getModSelected();
-                if(isMod && myMap != null) {
-                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myVM.getInfoPR().getValue().getParada().getLatitud(), myVM.getInfoPR().getValue().getParada().getLongitud()), 12.0f));
-                } else {
-                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.416775, -3.103790), 5.35f));
+                if(isMod) {
+                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myVM.getInfoPR().getValue().getParada().getLatitud(), myVM.getInfoPR().getValue().getParada().getLongitud()), 16.0f));
                 }
             }
         });

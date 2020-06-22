@@ -1,5 +1,9 @@
 package es.usal.tfg1.model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -187,11 +191,49 @@ public class PuntoRecarga {
         this.verificado = p.verificado;
         this.descripcion = p.descripcion;
         this.distancia = p.distancia;
+        this.distaciaF = p.distaciaF;
         this.eco = p.eco;
-        puntuacion = p.puntuacion;
-        puntuaciones = new ArrayList<Puntuacion>();
-        for (Puntuacion puntos: p.puntuaciones) {
-            puntuaciones.add(new Puntuacion(puntos));
+        this.puntuacion = p.puntuacion;
+        this.puntuaciones = new ArrayList<Puntuacion>();
+        if(p.puntuaciones != null) {
+            for (Puntuacion puntos: p.puntuaciones) {
+                this.puntuaciones.add(new Puntuacion(puntos));
+            }
         }
+    }
+
+    public ArrayList<PuntoRecarga> createPRFromJson(String jsonText) throws JSONException {
+        ArrayList<PuntoRecarga> newPRs = new ArrayList<PuntoRecarga>();
+
+        //Posiciones 0 nombre
+        //Posiciones 1 coordeandas
+        //Posiciones 2 descripcion
+        JSONObject root = new JSONObject(jsonText);
+        JSONObject document = root.getJSONObject("document");
+        JSONArray list = document.getJSONArray("list");
+        ArrayList<String> texto = new ArrayList<String>();
+        ArrayList<String> desc = new ArrayList<String>();
+        for (int i = 0; i< list.length(); i++) {
+            root = list.getJSONObject(i);
+            JSONObject element = root.getJSONObject("element");
+            JSONArray attribute = element.getJSONArray("attribute");
+            texto.add(attribute.getJSONObject(5).getString("string") + " - " + attribute.getJSONObject(6).getString("string"));
+            texto.add(attribute.getJSONObject(15).getString("string"));
+            texto.add(attribute.getJSONObject(1).getString("string"));
+        }
+        for(int j = 0; j < texto.size(); j+=3) {
+            String[] parts = texto.get(j+1).split("#");
+            newPRs.add(new PuntoRecarga(texto.get(j), parts[0], parts[1], texto.get(j+2)));
+        }
+        return newPRs;
+    }
+
+    public PuntoRecarga(String nombre, String lat, String lon, String descripcion) {
+        this.nombre = nombre;
+        this.parada = new Parada(Double.parseDouble(lon),Double.parseDouble(lat));
+        this.verificado = true;
+        this.descripcion = descripcion;
+        this.eco = false;
+        this.creadorID = "OFICIAL";
     }
 }

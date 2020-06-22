@@ -2,6 +2,7 @@ package es.usal.tfg1.vm;
 
 import android.location.Location;
 import android.view.View;
+import android.widget.MultiAutoCompleteTextView;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
@@ -13,6 +14,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
@@ -54,6 +60,9 @@ public class VM extends ViewModel {
     private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListCompleteData;
     public  LiveData<ArrayList<PuntoRecarga>> recyclerListCompleteData;
 
+    private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerlistFilteredData;
+    public  LiveData<ArrayList<PuntoRecarga>> recyclerlistFilteredData;
+
     private MutableLiveData<ArrayList<PuntoRecarga>> _PRCompleteList;
     public  LiveData<ArrayList<PuntoRecarga>> PRCompleteList;
 
@@ -68,6 +77,9 @@ public class VM extends ViewModel {
 
     private MutableLiveData<Boolean> _nuevoToastPRAlreadyExists;
     public  LiveData<Boolean> nuevoToastPRAlreadyExists;
+
+    private MutableLiveData<Boolean> _searchPR;
+    public  LiveData<Boolean> searchPR;
 
     private MutableLiveData<Boolean> _nuevoLoadingVisibility;
     public  LiveData<Boolean> nuevoLoadingVisibility;
@@ -163,6 +175,10 @@ public class VM extends ViewModel {
 
     public LiveData<Boolean> getNuevoToastPRAlreadyExists() {
         return (LiveData<Boolean>)  _nuevoToastPRAlreadyExists;
+    }
+
+    public LiveData<Boolean> getSearchPR() {
+        return (LiveData<Boolean>)  _searchPR;
     }
 
     public LiveData<Boolean> getNuevoLoadingVisibility() {
@@ -264,6 +280,10 @@ public class VM extends ViewModel {
             _PRCompleteList = new MutableLiveData<ArrayList<PuntoRecarga>>();
         if(_nuevoToastPRAlreadyExists == null)
             _nuevoToastPRAlreadyExists = new MutableLiveData<Boolean>();
+        if(_searchPR == null) {
+            _searchPR = new MutableLiveData<Boolean>();
+            _searchPR.setValue(false);
+        }
         if(_nuevoLoadingVisibility == null) {
             _nuevoLoadingVisibility = new MutableLiveData<Boolean>();
             _nuevoLoadingVisibility.setValue(false);
@@ -307,15 +327,9 @@ public class VM extends ViewModel {
         if(_recyclerListCompleteData == null) {
             _recyclerListCompleteData = new MutableLiveData<ArrayList<PuntoRecarga>>();
         }
-    }
-
-    public void getPR() {
-        //TODO
-        /* Trozo de codigo sin acabar, revisar
-        *  Quizas no hacen falta parametros, ya se vera
-        *  De momento se cargan todos
-        */
-        repository.getPRList(new Parada(1,1));
+        if(_recyclerlistFilteredData == null) {
+            _recyclerlistFilteredData = new MutableLiveData<ArrayList<PuntoRecarga>>();
+        }
     }
 
     public void onDestinationChangeUsuario(int idDest, int idNavUsuario) {
@@ -503,9 +517,14 @@ public class VM extends ViewModel {
         _nuevoToastPRAlreadyExists.setValue(exists);
     }
 
-    public void changePRCompelteList(ArrayList<PuntoRecarga> prCompleteList) {
+    public void changePRCompleteList(ArrayList<PuntoRecarga> prCompleteList) {
         _PRCompleteList.setValue(prCompleteList);
         _PRCompleteList.setValue(_PRCompleteList.getValue());
+        ArrayList<PuntoRecarga> temp = new ArrayList<PuntoRecarga>();
+        for (PuntoRecarga p: prCompleteList) {
+            temp.add(new PuntoRecarga(p));
+        }
+        _recyclerlistFilteredData.setValue(temp);
     }
 
     public void changePRList(ArrayList<PuntoRecarga> prList) {
@@ -518,6 +537,11 @@ public class VM extends ViewModel {
         _recyclerListCompleteData.setValue(prCompleteList);
         _loadRecyclerVisibility.setValue(false);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
+        ArrayList<PuntoRecarga> temp = new ArrayList<PuntoRecarga>();
+        for (PuntoRecarga p: prCompleteList) {
+            temp.add(new PuntoRecarga(p));
+        }
+        _recyclerlistFilteredData.setValue(temp);
     }
 
     public void loadRecyclerList(Location result) {
@@ -538,8 +562,11 @@ public class VM extends ViewModel {
     }
 
     public void setSelectedPR(int position) {
-        //repository.getPRFromFirestore(_recyclerListData.getValue().get(position).getId());
-        setSelectedPR(_recyclerListData.getValue().get(position));
+        if(_searchPR.getValue()) {
+            setSelectedPR(_recyclerlistFilteredData.getValue().get(position));
+        } else {
+            setSelectedPR(_recyclerListData.getValue().get(position));
+        }
     }
     public void setSelectedPR(PuntoRecarga p) {
         _infoPR = new MutableLiveData<PuntoRecarga>();
@@ -584,6 +611,15 @@ public class VM extends ViewModel {
 
     public void changePuntuacion() {
         for (PuntoRecarga puntoRecarga: _recyclerListData.getValue()) {
+            if(puntoRecarga.getId().equals(_infoPR.getValue().getId())) {
+                setSelectedPR(puntoRecarga);
+                changePuntuacionLoadingVisibility(false);
+                //Cambiar el valor del toast para mostrar operacion exitosa
+                changePuntuacionToast(true);
+                return;
+            }
+        }
+        for (PuntoRecarga puntoRecarga: _recyclerListCompleteData.getValue()) {
             if(puntoRecarga.getId().equals(_infoPR.getValue().getId())) {
                 setSelectedPR(puntoRecarga);
                 changePuntuacionLoadingVisibility(false);
@@ -750,5 +786,36 @@ public class VM extends ViewModel {
         } else {
             return false;
         }
+    }
+
+    public void onDestinationChangeSearch(int id, int navigation_pr_list_search) {
+        if(id == navigation_pr_list_search) {
+            _searchPR.setValue(true);
+        }
+    }
+
+    public void onDestinationChangeList(int id, int navigation_pr_list) {
+        if(id == navigation_pr_list) {
+            _searchPR.setValue(false);
+        }
+    }
+
+    public ArrayList<PuntoRecarga> changePRCompleteList(String searchBy) {
+        ArrayList<PuntoRecarga> newList = new ArrayList<PuntoRecarga>();
+        for (PuntoRecarga p: _recyclerListCompleteData.getValue()) {
+            if(p.getNombre().toLowerCase().contains(searchBy.toLowerCase())){
+                newList.add(new PuntoRecarga(p));
+            }
+        }
+        _recyclerlistFilteredData.setValue(newList);
+        return _recyclerlistFilteredData.getValue();
+    }
+
+    public boolean isAdmin() {
+        return _usuario.getValue().getRol();
+    }
+
+    public void createOfficialPRs(String jsonText) throws JSONException {
+        repository.PRfromJson(jsonText);
     }
 }
