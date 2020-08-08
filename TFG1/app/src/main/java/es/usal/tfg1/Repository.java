@@ -33,27 +33,65 @@ import es.usal.tfg1.model.Usuario;
 import es.usal.tfg1.vm.VM;
 
 public class Repository {
+    /**
+     * Referencia a firestore
+     */
     private FirebaseFirestore firestore;
+    /**
+     * Referencia al usuario actual de firebase
+     */
     private FirebaseUser currentUser;
+    /**
+     * Referencia a una instancia para comprobar los credenciales del usuario en Firebase
+     */
     private AuthCredential credential;
+    /**
+     * Referencia a FirebaseAuth
+     */
     private FirebaseAuth auth;
+
+    /**
+     * Localizacion actual
+     */
     private Parada currentLoc;
+    /**
+     * usuario actual
+     */
     private Usuario myUser;
+    /**
+     * Lista completa de puntos de recarga
+     */
     private ArrayList<PuntoRecarga> PRCompleteList;
+    /**
+     * Lista de puntos de recarga cercanos
+     */
     private ArrayList<PuntoRecarga> PRList;
+    /**
+     * Referencia al VM
+     */
     private VM myVM;
+    /**
+     * Referencia al usuario actual
+     */
     private MutableLiveData<Usuario> _usuario;
     private static final String TAG = "DocSnippets";
+    /**
+     * Referencia temporala un usuario
+     */
     private PuntoRecarga tempPR;
 
+    /**
+     * Devuelve el usuario actual
+     * @return
+     */
     public Usuario getMyUser() {
         return myUser;
     }
 
-    public void setMyUser(Usuario myUser) {
-        this.myUser = myUser;
-    }
-
+    /**
+     * Cosntructor
+     * @param myVM
+     */
     public Repository(VM myVM) {
         this.myVM = myVM;
         firestore = FirebaseFirestore.getInstance();
@@ -63,6 +101,11 @@ public class Repository {
         currentLoc = new Parada();
     }
 
+    /**
+     * Comrpueba si existe un usuario y devuelve sus valores, si no existe lo crea y devuelve los valores
+     * @param currentUser
+     * @param _usuario
+     */
     public void checkNewUser(final FirebaseUser currentUser, MutableLiveData<Usuario> _usuario) {
         this.currentUser = currentUser;
         this._usuario = _usuario;
@@ -91,16 +134,26 @@ public class Repository {
         });
     }
 
-
+    /**
+     * Añade un usuario a la base de datos de firestore
+     * @param usuario
+     */
     public void addUser(Usuario usuario) {
         firestore.collection("Usuarios").document(usuario.getId()).set(usuario);
     }
 
+    /**
+     * Borra un usuario de la base de datos de firestore
+     */
     public void delUserFirestore() {
         firestore.collection("Usuarios").document(myUser.getId()).delete();
     }
 
-
+    /**
+     * Trata de autentificar de nuevo a un usuario indicando el exito o fallo
+     * @param user
+     * @param pass
+     */
     public void relLogUser(Usuario user, String pass) {
         credential = EmailAuthProvider.getCredential(user.getEmail(), pass);
         currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -117,15 +170,26 @@ public class Repository {
         });
     }
 
+    /**
+     * manda un correo de recuperacion de contraseña en español
+     */
     public void recovery() {
         auth.setLanguageCode("es");
         auth.sendPasswordResetEmail(myUser.getEmail());
     }
 
+    /**
+     * Cambia el email del usuario en firestore indicando el exito o fallo
+     */
     public void modUserEmailFirestore() {
         DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
         usuarioAct.update("email", _usuario.getValue().getEmail());
     }
+
+    /**
+     * Cambia el email del usuario en firebase indicando el exito o fallo
+     * @param email
+     */
     public void modUserEmailAuth(final String email) {
         currentUser.updateEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -140,6 +204,10 @@ public class Repository {
                 });
     }
 
+    /**
+     * Cambia la contraseña del usuario en firebase indicando exito o fallo
+     * @param pass
+     */
     public void modUserpassAuth(String pass) {
         currentUser.updatePassword(pass)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -154,6 +222,9 @@ public class Repository {
                 });
     }
 
+    /**
+     * Cambia la autonomia del usuario en firestore indicando el exito o fallo
+     */
     public void moduserAut() {
         DocumentReference usuarioAct = firestore.collection("Usuarios").document(this.currentUser.getUid());
         usuarioAct.update("autonomia", _usuario.getValue().getAutonomia(), "autonomiaF", _usuario.getValue().getAutonomiaF()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -168,6 +239,9 @@ public class Repository {
         });
     }
 
+    /**
+     * Borra al usuario actual de firestore indicando exito o fallo
+     */
     public void delUser() {
         currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -183,6 +257,10 @@ public class Repository {
 
     }
 
+    /**
+     * Recupera la lsita de puntos de recarga cercanos asignando valores a la distancia de cada uno
+     * @param currentLoc
+     */
     public void getPRList(final Parada currentLoc) {
         this.currentLoc = new Parada(currentLoc);
         firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -210,6 +288,10 @@ public class Repository {
         });
     }
 
+    /**
+     * Recupera la lsita de puntos de recarga completa asignando valores a la distancia de cada uno
+     * @param parada
+     */
     public void getPRListComplete(Parada parada) {
         firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -232,6 +314,10 @@ public class Repository {
         });
     }
 
+    /**
+     * Recupera la lista de puntos de recarga cercanos y la completa asignando valores a la distancia de cada uno
+     * @param
+     */
     public void getPRListAndUpdatePRInfo() {
         firestore.collection("PuntosRecarga").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -262,11 +348,11 @@ public class Repository {
         });
     }
 
-    public PuntoRecarga getPuntoRecargaFromFirestore() {
-        PuntoRecarga p = new PuntoRecarga();
-        return p;
-    }
 
+    /**
+     * Añade un punto de recarga a firestore indicando exito o fallo
+     * @param p
+     */
     public void addPuntoRecargaToFirestore(final PuntoRecarga p) {
         firestore.collection("PuntosRecarga").add(p).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
@@ -285,14 +371,14 @@ public class Repository {
         });
     }
 
-    public Parada getParada(double longitud, double latitud) {
-        return new Parada(longitud, latitud);
-    }
-
-    public Parada getCurrentLoc() {
-        return currentLoc;
-    }
-
+    /**
+     * Crea un neuvo punto de recarga, comprueba si es valido, y trata de añadrilo a firestore
+     * @param nombre
+     * @param lat
+     * @param lon
+     * @param descripcion
+     * @param eco
+     */
     public void newPR(String nombre, String lat, String lon, String descripcion, boolean eco) {
 
         tempPR = new PuntoRecarga(new Parada(Double.parseDouble(lon), Double.parseDouble(lat)), "temp", nombre, myUser.getId(), false, descripcion, eco);
@@ -303,6 +389,12 @@ public class Repository {
         addPuntoRecargaToFirestore(new PuntoRecarga(tempPR));
     }
 
+    /**
+     * Crea una puntuacion y trata de añadirla a firebase o midificarla si el usuario actual ya tenia una
+     * @param op
+     * @param rating
+     * @param PR
+     */
     public void NewPuntuacion(String op, float rating, PuntoRecarga PR) {
         //Cuando se edita un valor hacer que myVM recargue todos los puntos de recarga
         Puntuacion p = new Puntuacion(currentUser.getUid(), op,  rating);
@@ -332,6 +424,10 @@ public class Repository {
         }
     }
 
+    /**
+     * Modifica el punto de recarga para asignarle un nuevo array con las nuevas puntuaciones y las antiguas indicando exito o fallo
+     * @param PR
+     */
     public void modPRPuntuaciones(PuntoRecarga PR) {
         DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
         puntoRecarga.update("puntuaciones", PR.getPuntuaciones()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -349,6 +445,10 @@ public class Repository {
         });
     }
 
+    /**
+     * Borra la puntuacion asignada por el usuario actual del punto de recarga seleccionado y lo actualiza en firebase
+     * @param PR
+     */
     public void delPuntuacion(PuntoRecarga PR) {
         int i = 0;
         boolean del = false;
@@ -365,6 +465,10 @@ public class Repository {
         }
     }
 
+    /**
+     * Borra un punto de recarga indicanod exito o fallo
+     * @param PR
+     */
     public void delPR(PuntoRecarga PR) {
         firestore.collection("PuntosRecarga").document(PR.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -376,6 +480,10 @@ public class Repository {
         });
     }
 
+    /**
+     * Crea un reporte en firestore indicando exito o fallo
+     * @param PR
+     */
     public void addReport(PuntoRecarga PR) {
         firestore.collection("reportes").add(new Reporte(PR.getId(), currentUser.getUid())).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
@@ -389,6 +497,15 @@ public class Repository {
         });
     }
 
+    /**
+     * Modifica todos los campos de un punto de recarga en firestore indicando exito o fallo
+     * @param nombre
+     * @param lat
+     * @param lon
+     * @param descripcion
+     * @param eco
+     * @param PR
+     */
     public void modAllPRFields(String nombre, String lat, String lon, String descripcion, boolean eco, PuntoRecarga PR) {
         DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
         Parada p = new Parada(Double.parseDouble(lon), Double.parseDouble(lat));
@@ -409,6 +526,11 @@ public class Repository {
         });
     }
 
+    /**
+     * Comprueba si un punto de recarga esta demasiado cerca de otro ya existente
+     * @param p
+     * @return
+     */
     public boolean checkIfTooNear(PuntoRecarga p) {
         for (PuntoRecarga puntoRecarga: PRCompleteList) {
             float res[] = new float[2];
@@ -419,7 +541,11 @@ public class Repository {
         }
         return  false;
     }
-
+    /**
+     * Comprueba si un punto de recarga esta demasiado cerca de otro ya existente que no sea el mismo
+     * @param p
+     * @return
+     */
     public boolean checkIfTooNear(Parada p, PuntoRecarga PR) {
         for (PuntoRecarga puntoRecarga: PRCompleteList) {
             float res[] = new float[2];
@@ -433,11 +559,22 @@ public class Repository {
         return  false;
     }
 
+    /**
+     * Compreuba si la latityd y longitud no son validas
+     * @param longitud
+     * @param latitud
+     * @return
+     */
     public boolean checkInvCoords(float longitud, float latitud) {
         Parada temp = new Parada(1,1);
         return temp.checkInvCoords(longitud, latitud);
     }
 
+    /**
+     * Crea puntos de recarga a partir de un JSON
+     * @param jsonText
+     * @throws JSONException
+     */
     public void PRfromJson(String jsonText) throws JSONException {
         PuntoRecarga temp = new PuntoRecarga();
         ArrayList<PuntoRecarga> puntosOficiales = temp.createPRFromJson(jsonText);
@@ -477,6 +614,14 @@ public class Repository {
         });
     }
 
+    /**
+     * Modofica los daots del punto de recarga
+     * @param nombre
+     * @param lat
+     * @param lon
+     * @param descripcion
+     * @param PR
+     */
     public void modAllPRFields(String nombre, String lat, String lon, String descripcion, PuntoRecarga PR) {
         DocumentReference puntoRecarga = firestore.collection("PuntosRecarga").document(PR.getId());
         Parada p = new Parada(Double.parseDouble(lon), Double.parseDouble(lat));

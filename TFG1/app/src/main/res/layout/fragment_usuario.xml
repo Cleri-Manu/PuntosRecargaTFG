@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            tools:context=".ViewC.fragmentos.usuario.usuario">
+            tools:context=".ViewC.pr_activity_fragmentos.usuario.usuario">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline4"

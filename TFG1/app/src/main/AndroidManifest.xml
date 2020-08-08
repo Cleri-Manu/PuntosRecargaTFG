@@ -19,7 +19,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_eycl"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -39,7 +39,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ViewC.fragmentos.PRActivity"
+            android:name=".ViewC.pr_activity_fragmentos.PRActivity"
             android:label="@string/title_activity_main_m_a_p" />
         <activity android:name=".ViewC.StartActivity">
             <intent-filter>

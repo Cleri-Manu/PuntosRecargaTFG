@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewC.fragmentos.mapa.mapa"
+        tools:context=".ViewC.pr_activity_fragmentos.mapa.mapa"
         android:layout_marginVertical="?attr/actionBarSize">
 
 

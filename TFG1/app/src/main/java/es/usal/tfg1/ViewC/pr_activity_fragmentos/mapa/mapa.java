@@ -1,6 +1,5 @@
-package es.usal.tfg1.ViewC.fragmentos.mapa;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.mapa;
 
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,16 +29,11 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.StartActivity;
 import es.usal.tfg1.databinding.FragmentMapaBinding;
 import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.vm.VM;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link mapa#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class mapa extends Fragment implements OnMapReadyCallback {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -83,17 +76,6 @@ public class mapa extends Fragment implements OnMapReadyCallback {
         return binding.getRoot();
     }
 
-    public void logOutUser(View view) {
-        final Intent myIntent = new Intent(getActivity(), StartActivity.class);
-        AuthUI.getInstance()
-                .signOut(getActivity())
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        startActivity(myIntent);
-                    }
-                });
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -106,6 +88,9 @@ public class mapa extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
+    /**
+     * Cuando el mapa esta listo carga el resto de valores, como la lista de puntos de recarga y añade los marcadores al mapa
+     */
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
         myMap = googleMap;
@@ -139,7 +124,7 @@ public class mapa extends Fragment implements OnMapReadyCallback {
                 }
                 isMod = myVM.getModSelected();
                 if(isMod) {
-                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myVM.getInfoPR().getValue().getParada().getLatitud(), myVM.getInfoPR().getValue().getParada().getLongitud()), 16.0f));
+                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myVM.getCurrentPR().getValue().getParada().getLatitud(), myVM.getCurrentPR().getValue().getParada().getLongitud()), 16.0f));
                 }
             }
         });

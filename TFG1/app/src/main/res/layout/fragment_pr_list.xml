@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewC.fragmentos.listaPR.prLista"
+        tools:context=".ViewC.pr_activity_fragmentos.listaPR.prLista"
         android:layout_marginTop="?attr/actionBarSize">
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_list_1"

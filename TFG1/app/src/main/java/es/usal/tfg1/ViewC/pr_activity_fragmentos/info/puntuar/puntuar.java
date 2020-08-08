@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.info.puntuar;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.info.puntuar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,7 +27,13 @@ import es.usal.tfg1.vm.VM;
  * create an instance of this fragment.
  */
 public class puntuar extends Fragment {
+    /**
+     * Binding de la vista
+     */
     private FragmentPuntuarBinding binding;
+    /**
+     * ViewModel
+     */
     private VM myVM;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -70,6 +76,9 @@ public class puntuar extends Fragment {
     }
 
     @Override
+    /**
+     * Cuando la activiad se crea se añaden observers para los botones y toast de menseajes de exito/fallo
+     */
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Puntuacion puntuacion = myVM.checkUserPunt();

@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="?attr/actionBarSize"
-            tools:context=".ViewC.fragmentos.nuevo.nuevo">
+            tools:context=".ViewC.pr_activity_fragmentos.nuevo.nuevo">
 
             <ProgressBar
                 android:id="@+id/progressBar_p_cercanos"

@@ -58,7 +58,7 @@
                     android:id="@+id/PR_puntuacion_icon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@{myVM.infoPR.eco ?  @drawable/green : @drawable/charger_n}"
+                    android:src="@{myVM.currentPR.eco ?  @drawable/green : @drawable/charger_n}"
                     app:layout_constraintLeft_toRightOf="@id/guideline_puntuacion_1"
                     android:layout_margin="5dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -66,23 +66,26 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/PR_puntuacion_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toRightOf="@id/PR_puntuacion_icon"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="@id/PR_puntuacion_icon"
                     android:layout_marginBottom="15dp"
-                    android:text="@{myVM.infoPR.nombre}"
+                    android:text="@{myVM.currentPR.nombre}"
                     android:textColor="@android:color/black"
                     android:layout_marginStart="15dp"
-                    android:textSize="22sp" />
+                    android:layout_marginEnd="35dp"
+                    android:textSize="22sp"
+                    app:layout_constraintRight_toLeftOf="@id/guideline_puntuacion_2"
+                    android:layout_marginTop="15dp"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/PR_puntuacion_dist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/r_border"
-                    android:text="@{myVM.infoPR.distancia}"
+                    android:text="@{myVM.currentPR.distancia}"
                     app:layout_constraintLeft_toLeftOf="@+id/PR_puntuacion_name"
                     app:layout_constraintBottom_toBottomOf="@id/PR_puntuacion_icon"
                     app:layout_constraintTop_toBottomOf="@id/PR_puntuacion_name"

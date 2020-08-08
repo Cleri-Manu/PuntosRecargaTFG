@@ -1,10 +1,8 @@
-package es.usal.tfg1.ViewC.fragmentos;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,9 +11,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,38 +24,20 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.xml.transform.Result;
-
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.fragmentos.info.info;
-import es.usal.tfg1.ViewC.fragmentos.listaPR.prLista;
+import es.usal.tfg1.ViewC.pr_activity_fragmentos.info.info;
+import es.usal.tfg1.ViewC.pr_activity_fragmentos.listaPR.prLista;
 import es.usal.tfg1.ViewC.StartActivity;
 import es.usal.tfg1.databinding.ActivityPrBinding;
 import es.usal.tfg1.vm.VM;
 
 public class PRActivity extends AppCompatActivity implements prLista.OnPRSelectedListener, info.OnPuntuarSelectedListener, info.OnPRDelListener, info.OnPRModListener, info.OnPRGoListener {
     private Toolbar myToolbar;
-    private FirebaseUser currentUser;
-    private FirebaseFirestore firestore;
     public VM myVM;
     private ActivityPrBinding binding;
     private NavController navController;
@@ -142,6 +119,10 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
         });
     }
 
+    /**
+     * Lee el jsno adjunto con los puntos de recarga
+     * @throws JSONException
+     */
     private void readJSON() throws JSONException {
         Resources res = getResources();
         InputStream is = res.openRawResource(R.raw.pr);
@@ -155,10 +136,19 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
         parseJSON(s);
     }
 
+    /**
+     * Hace una llmada a la funcion para añadir los puntos de recarfa deljson
+     * @param jsonText
+     * @throws JSONException
+     */
     private void parseJSON(String jsonText) throws JSONException {
         myVM.createOfficialPRs(jsonText);
     }
 
+    /**
+     * Cierra la sesion del usuario
+     * @param view
+     */
     public void logOutUser(View view) {
         final Intent myIntent = new Intent(this, StartActivity.class);
         AuthUI.getInstance()
@@ -175,6 +165,9 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
     }
 
     @Override
+    /**
+     * Si se selcciona un punto de recarga navegar a la pantalla de info indicando que se cargue la de este
+     */
     public void onPRSelected(int position) {
         if (navController.getCurrentDestination().getId() == R.id.navigation_info) {
             return;
@@ -185,6 +178,9 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
     }
 
     @Override
+    /**
+     * Si se selecciona puntuacr navegar a la pantalla de puntuar
+     */
     public void onPuntuarSelected() {
         if (navController.getCurrentDestination().getId() == R.id.navigation_puntuar) {
             return;
@@ -194,6 +190,9 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
     }
 
     @Override
+    /**
+     * Si se selcciona borrar punto de recarga navegar a la lista de puntos de recarga cercanos
+     */
     public void onPRDelSelected() {
         if (navController.getCurrentDestination().getId() == R.id.navigation_pr_list) {
             return;
@@ -204,6 +203,9 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
     }
 
     @Override
+    /**
+     * Si se selecciona modificar un punto de recarga navegar a la pantalla de nuevo pero con los datos de ese punto de recarga
+     */
     public void onPRModSelected() {
         if (navController.getCurrentDestination().getId() == R.id.navigation_nuevo) {
             return;
@@ -214,6 +216,9 @@ public class PRActivity extends AppCompatActivity implements prLista.OnPRSelecte
     }
 
     @Override
+    /**
+     * Si se seleeciona elboton de ir a un punto de recarga navegar a la pantalla de mapa e indicar esto
+     */
     public void onPRGoSelected() {
         if (navController.getCurrentDestination().getId() == R.id.navigation_mapa) {
             return;

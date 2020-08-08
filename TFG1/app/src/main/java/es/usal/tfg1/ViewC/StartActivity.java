@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.fragmentos.PRActivity;
+import es.usal.tfg1.ViewC.pr_activity_fragmentos.PRActivity;
 
 public class StartActivity extends AppCompatActivity {
     private FirebaseAuth myAuth;
@@ -44,6 +44,9 @@ public class StartActivity extends AppCompatActivity {
         checkLocationPerm();
     }
 
+    /**
+     * Comprobar el estado de login del usuario y mostrar la pantalla de autentficacion o continuar a PRACtivity
+     */
     public void continueStart() {
         if(currentUser != null) { //Ya hay usuario logeado, pasar a menu principal
             myIntent = new Intent(this, PRActivity.class);
@@ -59,6 +62,9 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @Override //Al volver de la actividad de LOGIN se comprueba el resultado
+    /**
+     * Al volver de la actividad de LOGIN se comprueba el resultado
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -68,7 +74,6 @@ public class StartActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) { //Login correcto, avanzar a pantalla principal
                 myIntent = new Intent(this, PRActivity.class);
                 startActivity(myIntent);
-                //this.finish();
             }
         }
     }
@@ -76,11 +81,13 @@ public class StartActivity extends AppCompatActivity {
     public void onBackPressed() { }
 
     @Override
+    /**
+     * Pedir permisos
+     */
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     checkInternetPerm();
                 } else {
@@ -89,7 +96,6 @@ public class StartActivity extends AppCompatActivity {
                 return;
             }
             case MY_PERMISSIONS_INTERNET: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     continueStart();
                 } else {
@@ -98,8 +104,6 @@ public class StartActivity extends AppCompatActivity {
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request.
         }
     }
 
@@ -107,7 +111,6 @@ public class StartActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_ACCESS_FINE_LOCATION);
@@ -120,7 +123,6 @@ public class StartActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.INTERNET},
                         MY_PERMISSIONS_INTERNET);

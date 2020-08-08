@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ViewC.fragmentos.info.info">
+            tools:context=".ViewC.pr_activity_fragmentos.info.info">
 
             <ProgressBar
                 android:id="@+id/progressBar_p_info"
@@ -58,7 +58,7 @@
                     android:id="@+id/PR_info_icon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@{myVM.infoPR.eco ?  @drawable/green : @drawable/charger_n}"
+                    android:src="@{myVM.currentPR.eco ?  @drawable/green : @drawable/charger_n}"
                     app:layout_constraintLeft_toRightOf="@id/guideline_info_1"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_rating_bar"
                     android:layout_margin="5dp"
@@ -73,11 +73,12 @@
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_icon"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
                     android:layout_marginBottom="15dp"
-                    android:text="@{myVM.infoPR.nombre}"
+                    android:text="@{myVM.currentPR.nombre}"
                     android:textColor="@android:color/black"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="25dp"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    android:layout_marginTop="15dp"/>
 
                 <androidx.appcompat.widget.AppCompatRatingBar
                     android:id="@+id/PR_info_rating_bar"
@@ -92,14 +93,14 @@
                     android:transformPivotX="0dp"
                     android:transformPivotY="0dp"
                     android:layout_marginStart="12dp"
-                    android:rating="@{myVM.infoPR.puntuacion}"/>
+                    android:rating="@{myVM.currentPR.puntuacion}"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/PR_info_dist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/r_border"
-                    android:text="@{myVM.infoPR.distancia}"
+                    android:text="@{myVM.currentPR.distancia}"
                     app:layout_constraintRight_toLeftOf="@id/guideline_info_2"
                     app:layout_constraintLeft_toRightOf="@id/PR_info_rating_bar"
                     app:layout_constraintBottom_toBottomOf="@id/PR_info_rating_bar"
@@ -130,7 +131,7 @@
                         android:id="@+id/info_desc"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@{myVM.infoPR.descripcion}"
+                        android:text="@{myVM.currentPR.descripcion}"
                         android:textSize="16sp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"

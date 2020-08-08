@@ -2,7 +2,6 @@ package es.usal.tfg1.vm;
 
 import android.location.Location;
 import android.view.View;
-import android.widget.MultiAutoCompleteTextView;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
@@ -14,229 +13,421 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseUser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import es.usal.tfg1.R;
 import es.usal.tfg1.Repository;
-import es.usal.tfg1.ViewC.fragmentos.dialog.CustomDialog;
 import es.usal.tfg1.model.Parada;
 import es.usal.tfg1.model.PuntoRecarga;
 import es.usal.tfg1.model.Puntuacion;
 import es.usal.tfg1.model.Usuario;
 
 public class VM extends ViewModel {
+    /**
+     * Tipo repositorio utilizado para las comunicaciones con Firebase y modelos
+     */
     private Repository repository = new Repository(this);
+    /**
+     * Variable que indica si se esta en modo modificar
+     * Con esto se indica a los fragmentos si necestian cargar los datos de un punto de rearga o una vista por defecto
+     */
     private boolean _modSelected = false;
     public boolean modSelected;
+
+    /**
+     * Contiene un objeto de la clase usuario con el usuario actual
+     */
     private MutableLiveData<Usuario> _usuario;
     public LiveData<Usuario> usuario;
 
+    /**
+     * Indica la visibilidad del menu inferior
+     */
     private MutableLiveData<Integer> _visibility;
     public LiveData<Integer> visibility;
 
+    /**
+     * Indica la visibilidad del boton de modificar email en la pantalla de usuario
+     */
     private MutableLiveData<Integer> _userEmBVisibility;
     public LiveData<Integer> userEmBVisibility;
 
+    /**
+     * Indica la visibilidad del boton de modificar contraseña en la pantalla de usuario
+     */
     private MutableLiveData<Integer> _userPassBVisibility;
     public LiveData<Integer> userPassBVisibility;
 
+    /**
+     * Indica valores para mostrar exito o error al verificar un usuario
+     */
     private MutableLiveData<Boolean> _toastVisibility;
     public  LiveData<Boolean> toastVisibility;
 
+    /**
+     * Inidica la visibilidad de el icono de carga en la pantalla de usuario
+     */
     private MutableLiveData<Boolean> _loadUserVisibility;
     public  LiveData<Boolean> loadUserVisibility;
 
+    /**
+     * Inidica la visibilidad de el icono de carga en la pantalla de puntos de recarga
+     */
     private MutableLiveData<Boolean> _loadRecyclerVisibility;
     public  LiveData<Boolean> loadRecyclerVisibility;
 
+    /**
+     * Contiene un array con todos los puntos de recarga cercanos
+     */
     private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListData;
     public  LiveData<ArrayList<PuntoRecarga>> recyclerListData;
 
+    /**
+     * Constiene un array con todos los puntos de recarga
+     */
     private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerListCompleteData;
     public  LiveData<ArrayList<PuntoRecarga>> recyclerListCompleteData;
 
+    /**
+     * Constiene un array con los puntos de recagra filtrados por el parametro indicado por el usuario
+     */
     private MutableLiveData<ArrayList<PuntoRecarga>> _recyclerlistFilteredData;
     public  LiveData<ArrayList<PuntoRecarga>> recyclerlistFilteredData;
 
+    /**
+     * Constiene un array con todos los puntos de recarga
+     */
     private MutableLiveData<ArrayList<PuntoRecarga>> _PRCompleteList;
     public  LiveData<ArrayList<PuntoRecarga>> PRCompleteList;
 
+    /**
+     * Indica la visibilidad de un marco entorno al boton de punto de recarga normal en la pantalla de crear punto de recarga
+     */
     private MutableLiveData<Boolean> _nuevoBOutline1;
     public  LiveData<Boolean> nuevoBOutline1;
 
+    /**
+     * Indica la visibilidad de un marco entorno al boton de punto de recarga eco en la pantalla de crear punto de recarga
+     */
     private MutableLiveData<Boolean> _nuevoBOutline2;
     public  LiveData<Boolean> nuevoBOutline2;
 
+    /**
+     * Indica valores para mostrar un toast indicando que hay que rellenar los campos
+     */
     private MutableLiveData<Boolean> _nuevoToastFillFields;
     public  LiveData<Boolean> nuevoToastFillFields;
 
+    /**
+     * Indica valroes para mosrtar un toast si un punto de recarga ya existe o no
+     */
     private MutableLiveData<Boolean> _nuevoToastPRAlreadyExists;
     public  LiveData<Boolean> nuevoToastPRAlreadyExists;
 
+    /**
+     * Indica la visibilidad de la interfaz de busqueda en las vistas de los puntos de recarga
+     */
     private MutableLiveData<Boolean> _searchPR;
     public  LiveData<Boolean> searchPR;
 
+    /**
+     * Inidica la visibilidad de el icono de carga en la pantalla de nuevo punto de recarga
+     */
     private MutableLiveData<Boolean> _nuevoLoadingVisibility;
     public  LiveData<Boolean> nuevoLoadingVisibility;
 
+    /**
+     * Inidica la visibilidad de el icono de carga en la pantalla de la informacion de un punto de recarga
+     */
     private MutableLiveData<Boolean> _infoLoadingVisibility;
     public  LiveData<Boolean> infoLoadingVisibility;
 
+    /**
+     * Contiene un array con el valor del recycler de puntuaciones de un punto de rearga para la pantalla de info de ese punto
+     */
     private MutableLiveData<ArrayList<Puntuacion>> _infoRecyclerListData;
     public  LiveData<ArrayList<Puntuacion>> infoRecyclerListData;
 
-    private MutableLiveData<PuntoRecarga> _infoPR;
-    public  LiveData<PuntoRecarga> infoPR;
+    /**
+     * Contiene el punto de rearga seleccionado en una lsita de puntos de recarga
+     */
+    private MutableLiveData<PuntoRecarga> _currentPR;
+    public  LiveData<PuntoRecarga> currentPR;
 
+    /**
+     * Inidica la visibilidad de el icono de carga en la pantalla de la puntuacion de un punto de recarga
+     */
     private MutableLiveData<Boolean> _puntuacionLoadingVisibility;
     public  LiveData<Boolean> puntuacionLoadingVisibility;
 
-    private MutableLiveData<Float> _puntuacionUserPunt;
-    public  LiveData<Float> puntuacionUserPunt;
-
+    /**
+     * Indica valores para mostrar un toast indicando el resultado de la modificacion o publicacion de una puntuacion
+     */
     private MutableLiveData<Boolean> _puntuacionToast;
     public  LiveData<Boolean> puntuacionToast;
 
+    /**
+     * Indica si el usuario puede ver un boton para borrar la puntuacion o no
+     */
     private MutableLiveData<Boolean> _puntuacionDelVisibility;
     public  LiveData<Boolean> puntuacionDelVisibility;
 
+    /**
+     * Indica si el suario actual puede borrar un punto de recarga en concreto
+     */
     private MutableLiveData<Boolean> _infoUserCanDel;
     public  LiveData<Boolean> infoUserCanDel;
 
+    /**
+     * Indica valores para mostrar un toast indicando que se ha reportado el punto de recarga
+     */
     private MutableLiveData<Boolean> _infoReportToast;
     public  LiveData<Boolean> infoReportToast;
 
+    /**
+     * Indica valores para mostrar un toast indicando que se ha producido un error
+     */
     private MutableLiveData<Boolean> _errorToast;
     public  LiveData<Boolean> errorToast;
 
+    /**
+     * Indica valores para mostrar un toast indicando que hay un error con la latitud y/o longitud
+     */
     private MutableLiveData<Boolean> _coordError;
     public  LiveData<Boolean> coordError;
 
+    /**
+     * Usuario actual
+     */
     private Usuario myUser;
+    /**
+     * Lista de puntos de recarga
+     */
     private ArrayList<PuntoRecarga> PRList;
 
+    /**
+     * Devuelve el valor de _toastVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> gettoastVisibility() {
         return (LiveData<Boolean>) _toastVisibility;
     }
 
+    /**
+     * Devuelve el valor de _usuario como un LiveData
+     * @return
+     */
     public LiveData<Usuario> getUsuario() {
         return (LiveData<Usuario>) _usuario;
     }
 
+    /**
+     * Devuelve el valor de _visibility como un LiveData
+     * @return
+     */
     public LiveData<Integer> getVisibility() {
         return (LiveData<Integer>) _visibility;
     }
 
+    /**
+     * Devuelve el valor de _loadUserVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getLoadUserVisibility() {
         return (LiveData<Boolean>) _loadUserVisibility;
     }
 
+    /**
+     * Devuelve el valor de _loadRecyclerVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getLoadRecyclerVisibility() {
         return (LiveData<Boolean>) _loadRecyclerVisibility;
     }
 
+    /**
+     * Devuelve el valor de _recyclerListData como un LiveData
+     * @return
+     */
     public LiveData<ArrayList<PuntoRecarga>> getRecyclerListData() {
         return (LiveData<ArrayList<PuntoRecarga>>) _recyclerListData;
     }
 
+    /**
+     * Devuelve el valor de _recyclerListCompleteData como un LiveData
+     * @return
+     */
     public LiveData<ArrayList<PuntoRecarga>> getRecyclerListCompleteData() {
         return (LiveData<ArrayList<PuntoRecarga>>) _recyclerListCompleteData;
     }
 
-
+    /**
+     * Devuelve el valor de _userEmBVisibility como un LiveData
+     * @return
+     */
     public LiveData<Integer> getUserEmBVisibility() {
         return (LiveData<Integer>) _userEmBVisibility;
     }
 
+    /**
+     * Devuelve el valor de _userPassBVisibility como un LiveData
+     * @return
+     */
     public LiveData<Integer> getUserPassBVisibility() {
         return (LiveData<Integer>) _userPassBVisibility;
     }
 
+    /**
+     * Devuelve el valor de _nuevoOutline1 como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getNuevoBOutline1() {
         return (LiveData<Boolean>) _nuevoBOutline1;
     }
 
+    /**
+     * Devuelve el valor de _nuevoOutline2 como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getNuevoBOutline2() {
         return (LiveData<Boolean>)  _nuevoBOutline2;
     }
 
+    /**
+     * Devuelve el valor de _nuevoToastFillFields como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getNuevoToastFillFields() {
         return (LiveData<Boolean>)  _nuevoToastFillFields;
     }
 
+    /**
+     * Devuelve el valor de _PRCompleteList como un LiveData
+     * @return
+     */
     public LiveData<ArrayList<PuntoRecarga>> getPRCompleteList() {
         return (LiveData<ArrayList<PuntoRecarga>>)  _PRCompleteList;
     }
 
+    /**
+     * Devuelve el valor de _nuevoToastPRALreadyExists como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getNuevoToastPRAlreadyExists() {
         return (LiveData<Boolean>)  _nuevoToastPRAlreadyExists;
     }
 
+    /**
+     * Devuelve el valor de _searchPR como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getSearchPR() {
         return (LiveData<Boolean>)  _searchPR;
     }
 
+    /**
+     * Devuelve el valor de _nuevoLoadingVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getNuevoLoadingVisibility() {
         return (LiveData<Boolean>)  _nuevoLoadingVisibility;
     }
 
+    /**
+     * Devuelve el valor de _infoLoadingVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getInfoLoadingVisibility() {
         return (LiveData<Boolean>)  _infoLoadingVisibility;
     }
 
+    /**
+     * Devuelve el valor de _infoRecyclerListData como un LiveData
+     * @return
+     */
     public LiveData<ArrayList<Puntuacion>> getInfoRecyclerListData() {
         return (LiveData<ArrayList<Puntuacion>>) _infoRecyclerListData;
     }
 
+    /**
+     * Devuelve el valor de _puntuacionLoadingVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getPuntuacionLoadingVisibility() {
         return (LiveData<Boolean>)  _puntuacionLoadingVisibility;
     }
 
-    public LiveData<PuntoRecarga> getInfoPR() {
-        return (LiveData<PuntoRecarga>) _infoPR;
+    /**
+     * Devuelve el valor de _currentPR como un LiveData
+     * @return
+     */
+    public LiveData<PuntoRecarga> getCurrentPR() {
+        return (LiveData<PuntoRecarga>) _currentPR;
     }
 
-    public LiveData<Float> getPuntuacionUserPunt() {
-        return (LiveData<Float>) _puntuacionUserPunt;
-    }
-
+    /**
+     * Devuelve el valor de _puntuacionToast como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getPuntuacionToast() {
         return (LiveData<Boolean>)  _puntuacionToast;
     }
 
+    /**
+     * Devuelve el valor de _puntuacionDelVisibility como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getPuntuacionDelVisibility() {
         return (LiveData<Boolean>)  _puntuacionDelVisibility;
     }
 
+    /**
+     * Devuelve el valor de _infoUserCanDel como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getInfoUserCanDel() {
         return (LiveData<Boolean>)  _infoUserCanDel;
     }
 
+    /**
+     * Devuelve el valor de _inforReportToast como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getInfoReportToast () {
         return (LiveData<Boolean>) _infoReportToast;
     }
 
+    /**
+     * Devuelve el valor de _modSelected como un LiveData
+     * @return
+     */
     public boolean getModSelected() {
         boolean temp = _modSelected;
         _modSelected = false;
         return temp;
     }
 
+    /**
+     * Devuelve el valor de _errorToast como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getErrorToast () {
         return (LiveData<Boolean>) _errorToast;
     }
 
+    /**
+     * Devuelve el valor de _coordError como un LiveData
+     * @return
+     */
     public LiveData<Boolean> getCoordError () {
         return (LiveData<Boolean>) _coordError;
     }
 
-    private CustomDialog myDialog;
-
+    /**
+     * Inicializa los valores de los MutableLiveData apra aseguar que no sean nulos
+     */
     public void initializeValues() {
         if(_visibility == null)
             _visibility = new MutableLiveData<Integer>();
@@ -292,8 +483,8 @@ public class VM extends ViewModel {
             _infoLoadingVisibility = new MutableLiveData<Boolean>();
             _infoLoadingVisibility.setValue(false);
         }
-        if(_infoPR == null) {
-            _infoPR = new MutableLiveData<PuntoRecarga>();
+        if(_currentPR == null) {
+            _currentPR = new MutableLiveData<PuntoRecarga>();
         }
         if(_infoRecyclerListData == null) {
             _infoRecyclerListData = new MutableLiveData<ArrayList<Puntuacion>>();
@@ -332,6 +523,11 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Compreuba si se navega a la pantalla de usuario para ocultar o no el menu inferior
+     * @param idDest
+     * @param idNavUsuario
+     */
     public void onDestinationChangeUsuario(int idDest, int idNavUsuario) {
         if(idDest == idNavUsuario) {
             _visibility.setValue(View.INVISIBLE);
@@ -340,25 +536,14 @@ public class VM extends ViewModel {
         }
     }
 
-    public void onTextChange(int textId) {
-        if(textId == R.id.textEmailUser && _userEmBVisibility.getValue() != View.VISIBLE){
-            _userEmBVisibility.setValue(View.VISIBLE);
-        } else if (textId == R.id.textPassUser && _userPassBVisibility.getValue() != View.VISIBLE) {
-            _userPassBVisibility.setValue(View.VISIBLE);
-        }
-    }
-
-    public void onUserChangeButton(int buttonId) {
-        if(buttonId == R.id.buttonEmailUser){
-            _userEmBVisibility.setValue(View.INVISIBLE);
-        } else if (buttonId == 1 /*R.id.buttonPassUser*/) {
-            _userPassBVisibility.setValue(View.INVISIBLE);
-        }
-    }
-
+    /**
+     * Recupera o crea un usuario de Firebase
+     * @param currentUser
+     * @param own
+     */
     public void checkNewUser(FirebaseUser currentUser, LifecycleOwner own) {
         repository.checkNewUser(currentUser, _usuario);
-        final Observer<Usuario> userObs = new Observer<Usuario>() {
+  /*      final Observer<Usuario> userObs = new Observer<Usuario>() {
             @Override
             public void onChanged(@Nullable final Usuario user) {
                 //Inicializar el usuario porprimera vez
@@ -366,16 +551,20 @@ public class VM extends ViewModel {
             }
         };
         this.getUsuario().observe(own, userObs);
-
+*/
     }
 
-
+    /*
     public void addUser() {
         if(myUser == null)
             myUser = repository.getMyUser();
-    }
+    }*/
 
-
+    /**
+     * Cambia el valor del email del usuario para vaciar el campo cuando se selecciona
+     * @param id
+     * @param hasFocus
+     */
     public void textFocusUser(int id, boolean hasFocus) {
         if(id == R.id.textEmailUser && hasFocus) {
             _usuario.getValue().setEmail("");
@@ -391,25 +580,47 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Intenta hacer login de nuevo al usuario actual
+     * @param pass
+     */
     public  void reLogUserEmail(String pass) {
         userLoadVisibility(true);
         repository.relLogUser(repository.getMyUser(), pass);
     }
 
-
+    /**
+     * Error al intentar hacer login de nuevo al usuario actual
+     * Se cambia el valor del toast para que se muestre el mensaje de fallo
+     */
     public void reLogError() {
         this._toastVisibility.setValue(false);
         userLoadVisibility(false);
     }
 
+    /**
+     * Exito al intentar hacer login de nuevo al usuario actual
+     * Se cambia el valor del toast para que se muestre el mensaje de exito
+     */
     public void reLogSucces() {
         userLoadVisibility(false);
         this._toastVisibility.setValue(true);
     }
+
+    /**
+     * Error al intentar hacer un cambio al usuario actual
+     * Se cambia el valor del toast para que se muestre el mensaje de fallo
+     */
     public void changeError(){
         userLoadVisibility(false);
         this._toastVisibility.setValue(false);
     }
+
+    /**
+     * Exito al intentar hacer un cambio al usuario actual
+     * Se cambia el valor del toast para que se muestre el mensaje de exito
+     * Se actualizan los valores
+     */
     public void changeSucces(String email) {
         if(repository.getMyUser().getEmail().equals(email)) {
             this._toastVisibility.setValue(false);
@@ -423,36 +634,66 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Exito al intentar hacer un cambio al usuario actual
+     * Se cambia el valor del toast para que se muestre el mensaje de exito
+     */
     public  void changeSucces() {
         this._toastVisibility.setValue(true);
     }
 
+    /**
+     * Cambia el valor _loadUserVisivility de manera que se vea reflejado en la vista al momento
+     * @param visible
+     */
     private void userLoadVisibility(boolean visible) {
         _loadUserVisibility.setValue(visible);
         _loadUserVisibility.setValue(_loadUserVisibility.getValue());
     }
 
+    /**
+     * Envia email de recuperacion de contraseña
+     */
     public void recovery() {
         repository.recovery();
     }
 
+    /**
+     * Cambia la contraseña del usuario actual
+     * @param pass
+     */
     public void changePass(String pass) {
         repository.modUserpassAuth(pass);
     }
 
+    /**
+     * Cambia la autonomia del usuario actual
+     * @param aut
+     */
     public void changeAut(String aut) {
         _usuario.getValue().setAutonomia(aut);
         repository.moduserAut();
     }
 
+    /**
+     * Cambia el email del usuario actual
+     * @param email
+     */
     public void changeEmail(String email) {
         repository.modUserEmailAuth(email);
     }
 
+    /**
+     * Borra el usuario actual
+     */
     public void DelUser() {
         repository.delUser();
     }
 
+    /**
+     * Controla el estado del otuline en los botones asociados a  _nuevoBOutline1 y _nuevoBOutline2
+     * Si hay un outline activo en un boton y se selecciona el otro, sedesactiva en el primero para activar en el segundo
+     */
     public void nuevoChargerNClick() {
         if(_nuevoBOutline2.getValue()) {
             _nuevoBOutline2.setValue(false);
@@ -467,6 +708,10 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Controla el estado del otuline en los botones asociados a  _nuevoBOutline1 y _nuevoBOutline2
+     * Si hay un outline activo en un boton y se selecciona el otro, sedesactiva en el primero para activar en el segundo
+     */
     public void nuevoChargerGClick() {
         if(_nuevoBOutline1.getValue()) {
             _nuevoBOutline1.setValue(false);
@@ -481,6 +726,11 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Si se cambia de destino a la pantalla de nuevo punto de recarga, resetea los valores asociados
+     * @param id
+     * @param navigation_nuevo
+     */
     public void onDestinationChangeResetNuevo(int id, int navigation_nuevo) {
         if(id != navigation_nuevo){
             _nuevoBOutline1.setValue(false);
@@ -491,6 +741,13 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Añade un nuevo punto de recarga a Firebase si el campo de nobmre no esta vacio y si las coordenadas son validas
+     * @param nombre
+     * @param lat
+     * @param lon
+     * @param descripcion
+     */
     public void addNewPR(String nombre, String lat, String lon, String descripcion) {
         if(checkInvCoords(Float.parseFloat(lon), Float.parseFloat(lat))) {
             return;
@@ -512,11 +769,19 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Cambia el valor del toast asociado, y quita la visibilidad del icono de carga
+     */
     public void PRAlreadyExists(boolean exists) {
         nuevoNewLoadVisibility(false);
         _nuevoToastPRAlreadyExists.setValue(exists);
     }
 
+    /**
+     * Cambia el valor de la lista de puntos de recarga al completo
+     * Tambien reinicia el valor de la lista de puntos de recarga filtrados
+     * @param prCompleteList
+     */
     public void changePRCompleteList(ArrayList<PuntoRecarga> prCompleteList) {
         _PRCompleteList.setValue(prCompleteList);
         _PRCompleteList.setValue(_PRCompleteList.getValue());
@@ -527,12 +792,21 @@ public class VM extends ViewModel {
         _recyclerlistFilteredData.setValue(temp);
     }
 
+    /**
+     * Cambia la lsita de puntos de recarga y oculta el icono de carga del recycler asociado
+     * @param prList
+     */
     public void changePRList(ArrayList<PuntoRecarga> prList) {
         _recyclerListData.setValue(prList);
         _loadRecyclerVisibility.setValue(false);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
     }
 
+    /**
+     * Cambia el valor de la lista de puntos de recarga al completo
+     * Tambien reinicia el valor de la lista de puntos de recarga filtrados
+     * @param prCompleteList
+     */
     public void changePRListComplete(ArrayList<PuntoRecarga> prCompleteList) {
         _recyclerListCompleteData.setValue(prCompleteList);
         _loadRecyclerVisibility.setValue(false);
@@ -544,23 +818,41 @@ public class VM extends ViewModel {
         _recyclerlistFilteredData.setValue(temp);
     }
 
+    /**
+     * Carga el recycler con los puntos de recarga cercanos dandole un valor a la distancia con el usuario actual
+     * Tambien hace visible la patnalla de carga
+     * @param result
+     */
     public void loadRecyclerList(Location result) {
         _loadRecyclerVisibility.setValue(true);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
         repository.getPRList(new Parada(result.getLongitude(),result.getLatitude()));
     }
 
+    /**
+     * Carga el recycler con los puntos de recarga dandole un valor a la distancia con el usuario actual
+     * Tambien hace visible la patnalla de carga
+     * @param result
+     */
     public void loadRecyclerListComplete(Location result) {
         _loadRecyclerVisibility.setValue(true);
         _loadRecyclerVisibility.setValue(_loadRecyclerVisibility.getValue());
         repository.getPRListComplete(new Parada(result.getLongitude(),result.getLatitude()));
     }
 
+    /**
+     * Cambia el valor de la visibilidad de la carga en la pantalla de nuevo punto de recarga para que se vea reflejada al momento en la vista
+     * @param value
+     */
     public void nuevoNewLoadVisibility(boolean value) {
         _nuevoLoadingVisibility.setValue(value);
         _nuevoLoadingVisibility.setValue(_nuevoLoadingVisibility.getValue());
     }
 
+    /**
+     * Cambia el valor del punto de recrga seleccionado
+     * @param position
+     */
     public void setSelectedPR(int position) {
         if(_searchPR.getValue()) {
             setSelectedPR(_recyclerlistFilteredData.getValue().get(position));
@@ -568,29 +860,26 @@ public class VM extends ViewModel {
             setSelectedPR(_recyclerListData.getValue().get(position));
         }
     }
-    public void setSelectedPR(PuntoRecarga p) {
-        _infoPR = new MutableLiveData<PuntoRecarga>();
-        _infoPR.setValue(p);
-        _infoPR.setValue(_infoPR.getValue());
-        /*
-        _infoEco.setValue(p.isEco());
-        _infoEco.setValue(_infoEco.getValue());
-        _infoTitle.setValue(p.getNombre());
-        _infoTitle.setValue(_infoTitle.getValue());
-        _infoRating.setValue((float)p.getPuntuacion());
-        _infoRating.setValue(_infoRating.getValue());
-        _infoDist.setValue(p.getDistancia());
-        _infoDist.setValue(_infoDist.getValue());
-        _infoDesc.setValue(p.getDescripcion());
-        _infoDesc.setValue(_infoDesc.getValue());*/
 
+    /**
+     * Cambia el valor del punto de recarga seleccionado
+     * @param p
+     */
+    public void setSelectedPR(PuntoRecarga p) {
+        _currentPR = new MutableLiveData<PuntoRecarga>();
+        _currentPR.setValue(p);
+        _currentPR.setValue(_currentPR.getValue());
         _infoRecyclerListData.setValue(p.getPuntuaciones());
         _infoRecyclerListData.setValue(_infoRecyclerListData.getValue());
     }
 
+    /**
+     * Comprueba si el usuario actual tiene un puntuacion para el punto de recarga actual y la devuelve
+     * @return
+     */
     public Puntuacion checkUserPunt(){
-        if(_infoPR.getValue().getPuntuaciones() != null) {
-            for (Puntuacion p: _infoPR.getValue().getPuntuaciones()) {
+        if(_currentPR.getValue().getPuntuaciones() != null) {
+            for (Puntuacion p: _currentPR.getValue().getPuntuaciones()) {
                 if(p.getId().equals(_usuario.getValue().getId())) {
                     return p;
                 }
@@ -599,19 +888,31 @@ public class VM extends ViewModel {
         return null;
     }
 
+    /**
+     * Crea una nueva puntuacion para el punto de recarga y el usuario en Firebase con los datos dados
+     * @param op
+     * @param rating
+     */
     public void newPuntuacion(String op, float rating) {
         changePuntuacionLoadingVisibility(true);
-        repository.NewPuntuacion(op, rating, _infoPR.getValue());
+        repository.NewPuntuacion(op, rating, _currentPR.getValue());
     }
 
+    /**
+     * Cambia la visivilidad de la pantalla de carga para que se vea reflejado al momento en la vista
+     * @param visibility
+     */
     public void changePuntuacionLoadingVisibility(boolean visibility){
         _puntuacionLoadingVisibility.setValue(visibility);
         _puntuacionLoadingVisibility.setValue(_puntuacionLoadingVisibility.getValue());
     }
 
+    /**
+     * Cambia el punto de recarga actual por uno actualizado de la lista completa
+     */
     public void changePuntuacion() {
         for (PuntoRecarga puntoRecarga: _recyclerListData.getValue()) {
-            if(puntoRecarga.getId().equals(_infoPR.getValue().getId())) {
+            if(puntoRecarga.getId().equals(_currentPR.getValue().getId())) {
                 setSelectedPR(puntoRecarga);
                 changePuntuacionLoadingVisibility(false);
                 //Cambiar el valor del toast para mostrar operacion exitosa
@@ -620,7 +921,7 @@ public class VM extends ViewModel {
             }
         }
         for (PuntoRecarga puntoRecarga: _recyclerListCompleteData.getValue()) {
-            if(puntoRecarga.getId().equals(_infoPR.getValue().getId())) {
+            if(puntoRecarga.getId().equals(_currentPR.getValue().getId())) {
                 setSelectedPR(puntoRecarga);
                 changePuntuacionLoadingVisibility(false);
                 //Cambiar el valor del toast para mostrar operacion exitosa
@@ -630,15 +931,25 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * cambia el valor del toast de puntuacion para mostrar mensaje de error
+     */
     public void changePuntuacioError(){
         changePuntuacionToast(false);
     }
 
+    /**
+     * cambia el valor del toast de puntuacion para mostrar mensaje de error o exito
+     */
     public void changePuntuacionToast(boolean bool) {
         _puntuacionToast.setValue(bool);
-        //_puntuacionToast.setValue(_puntuacionToast.getValue());
     }
 
+    /**
+     * Si se cambia de destino a la pantalla de puntuar punto de recarga, resetea los valores asociados
+     * @param id
+     * @param navigation_puntuar
+     */
     public void onDestinationChangeResetPuntuar(int id, int navigation_puntuar) {
         if(id != navigation_puntuar){
             _puntuacionToast = new MutableLiveData<Boolean>();
@@ -647,13 +958,20 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Cambia el valor asociado a _infoUserCanDel para que se vea reflejado en la vista al momento
+     * @param can
+     */
     public void changeUserCanDel(boolean can) {
         _infoUserCanDel.setValue(can);
         _infoUserCanDel.setValue(_infoUserCanDel.getValue());
     }
 
+    /**
+     * Comprueba si el usuario actual puede borrar el punto de recarga seleccionado y cambia el valor asociado
+     */
     public void checkUserCanDel() {
-        if(_usuario.getValue().getId().equals(_infoPR.getValue().getCreadorID())) {
+        if(_usuario.getValue().getId().equals(_currentPR.getValue().getCreadorID())) {
             changeUserCanDel(true);
         } else if (_usuario.getValue().getRol()) {
             changeUserCanDel(true);
@@ -663,55 +981,86 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Devuelve el valor asociado que indica si el suario puede borrar o no
+     * @return
+     */
     public boolean userCanDel() {
         return  _puntuacionDelVisibility.getValue();
     }
 
+    /**
+     * Cambia el valor asociado que indica si el suario puede ver le boton de borrar o no
+     * @return
+     */
     public void changePuntuarDelVisibility() {
         _puntuacionDelVisibility.setValue(true);
     }
 
+    /**
+     * Cambia el valor asociado que indica si el suario puede ver le boton de borrar o no
+     * @return
+     */
     public void changePuntuarDelVisibilityFalse() {
         _puntuacionDelVisibility.setValue(false);
     }
 
+    /**
+     * Borra la putuacion del usuario actual del punto de recarga seleccionado
+     */
     public void delPuntuacionButton() {
-        repository.delPuntuacion(_infoPR.getValue());
+        repository.delPuntuacion(_currentPR.getValue());
     }
 
+    /**
+     * Borra el punto de recarga seleccionado
+     */
     public void delPR() {
-        repository.delPR(_infoPR.getValue());
+        repository.delPR(_currentPR.getValue());
     }
 
-    public void delPRSucces() {
-    }
-
+    /**
+     * Reporta el punto de recarga seleccionado
+     */
     public void reportPR() {
-        repository.addReport(_infoPR.getValue());
+        repository.addReport(_currentPR.getValue());
     }
 
+    /**
+     * Cambia el valor para mostrar un toast indica el exito de reportar
+     */
     public void reportarSucces() {
         changeReportarToastVisibility(true);
     }
 
+    /**
+     * Cambia el valor para mostrar un toast indica el exito o fallo de reportar
+     */
     public void changeReportarToastVisibility(boolean visible) {
         _infoReportToast.setValue(true);
         _infoReportToast = new MutableLiveData<Boolean>();
     }
 
+    /**
+     * Indica que se ha seleccionado modificar
+     */
     public void modSelectedTrue() {
         changeModSelected(true);
     }
-    public void modSelectedFalse() {
-        changeModSelected(false);
-    }
 
+    /**
+     * Asigna un valor a _modSelected
+     * @param bool
+     */
     public void changeModSelected(boolean bool) {
         this._modSelected = bool;
     }
 
+    /**
+     * Cambia el outline de los botones en la pantalla modificar punto de recarga
+     */
     public void changeModOutline() {
-        if(_infoPR.getValue().isEco()) {
+        if(_currentPR.getValue().isEco()) {
             _nuevoBOutline2.setValue(true);
             _nuevoBOutline1.setValue(false);
         } else {
@@ -720,6 +1069,13 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Modifica los valores de un punto de recarga
+     * @param nombre
+     * @param lat
+     * @param lon
+     * @param descripcion
+     */
     public void modPR(String nombre, String lat, String lon, String descripcion) {
         if(checkInvCoords(Float.parseFloat(lon), Float.parseFloat(lat))) {
             return;
@@ -732,46 +1088,76 @@ public class VM extends ViewModel {
             return;
         }
         if(_nuevoBOutline1.getValue()) {
-            repository.modAllPRFields(nombre, lat, lon, descripcion, false, _infoPR.getValue());
+            repository.modAllPRFields(nombre, lat, lon, descripcion, false, _currentPR.getValue());
         } else if(_nuevoBOutline2.getValue()) {
-            repository.modAllPRFields(nombre, lat, lon, descripcion, true, _infoPR.getValue());
+            repository.modAllPRFields(nombre, lat, lon, descripcion, true, _currentPR.getValue());
         } else {
             _nuevoToastFillFields.setValue(true);
             nuevoNewLoadVisibility(false);
         }
     }
+
+    /**
+     * Indica exito al modifica un punto de recarga
+     */
     public void nuevoModSuccess() {
         PRAlreadyExists(false);
     }
 
+    /**
+     * Indica un error
+     */
     public void getPRListForRecyclerError() {
         changeErrorToastValue(true);
     }
 
+    /**
+     * Indica un error
+     */
     public void checkNewUserError() {
         changeErrorToastValue(true);
     }
 
+    /**
+     * Indica un error
+     */
     public void addNewPRError() {
         changeErrorToastValue(true);
     }
 
+    /**
+     * Indica un error
+     */
     public void modPRPuntuacionesError() {
         changeErrorToastValue(true);
     }
 
+    /**
+     * Indica un error
+     */
     public void addReportError() {
         changeErrorToastValue(true);
     }
 
+    /**
+     * Indica un error
+     */
     public void modAllPRFieldsError() {
         changeErrorToastValue(true);
     }
-
+    /**
+     * Indica un error
+     */
     public void changeErrorToastValue(boolean error) {
         _errorToast.setValue(error);
     }
 
+    /**
+     * Comprueba si las coordenadas son validas
+     * @param longitud
+     * @param latitud
+     * @return
+     */
     public boolean checkInvCoords (float longitud, float latitud){
         if(repository.checkInvCoords(longitud,latitud)) { //Si las coordenadas son invalidas
             _coordError.setValue(true);
@@ -780,6 +1166,11 @@ public class VM extends ViewModel {
         return false;
     }
 
+    /**
+     * COmprueba si la nueva autonomia indicada es la misma que l aya existente
+     * @param tempStringEmailPass
+     * @return
+     */
     public boolean checkAut(String tempStringEmailPass) {
         if(_usuario.getValue().getAutonomia().equals(tempStringEmailPass)){
             return true;
@@ -788,18 +1179,33 @@ public class VM extends ViewModel {
         }
     }
 
+    /**
+     * Cambia la visibilidad de la parte de busqueda si se va a la pantalla de busqueda de puntos de recarga
+     * @param id
+     * @param navigation_pr_list_search
+     */
     public void onDestinationChangeSearch(int id, int navigation_pr_list_search) {
         if(id == navigation_pr_list_search) {
             _searchPR.setValue(true);
         }
     }
 
+    /**
+     * Cambia la visibilidad de la parte de busqueda si se va a la pantalla de puntos de recarga cercanos
+     * @param id
+     * @param navigation_pr_list
+     */
     public void onDestinationChangeList(int id, int navigation_pr_list) {
         if(id == navigation_pr_list) {
             _searchPR.setValue(false);
         }
     }
 
+    /**
+     * Cambia la lista completa de puntos de recarga filtrados
+     * @param searchBy
+     * @return
+     */
     public ArrayList<PuntoRecarga> changePRCompleteList(String searchBy) {
         ArrayList<PuntoRecarga> newList = new ArrayList<PuntoRecarga>();
         for (PuntoRecarga p: _recyclerListCompleteData.getValue()) {
@@ -811,10 +1217,19 @@ public class VM extends ViewModel {
         return _recyclerlistFilteredData.getValue();
     }
 
+    /**
+     * Compreuba si un usuario es adminsitrador
+     * @return
+     */
     public boolean isAdmin() {
         return _usuario.getValue().getRol();
     }
 
+    /**
+     * Crea puntos de recarga oficiales a partir delJSON oficial de la Junta de Castilla y Leon
+     * @param jsonText
+     * @throws JSONException
+     */
     public void createOfficialPRs(String jsonText) throws JSONException {
         repository.PRfromJson(jsonText);
     }

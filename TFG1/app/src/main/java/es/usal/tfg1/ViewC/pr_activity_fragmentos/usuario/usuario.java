@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.usuario;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.usuario;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,44 +22,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import es.usal.tfg1.R;
-import es.usal.tfg1.ViewC.fragmentos.dialog.CustomDialog;
+import es.usal.tfg1.ViewC.pr_activity_fragmentos.dialog.CustomDialog;
 import es.usal.tfg1.ViewC.StartActivity;
 import es.usal.tfg1.databinding.FragmentUsuarioBinding;
 import es.usal.tfg1.vm.VM;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link usuario#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class usuario extends Fragment {
     private FragmentUsuarioBinding binding;
     private VM myVM;
     private CustomDialog myDialog;
     private int changeField = -1;
     private String tempStringEmailPass;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public usuario() {
-        // Required empty public constructor
-    }
+    public usuario() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment usuario.
-     */
-    // TODO: Rename and change types and number of parameters
     public static usuario newInstance(String param1, String param2) {
         usuario fragment = new usuario();
         Bundle args = new Bundle();
@@ -90,6 +70,10 @@ public class usuario extends Fragment {
     }
 
     @Override
+    /**
+     * Cuando la activiad se crea se añaden observers para los botones y toast de menseajes de exito/fallo
+     * Tmabien controla el flujo de autentificacion y modificacion
+     */
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getView().findViewById(R.id.textEmailUser).setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -125,7 +109,6 @@ public class usuario extends Fragment {
                 changeField = 1; //1 Se corresponde con cambiar Email , 2 con cambiar contraseña
                 myDialog = new CustomDialog();
                 myDialog.show(getActivity().getSupportFragmentManager(), "myDialog");
-                //myVM.openDialog(getActivity().getSupportFragmentManager());
             }
         });
 
@@ -142,7 +125,6 @@ public class usuario extends Fragment {
                 changeField = 2; //1 Se corresponde con cambiar Email , 2 con cambiar contraseña
                 myDialog = new CustomDialog();
                 myDialog.show(getActivity().getSupportFragmentManager(), "myDialog");
-                //myVM.openDialog(getActivity().getSupportFragmentManager());
             }
         });
 
@@ -224,7 +206,7 @@ public class usuario extends Fragment {
                 } else if(changeField == 5) {
                     if(myToastBool) {                       //Si se ha borrado la cuenta
                         changeField = -1;                   //devolvemos al valor por defecto
-                        logOutUser();                       //Cerramos la sesiondel usuario
+                        logOutUser();                       //Cerramos la sesion del usuario
                     } else {                                //Si no
                         Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                         changeField = -1;                   //devolvemos el valor por defecto a la variable
@@ -267,16 +249,30 @@ public class usuario extends Fragment {
         super.onStart();
     }
 
+    /**
+     * Llama a borrar usuario
+     */
     private void delUser() {
         myVM.DelUser();
     }
 
+    /**
+     * Llama a cambiar email del usuario
+     */
     public void changeEmail() {
         myVM.changeEmail(tempStringEmailPass);
     }
+
+    /**
+     * Llama a cambiar contraseña del usuario
+     */
     public void changePass() {
         myVM.changePass(tempStringEmailPass);
     }
+
+    /**
+     * Llama a cambiar autonomia del usuario
+     */
     public void changeAut() {
         myVM.changeAut(tempStringEmailPass);
     }
@@ -305,6 +301,9 @@ public class usuario extends Fragment {
         Toast.makeText(getContext(), R.string.toast_recovery, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Cierra la sesion del usuario
+     */
     public void logOutUser() {
         final Intent myIntent = new Intent(getActivity(), StartActivity.class);
         AuthUI.getInstance()

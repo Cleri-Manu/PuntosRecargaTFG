@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.nuevo;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.nuevo;
 
 import android.os.Bundle;
 
@@ -17,11 +17,6 @@ import es.usal.tfg1.R;
 import es.usal.tfg1.databinding.FragmentNuevoBinding;
 import es.usal.tfg1.vm.VM;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link nuevo#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class nuevo extends Fragment {
     private FragmentNuevoBinding binding;
     private VM myVM;
@@ -67,6 +62,10 @@ public class nuevo extends Fragment {
     }
 
     @Override
+    /**
+     * Cuando la activiad se crea se añaden observers para los botones y toast de menseajes de exito/fallo
+     * Tambien se rellenan campos de la vista si es encesario
+     */
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         isMod = myVM.getModSelected();
@@ -76,10 +75,10 @@ public class nuevo extends Fragment {
             EditText lat = (EditText)getView().findViewById(R.id.nuevo_lat_editText);
             EditText lon = (EditText)getView().findViewById(R.id.nuevo_lon_editText);
             EditText desc = (EditText)getView().findViewById(R.id.nuevo_descripcion_editText);
-            nombre.setText(myVM.getInfoPR().getValue().getNombre());
-            lat.setText(Float.toString((float) myVM.getInfoPR().getValue().getParada().getLatitud()));
-            lon.setText(Float.toString((float) myVM.getInfoPR().getValue().getParada().getLongitud()));
-            desc.setText(myVM.getInfoPR().getValue().getDescripcion());
+            nombre.setText(myVM.getCurrentPR().getValue().getNombre());
+            lat.setText(Float.toString((float) myVM.getCurrentPR().getValue().getParada().getLatitud()));
+            lon.setText(Float.toString((float) myVM.getCurrentPR().getValue().getParada().getLongitud()));
+            desc.setText(myVM.getCurrentPR().getValue().getDescripcion());
         }
 
         getView().findViewById(R.id.nuevo_frameLayout_n).setOnClickListener(new View.OnClickListener() {
@@ -104,7 +103,7 @@ public class nuevo extends Fragment {
                     EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);
                     EditText desc = (EditText) getView().findViewById(R.id.nuevo_descripcion_editText);
                     myVM.addNewPR(nombre.getText().toString(), lat.getText().toString(), lon.getText().toString(), desc.getText().toString());
-                } else {
+                } else { //Si se esta modificando utilizar la funcion de modificar
                     EditText nombre = (EditText) getView().findViewById(R.id.nuevo_nombe_editText);
                     EditText lat = (EditText) getView().findViewById(R.id.nuevo_lat_editText);
                     EditText lon = (EditText) getView().findViewById(R.id.nuevo_lon_editText);

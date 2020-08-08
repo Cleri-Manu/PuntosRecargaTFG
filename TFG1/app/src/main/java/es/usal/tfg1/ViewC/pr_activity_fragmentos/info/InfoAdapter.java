@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.info;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.info;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +15,9 @@ import es.usal.tfg1.R;
 import es.usal.tfg1.model.Puntuacion;
 
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
+    /**
+     * ArrayList con las puntuaciones del punto de recarga
+     */
     private ArrayList<Puntuacion> puntuaciones =  new ArrayList<Puntuacion>();
 
     @NonNull
@@ -25,11 +28,13 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
     }
 
     @Override
+    /**
+     * Inicializa los valores de cada elemento del recycler
+     */
     public void onBindViewHolder(@NonNull InfoHolder holder, int position) {
         Puntuacion p = puntuaciones.get(position);
         holder.punt_text.setText(p.getComentario());
         holder.punt_rating_bar.setRating((float)p.getPuntuacion());
-
     }
 
     @Override
@@ -43,7 +48,13 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
     }
 
     class InfoHolder extends RecyclerView.ViewHolder {
+        /**
+         * TextView de la vista del punto de recarga (descripcion)
+         */
         private TextView punt_text;
+        /**
+         * RatingBar de la vista del punto de recarga
+         */
         private AppCompatRatingBar punt_rating_bar;
 
         public InfoHolder(@NonNull View itemView) {

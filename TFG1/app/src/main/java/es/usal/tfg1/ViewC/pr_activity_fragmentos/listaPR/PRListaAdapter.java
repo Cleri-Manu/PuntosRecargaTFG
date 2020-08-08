@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.listaPR;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.listaPR;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.info;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.info;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,7 +24,6 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.internal.$Gson$Preconditions;
 
 import java.util.ArrayList;
 
@@ -33,11 +32,6 @@ import es.usal.tfg1.databinding.FragmentInfoBinding;
 import es.usal.tfg1.model.Puntuacion;
 import es.usal.tfg1.vm.VM;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link info#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class info extends Fragment {
     FragmentInfoBinding binding;
     private VM myVM;
@@ -187,23 +181,38 @@ public class info extends Fragment {
         });
     }
 
+    /**
+     * Interfaz del listener para indicar que se ha seleccionado el boton puntuar y navegar a esa vista desde PRACtivity
+     */
     public interface OnPuntuarSelectedListener {
         public void onPuntuarSelected();
     }
 
+    /**
+     * Interfaz del listener para indicar que se ha seleccionado el boton borrar un punto de recarga y navegar a esa vista desde PRACtivity
+     */
     public interface OnPRDelListener {
         public void onPRDelSelected();
     }
 
+    /**
+     * Interfaz del listener para indicar que se ha seleccionado el boton modificar y navegar a esa vista desde PRACtivity
+     */
     public interface OnPRModListener {
         public void onPRModSelected();
     }
 
+    /**
+     * Interfaz del listener para indicar que se ha seleccionado el boton ir a un punto de recarga y navegar a esa vista desde PRACtivity
+     */
     public interface OnPRGoListener {
         public void onPRGoSelected();
     }
 
     @Override
+    /**
+     * Inicializa los listener para comunicarse con PRActivity
+     */
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if(context instanceof OnPuntuarSelectedListener){
@@ -229,9 +238,15 @@ public class info extends Fragment {
     }
 
     @Override
+    /**
+     * Borra los listener para comunicarse con PRActivity
+     */
     public void onDetach() {
         super.onDetach();
         puntuarSelectedListener = null;
+        onPRDelListener = null;
+        onPRModListener = null;
+        onPRGoListener = null;
     }
 
 }

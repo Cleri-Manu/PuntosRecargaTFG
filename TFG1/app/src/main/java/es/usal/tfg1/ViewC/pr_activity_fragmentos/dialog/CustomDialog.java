@@ -1,4 +1,4 @@
-package es.usal.tfg1.ViewC.fragmentos.dialog;
+package es.usal.tfg1.ViewC.pr_activity_fragmentos.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -18,6 +18,9 @@ import es.usal.tfg1.R;
 import es.usal.tfg1.vm.VM;
 
 public class CustomDialog extends AppCompatDialogFragment {
+    /**
+     * Texto del cuadro de dialogo donde se escribe la contraseña
+     */
     private EditText pass;
     @NonNull
     @Override

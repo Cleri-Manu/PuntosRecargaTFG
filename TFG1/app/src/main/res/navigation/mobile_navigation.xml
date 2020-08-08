@@ -7,43 +7,43 @@
 
     <fragment
         android:id="@+id/navigation_mapa"
-        android:name="es.usal.tfg1.ViewC.fragmentos.mapa.mapa"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.mapa.mapa"
         android:label="@string/title_mapa"
         tools:layout="@layout/fragment_mapa" />
 
     <fragment
         android:id="@+id/navigation_pr_list"
-        android:name="es.usal.tfg1.ViewC.fragmentos.listaPR.prLista"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.listaPR.prLista"
         android:label="@string/title_p_cercanos"
         tools:layout="@layout/fragment_pr_list" />
 
     <fragment
         android:id="@+id/navigation_pr_list_search"
-        android:name="es.usal.tfg1.ViewC.fragmentos.listaPR.prLista"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.listaPR.prLista"
         android:label="@string/title_p_cercanos"
         tools:layout="@layout/fragment_pr_list" />
 
     <fragment
         android:id="@+id/navigation_usuario"
-        android:name="es.usal.tfg1.ViewC.fragmentos.usuario.usuario"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.usuario.usuario"
         android:label="@string/title_user"
         tools:layout="@layout/fragment_usuario" />
 
     <fragment
         android:id="@+id/navigation_nuevo"
-        android:name="es.usal.tfg1.ViewC.fragmentos.nuevo.nuevo"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.nuevo.nuevo"
         android:label="@string/title_nuevo"
         tools:layout="@layout/fragment_nuevo" />
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="es.usal.tfg1.ViewC.fragmentos.info.info"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.info.info"
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
 
     <fragment
         android:id="@+id/navigation_puntuar"
-        android:name="es.usal.tfg1.ViewC.fragmentos.info.puntuar.puntuar"
+        android:name="es.usal.tfg1.ViewC.pr_activity_fragmentos.info.puntuar.puntuar"
         android:label="@string/title_puntuar"
         tools:layout="@layout/fragment_puntuar" />
 
